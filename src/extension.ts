@@ -7,8 +7,6 @@ import * as markdowIt from 'markdown-it';
 import { plugins } from './plugin/plugins';
 import { CommandCopy, CommandCopyWithStyles } from './commands/copy';
 
-var mk = require('markdown-it-katex');
-
 export var markdown: markdowIt.MarkdownIt;
 export var context: vscode.ExtensionContext;
 // this method is called when your extension is activated
