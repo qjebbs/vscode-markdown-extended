@@ -10,5 +10,5 @@ let pluginNames: string[] = [
     'markdown-it-toc',
 ]
 
-export var plugins: any = pluginNames.map(config => require(config));
+export var plugins = pluginNames.map(name => require(name));
 
