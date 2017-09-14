@@ -10,10 +10,16 @@ export function exportFile(document: vscode.TextDocument, fileName: string) {
     fs.writeFileSync(fileName, renderHTML(document) + "\n" + renderStyle(), "utf-8");
 }
 
-export function renderHTML(document: vscode.TextDocument): string {
-    let content = markdown.render(document.getText());
+export function renderHTML(document: vscode.TextDocument): string
+export function renderHTML(content: string): string
+export function renderHTML(para) {
+    let content = "";
+    if (typeof para === "string")
+        content = markdown.render(para);
+    else if (para.getText)
+        content = markdown.render(para.getText());
     return `<article class="markdown-body vscode-body">
-    ${content}
+    ${content.trim()}
 </article>`;
 }
 
