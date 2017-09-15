@@ -3,7 +3,7 @@
   "displayName": "Markdown Extended",
   "description": "Extended syntaxes to built-in markdown & What you see is what you get exporter.",
   "icon": "images/logo.png",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "jebbs",
   "engines": {
     "vscode": "^1.15.0"
@@ -92,7 +92,7 @@
     "markdown-it-kbd": "^1.1.0",
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
-    "markdown-it-toc": "^1.1.0",
+    "markdown-it-table-of-contents": "^0.3.2",
     "markdown-it-underline": "^1.0.1"
   }
 }

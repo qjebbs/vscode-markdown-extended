@@ -13,6 +13,7 @@ This plugin provides what you see is what you get exporter. That means rendered 
     - Export to HTML
     - Copy HTML to clipboard
 - Extended Plugins
+    - [markdown-it-table-of-contents](https://www.npmjs.com/package/markdown-it-table-of-contents)
     - [markdown-it-footnote](https://www.npmjs.com/package/markdown-it-footnote)
     - [markdown-it-abbr](https://www.npmjs.com/package/markdown-it-abbr)
     - [markdown-it-sup](https://www.npmjs.com/package/markdown-it-sup)
@@ -34,9 +35,9 @@ This plugin provides what you see is what you get exporter. That means rendered 
 
 ### Extended Syntaxes Demo
 
-#### markdown-it-toc
+#### markdown-it-table-of-contents
 
-    @[TOC](Indexes)
+    [[TOC]]
 
 ![toc](./images/toc-demo.png)
 
