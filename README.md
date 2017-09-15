@@ -31,8 +31,6 @@ This plugin provides what you see is what you get exporter. That means rendered 
 
 ![command](./images/command-demo.png)
 
-![menu](./images/menu-demo.png)
-
 ### Extended Syntaxes Demo
 
 #### markdown-it-table-of-contents
