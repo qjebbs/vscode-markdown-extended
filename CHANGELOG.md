@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.1.0
+
+- New Feature: Export to PDF
+
 ## 0.0.3
 
 - Improvement: Copy HTML of selection if there was.
