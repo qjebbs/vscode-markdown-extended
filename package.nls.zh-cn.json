@@ -1,5 +1,5 @@
 {
-    "markdownExtended.export.current": "导出到 HTML",
+    "markdownExtended.export.current": "导出到其它格式",
     "markdownExtended.copy": "复制 HTML 到剪贴板",
     "markdownExtended.copy.withStyle": "复制 HTML 到剪贴板 (含样式)"
 }

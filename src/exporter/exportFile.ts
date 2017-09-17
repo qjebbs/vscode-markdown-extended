@@ -4,10 +4,22 @@ import { markdown } from '../extension';
 import { pluginStyles } from '../common/styles';
 import { mkdirsSync } from '../common/tools';
 import * as path from 'path';
+import * as pdf from 'html-pdf';
 
-export function exportFile(document: vscode.TextDocument, fileName: string) {
+export const exportFormats = [
+    "HTML",
+    "PDF"
+]
+
+export function exportHTML(document: vscode.TextDocument, fileName: string) {
     mkdirsSync(path.dirname(fileName));
     fs.writeFileSync(fileName, renderHTML(document) + "\n" + renderStyle(), "utf-8");
+}
+
+export function exportPDF(document: vscode.TextDocument, fileName: string, callback: Function) {
+    mkdirsSync(path.dirname(fileName));
+    pdf.create(renderHTML(document) + "\n" + renderStyle(), { format: 'Letter' })
+        .toFile(fileName, callback);
 }
 
 export function renderHTML(document: vscode.TextDocument): string

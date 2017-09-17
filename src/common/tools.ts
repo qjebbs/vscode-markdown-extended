@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
 
-export function calculateExportPath(source: string): string {
+export function calculateExportPath(source: string, format: string): string {
     let outDirName = ""; //config.exportOutDirName
     let dir = "";
     let wkdir = vscode.workspace.rootPath;
@@ -17,7 +17,7 @@ export function calculateExportPath(source: string): string {
         exportDir = path.join(dir, temp);
     }
 
-    return path.join(exportDir, path.basename(source, ".md") + ".html");
+    return path.join(exportDir, path.basename(source, ".md") + `.${format.toLowerCase()}`);
 }
 
 export function isSubPath(from: string, to: string): boolean {
