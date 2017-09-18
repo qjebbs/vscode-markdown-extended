@@ -10,7 +10,7 @@ Markdown Extended is a plugin that extend syntaxes and abilities to VSCode built
 This plugin provides what you see is what you get exporter. That means rendered HTML page is consistent to what you see in markdown preview, even it contains syntaxes and styles contributed by other plugins.
 
 - Extended Ability
-    - Export to HTML / PDF
+    - Export to HTML / PDF / PNG / JPEG
     - Copy HTML to clipboard
 - Extended Plugins
     - [markdown-it-table-of-contents](https://www.npmjs.com/package/markdown-it-table-of-contents)
