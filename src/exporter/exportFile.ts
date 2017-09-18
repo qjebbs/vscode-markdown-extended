@@ -8,18 +8,58 @@ import * as pdf from 'html-pdf';
 
 export const exportFormats = [
     "HTML",
-    "PDF"
+    "PDF",
+    "JPEG",
+    "PNG"
 ]
 
-export function exportHTML(document: vscode.TextDocument, fileName: string) {
+export function exportFile(document: vscode.TextDocument, format: string, fileName: string, callback: Function) {
+    switch (format) {
+        case "HTML":
+            exportHTML(document, fileName);
+            callback();
+            break;
+        case "PDF":
+        case "JPEG":
+        case "PNG":
+            exportPDF(document, fileName, format, callback)
+            break;
+    }
+}
+
+function exportHTML(document: vscode.TextDocument, fileName: string) {
     mkdirsSync(path.dirname(fileName));
     fs.writeFileSync(fileName, renderHTML(document) + "\n" + renderStyle(), "utf-8");
 }
 
-export function exportPDF(document: vscode.TextDocument, fileName: string, callback: Function) {
+function exportPDF(document: vscode.TextDocument, fileName: string, format: string, callback: Function) {
     mkdirsSync(path.dirname(fileName));
-    pdf.create(renderHTML(document) + "\n" + renderStyle(), { format: 'Letter' })
-        .toFile(fileName, callback);
+    let mdBody = renderHTML(document);
+    let config = {};
+    const imgWidth = 980;
+    switch (format) {
+        case "PDF":
+            config = {
+                height: "29.7cm",
+                width: "21cm",
+                border: {
+                    top: "1cm",
+                    right: "0.5cm",
+                    bottom: "1cm",
+                    left: "0.5cm"
+                },
+                type: "pdf"
+            }
+            break;
+        case "JPEG":
+        case "PNG":
+            config = {
+                type: format.toLowerCase()
+            }
+            mdBody = `<body style="width:${imgWidth}px">${mdBody}</body>`
+            break;
+    }
+    pdf.create(mdBody + "\n" + renderStyle(), config).toFile(fileName, callback);
 }
 
 export function renderHTML(document: vscode.TextDocument): string
