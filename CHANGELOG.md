@@ -1,5 +1,9 @@
 # Change Log
 
+## v0.1.2
+
+- Configurable phantom path
+
 ## v0.1.1
 
 - New Feature: Export to PNG / JPEG
