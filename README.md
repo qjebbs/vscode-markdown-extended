@@ -25,6 +25,19 @@ This plugin provides what you see is what you get exporter. That means rendered 
 
 > Post an issue on [GitHub][issues] if you want other plugins.
 
+## Requirements
+
+To support extra export formats, like PDF/PNG/JPEG, you need to download phantom binary accordingly, and config User Settings:
+
+    "markdownExtended.phantomPath": "path/to/phantomjs.exe"
+
+Download phantom binaries here:
+
+- [Linux 64bit](https://github.com/Medium/phantomjs/releases/download/v2.1.1/phantomjs-2.1.1-linux-x86_64.tar.bz2)
+- [Linux 32bit](https://github.com/Medium/phantomjs/releases/download/v2.1.1/phantomjs-2.1.1-linux-i686.tar.bz2)
+- [Mac OS](https://github.com/Medium/phantomjs/releases/download/v2.1.1/phantomjs-2.1.1-macosx.zip)
+- [Windows](https://github.com/Medium/phantomjs/releases/download/v2.1.1/phantomjs-2.1.1-windows.zip)
+
 ## Demos
 
 ### Export Demo

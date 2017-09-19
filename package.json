@@ -64,6 +64,17 @@
         }
       ]
     },
+    "configuration": {
+      "type": "object",
+      "title": "Markdown Extended Configuration",
+      "properties": {
+        "markdownExtended.phantomPath": {
+          "type": "string",
+          "default": "",
+          "description": "%markdownExtended.configuration.phantomPath%"
+        }
+      }
+    },
     "markdown.markdownItPlugins": true,
     "markdown.previewStyles": []
   },
@@ -86,7 +97,6 @@
     "copy-paste": "^1.3.0",
     "highlight.js": "^9.12.0",
     "html-pdf": "^2.1.0",
-    "phantomjs-prebuilt": "^2.1.4",
     "markdown-it-abbr": "^1.0.4",
     "markdown-it-attrs": "^1.1.0",
     "markdown-it-checkbox": "^1.1.0",

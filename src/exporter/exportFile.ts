@@ -5,13 +5,19 @@ import { pluginStyles } from '../common/styles';
 import { mkdirsSync } from '../common/tools';
 import * as path from 'path';
 import * as pdf from 'html-pdf';
+import { config } from '../common/config';
 
-export const exportFormats = [
-    "HTML",
-    "PDF",
-    "JPEG",
-    "PNG"
-]
+export function exportFormats(): string[] {
+    let formats = [
+        "HTML",
+    ]
+    if (config.phantomPath) formats.push(
+        "PDF",
+        "JPEG",
+        "PNG"
+    )
+    return formats;
+}
 
 export function exportFile(document: vscode.TextDocument, format: string, fileName: string, callback: Function) {
     switch (format) {
@@ -35,11 +41,11 @@ function exportHTML(document: vscode.TextDocument, fileName: string) {
 function exportPDF(document: vscode.TextDocument, fileName: string, format: string, callback: Function) {
     mkdirsSync(path.dirname(fileName));
     let mdBody = renderHTML(document);
-    let config = {};
+    let option: any = {};
     const imgWidth = 980;
     switch (format) {
         case "PDF":
-            config = {
+            option = {
                 height: "29.7cm",
                 width: "21cm",
                 border: {
@@ -53,13 +59,14 @@ function exportPDF(document: vscode.TextDocument, fileName: string, format: stri
             break;
         case "JPEG":
         case "PNG":
-            config = {
+            option = {
                 type: format.toLowerCase()
             }
             mdBody = `<body style="width:${imgWidth}px">${mdBody}</body>`
             break;
     }
-    pdf.create(mdBody + "\n" + renderStyle(), config).toFile(fileName, callback);
+    option.phantomPath = config.phantomPath;
+    pdf.create(mdBody + "\n" + renderStyle(), option).toFile(fileName, callback);
 }
 
 export function renderHTML(document: vscode.TextDocument): string

@@ -6,7 +6,7 @@ import { calculateExportPath } from '../common/tools';
 export class CommandExportCurrent extends Command {
     async execute() {
         let document = vscode.window.activeTextEditor.document;
-        let format = await vscode.window.showQuickPick(exportFormats);
+        let format = await vscode.window.showQuickPick(exportFormats());
         let fileName = calculateExportPath(document.fileName, format);
         exportFile(
             document,

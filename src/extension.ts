@@ -6,6 +6,7 @@ import { CommandExportCurrent } from './commands/exportCurrent';
 import * as markdowIt from 'markdown-it';
 import { plugins } from './plugin/plugins';
 import { CommandCopy, CommandCopyWithStyles } from './commands/copy';
+import { config } from './common/config';
 
 export var markdown: markdowIt.MarkdownIt;
 export var context: vscode.ExtensionContext;
@@ -13,6 +14,7 @@ export var context: vscode.ExtensionContext;
 // your extension is activated the very first time the command is executed
 export function activate(ctx: vscode.ExtensionContext) {
     context = ctx;
+    ctx.subscriptions.push(config.watch());
     ctx.subscriptions.push(new CommandExportCurrent());
     ctx.subscriptions.push(new CommandCopy());
     ctx.subscriptions.push(new CommandCopyWithStyles());
