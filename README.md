@@ -104,6 +104,23 @@ is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
 
 <p data-line="48" class="code-line"><u>underline</u></p>
 
+#### markdown-it-container
+
+    ::::: container
+    :::: row
+    ::: col-xs-6 alert alert-success
+    success text
+    :::
+    ::: col-xs-6 alert alert-warning
+    warning text
+    :::
+    ::::
+    :::::
+
+![container-demo.png](./images/container-demo.png)
+
+*(Rendered with style bootstrap)*
+
 ## Known Issues & Feedback
 
 Please post and view issues on [GitHub][issues]

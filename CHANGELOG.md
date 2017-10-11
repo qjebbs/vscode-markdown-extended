@@ -1,5 +1,9 @@
 # Change Log
 
+## v0.1.3
+
+- Add plugin markdown-it-container
+
 ## v0.1.2
 
 - Configurable phantom path
