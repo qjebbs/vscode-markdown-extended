@@ -100,6 +100,7 @@
     "markdown-it-abbr": "^1.0.4",
     "markdown-it-attrs": "^1.1.0",
     "markdown-it-checkbox": "^1.1.0",
+    "markdown-it-container": "^2.0.0",
     "markdown-it-footnote": "^3.0.1",
     "markdown-it-kbd": "^1.1.0",
     "markdown-it-sub": "^1.0.0",

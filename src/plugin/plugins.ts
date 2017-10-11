@@ -1,8 +1,10 @@
 import * as markdowIt from 'markdown-it';
+import { validate, render } from './markdownItContainer';
+import { slugify } from './markdownItTOC';
 
 interface markdowItPlugin {
     plugin: Function,
-    options?: any
+    params?: any[],
 }
 
 export var plugins: markdowItPlugin[] = [
@@ -14,12 +16,6 @@ export var plugins: markdowItPlugin[] = [
     { plugin: require('markdown-it-attrs') },
     { plugin: require('markdown-it-kbd') },
     { plugin: require('markdown-it-underline') },
-    { plugin: require('markdown-it-table-of-contents'), options: { slugify: slugify, includeLevel: [1, 2, 3] } },
-    // { plugin: require('markdown-it-headinganchor'), options: { slugify: slugify } },
+    { plugin: require('markdown-it-table-of-contents'), params: [{ slugify: slugify, includeLevel: [1, 2, 3] }] },
+    { plugin: require('markdown-it-container'), params: ["container", { validate: validate, render: render }] },
 ]
-
-function slugify(s: string) {
-    // Unicode-friendly
-    var spaceRegex = /[ \xA0\u1680\u2000-\u200A\u202F\u205F\u3000]/g;
-    return encodeURIComponent(s.replace(spaceRegex, '-').toLowerCase());
-}
