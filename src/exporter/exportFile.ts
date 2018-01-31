@@ -11,7 +11,7 @@ export function exportFormats(): string[] {
     let formats = [
         "HTML",
     ]
-    if (config.phantomPath) formats.push(
+    if (config.phantomPath && fs.existsSync(config.phantomPath)) formats.push(
         "PDF",
         "JPEG",
         "PNG"
