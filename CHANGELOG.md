@@ -1,5 +1,12 @@
 # Change Log
 
+## v0.1.4
+
+- Catch command errors to panel
+- Prompt open preview before copy or export, avoiding undefinded render
+- Validate phantomPath
+- Fix read previewStyles of undefined, solve [#2](https://github.com/qjebbs/vscode-markdown-extended/issues/2)
+
 ## v0.1.3
 
 - Add plugin markdown-it-container
