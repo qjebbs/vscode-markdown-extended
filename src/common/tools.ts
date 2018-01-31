@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
+import { outputPanel } from '../extension';
 
 export function calculateExportPath(source: string, format: string): string {
     let outDirName = ""; //config.exportOutDirName
@@ -46,4 +47,25 @@ export function mkdirsSync(dirname) {
             return true;
         }
     }
+}
+
+export function parseError(error: any): string {
+    let nb = new Buffer("");
+    if (typeof (error) === "string") {
+        return error;
+    } else if (error instanceof TypeError || error instanceof Error) {
+        let err = error as TypeError;
+        return err.message + '\n' + err.stack;
+    } else if (error instanceof Array) {
+        let arrs = error as any[];
+        return arrs.reduce((p, err) => p + '\n\n' + err.message + '\n' + err.stack, "");
+    } else {
+        return error.toString();
+    }
+}
+
+export function showMessagePanel(message: any) {
+    outputPanel.clear();
+    outputPanel.appendLine(parseError(message));
+    outputPanel.show();
 }

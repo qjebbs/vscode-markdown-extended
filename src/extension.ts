@@ -10,10 +10,12 @@ import { config } from './common/config';
 
 export var markdown: markdowIt.MarkdownIt;
 export var context: vscode.ExtensionContext;
+export var outputPanel = vscode.window.createOutputChannel("MDExtended");
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(ctx: vscode.ExtensionContext) {
     context = ctx;
+    ctx.subscriptions.push(outputPanel);
     ctx.subscriptions.push(config.watch());
     ctx.subscriptions.push(new CommandExportCurrent());
     ctx.subscriptions.push(new CommandCopy());
