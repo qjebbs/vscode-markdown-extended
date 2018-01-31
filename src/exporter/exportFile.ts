@@ -1,11 +1,11 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
-import { markdown } from '../extension';
 import { pluginStyles } from '../common/styles';
 import { mkdirsSync } from '../common/tools';
 import * as path from 'path';
 import * as pdf from 'html-pdf';
 import { config } from '../common/config';
+import { markdown } from '../extension';
 
 export function exportFormats(): string[] {
     let formats = [
@@ -84,4 +84,20 @@ export function renderHTML(para) {
 
 export function renderStyle(): string {
     return `<style>\n${pluginStyles}\n</style>`;
+}
+
+export function testMarkdown(): boolean {
+    if (!markdown) {
+        vscode.window.showInformationMessage(
+            "You must open markdown preview before you can copy or export.",
+            "Open Preview"
+        ).then(
+            result => {
+                if (result == "Open Preview")
+                    vscode.commands.executeCommand("markdown.showPreviewToSide")
+            }
+            );
+        return false;
+    }
+    return true;
 }

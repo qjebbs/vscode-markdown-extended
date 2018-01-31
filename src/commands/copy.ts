@@ -1,10 +1,11 @@
 import { Command } from './common';
 import * as vscode from 'vscode';
 import * as clip from 'copy-paste';
-import { renderHTML, renderStyle } from '../exporter/exportFile';
+import { renderHTML, renderStyle, testMarkdown } from '../exporter/exportFile';
 
 export class CommandCopy extends Command {
     execute() {
+        if(!testMarkdown()) return;
         clip.copy(renderMarkdown(false), () => vscode.window.showInformationMessage("Copy success."));
     }
     constructor() {
@@ -14,6 +15,7 @@ export class CommandCopy extends Command {
 
 export class CommandCopyWithStyles extends Command {
     execute() {
+        if(!testMarkdown()) return;
         clip.copy(renderMarkdown(true), () => vscode.window.showInformationMessage("Copy success."));
     }
     constructor() {
