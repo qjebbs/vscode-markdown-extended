@@ -8,6 +8,7 @@ function readStyles(): string[] {
     let styles: string[] = [];
     vscode.extensions.all.map(
         (ext) => {
+            if (!ext || !ext.packageJSON || !ext.packageJSON.contributes) return;
             let files: string[] = ext.packageJSON.contributes["markdown.previewStyles"];
             if (!files) return;
             files.map(f => {
