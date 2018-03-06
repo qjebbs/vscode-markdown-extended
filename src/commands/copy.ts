@@ -1,12 +1,13 @@
 import { Command } from './common';
 import * as vscode from 'vscode';
-import * as clip from 'copy-paste';
+import * as clip from 'clipboardy';
 import { renderHTML, renderStyle, testMarkdown } from '../exporter/exportFile';
 
 export class CommandCopy extends Command {
     execute() {
-        if(!testMarkdown()) return;
-        clip.copy(renderMarkdown(false), () => vscode.window.showInformationMessage("Copy success."));
+        if (!testMarkdown()) return;
+        clip.write(renderMarkdown(false))
+            .then(() => vscode.window.showInformationMessage("Copy success."));
     }
     constructor() {
         super("markdownExtended.copy");
@@ -15,8 +16,9 @@ export class CommandCopy extends Command {
 
 export class CommandCopyWithStyles extends Command {
     execute() {
-        if(!testMarkdown()) return;
-        clip.copy(renderMarkdown(true), () => vscode.window.showInformationMessage("Copy success."));
+        if (!testMarkdown()) return;
+        clip.write(renderMarkdown(true))
+            .then(() => vscode.window.showInformationMessage("Copy success."));
     }
     constructor() {
         super("markdownExtended.copy.withStyle");
