@@ -24,7 +24,8 @@
     "onLanguage:markdown",
     "onCommand:markdownExtended.export",
     "onCommand:markdownExtended.copy",
-    "onCommand:markdownExtended.copy.withStyle"
+    "onCommand:markdownExtended.copy.withStyle",
+    "onCommand:markdownExtended.pasteAsTable"
   ],
   "main": "./out/src/extension",
   "contributes": {
@@ -43,6 +44,11 @@
         "command": "markdownExtended.copy.withStyle",
         "title": "%markdownExtended.copy.withStyle%",
         "category": "Markdown"
+      },
+      {
+        "command": "markdownExtended.pasteAsTable",
+        "title": "%markdownExtended.pasteAsTable%",
+        "category": "Markdown"
       }
     ],
     "menus": {
@@ -60,6 +66,11 @@
         {
           "when": "editorLangId == markdown",
           "command": "markdownExtended.copy.withStyle",
+          "group": "markdown"
+        },
+        {
+          "when": "editorLangId == markdown",
+          "command": "markdownExtended.pasteAsTable",
           "group": "markdown"
         }
       ]
@@ -106,6 +117,7 @@
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
     "markdown-it-table-of-contents": "^0.3.2",
-    "markdown-it-underline": "^1.0.1"
+    "markdown-it-underline": "^1.0.1",
+    "papaparse": "^4.3.7"
   }
 }

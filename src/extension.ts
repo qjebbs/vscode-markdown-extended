@@ -7,6 +7,7 @@ import * as markdowIt from 'markdown-it';
 import { plugins } from './plugin/plugins';
 import { CommandCopy, CommandCopyWithStyles } from './commands/copy';
 import { config } from './services/common/config';
+import { CommandPasteTable } from './commands/pasteTable';
 
 export var markdown: markdowIt.MarkdownIt;
 export var context: vscode.ExtensionContext;
@@ -20,6 +21,7 @@ export function activate(ctx: vscode.ExtensionContext) {
     ctx.subscriptions.push(new CommandExportCurrent());
     ctx.subscriptions.push(new CommandCopy());
     ctx.subscriptions.push(new CommandCopyWithStyles());
+    ctx.subscriptions.push(new CommandPasteTable());
     return {
         extendMarkdownIt(md: markdowIt.MarkdownIt) {
             plugins.map(p => {
