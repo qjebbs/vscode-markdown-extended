@@ -1,7 +1,7 @@
 import { Command } from './common';
 import * as vscode from 'vscode';
 import * as clip from 'clipboardy';
-import { renderHTML, renderStyle, testMarkdown } from '../exporter/exportFile';
+import { renderHTML, renderStyle, testMarkdown } from '../services/exporter/exportFile';
 
 export class CommandCopy extends Command {
     execute() {

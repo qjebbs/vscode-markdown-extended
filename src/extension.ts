@@ -6,7 +6,7 @@ import { CommandExportCurrent } from './commands/exportCurrent';
 import * as markdowIt from 'markdown-it';
 import { plugins } from './plugin/plugins';
 import { CommandCopy, CommandCopyWithStyles } from './commands/copy';
-import { config } from './common/config';
+import { config } from './services/common/config';
 
 export var markdown: markdowIt.MarkdownIt;
 export var context: vscode.ExtensionContext;

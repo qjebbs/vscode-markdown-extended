@@ -5,7 +5,7 @@ import { mkdirsSync } from '../common/tools';
 import * as path from 'path';
 import * as pdf from 'html-pdf';
 import { config } from '../common/config';
-import { markdown } from '../extension';
+import { markdown } from '../../extension';
 
 export function exportFormats(): string[] {
     let formats = [
@@ -46,14 +46,15 @@ function exportPDF(document: vscode.TextDocument, fileName: string, format: stri
     switch (format) {
         case "PDF":
             option = {
-                height: "29.7cm",
-                width: "21cm",
-                border: {
-                    top: "1cm",
-                    right: "0.5cm",
-                    bottom: "1cm",
-                    left: "0.5cm"
-                },
+                // height: "29.665cm",
+                // width: "20.988cm",
+                format: "A4",
+                // border: {
+                //     top: "1cm",
+                //     right: "1cm",
+                //     bottom: "1cm",
+                //     left: "1cm"
+                // },
                 type: "pdf"
             }
             break;
@@ -96,7 +97,7 @@ export function testMarkdown(): boolean {
                 if (result == "Open Preview")
                     vscode.commands.executeCommand("markdown.showPreviewToSide")
             }
-            );
+        );
         return false;
     }
     return true;

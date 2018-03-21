@@ -1,7 +1,7 @@
 import { Command } from './common';
 import * as vscode from 'vscode';
-import { exportFormats, exportFile, testMarkdown } from '../exporter/exportFile';
-import { calculateExportPath } from '../common/tools';
+import { exportFormats, exportFile, testMarkdown } from '../services/exporter/exportFile';
+import { calculateExportPath } from '../services/common/tools';
 
 export class CommandExportCurrent extends Command {
     async execute() {

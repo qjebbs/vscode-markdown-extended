@@ -1,5 +1,5 @@
 import { commands, Disposable } from 'vscode';
-import { showMessagePanel } from '../common/tools';
+import { showMessagePanel } from '../services/common/tools';
 
 export abstract class Command extends Disposable {
 

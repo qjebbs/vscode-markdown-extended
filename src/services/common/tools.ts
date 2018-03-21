@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
-import { outputPanel } from '../extension';
+import { outputPanel } from '../../extension';
 
 export function calculateExportPath(source: string, format: string): string {
     let outDirName = ""; //config.exportOutDirName
