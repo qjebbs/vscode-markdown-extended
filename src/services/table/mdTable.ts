@@ -1,3 +1,5 @@
+import { stringifyMDTable } from "./mdTableStringify";
+
 export enum TableAlign {
     auto,
     left,
@@ -42,27 +44,7 @@ export class MDTable {
         return this._columnWidths;
     }
     stringify(): string {
-        const ALIGN = true;
-        let rows = this._data.map(row => this.stringifyRow(row, ALIGN));
-        let header = rows.shift();
-        let Sep = this.stringifyHeaderSeperator(ALIGN);
-        return header + '\n'
-            + Sep + '\n'
-            + rows.join('\n');
-    }
-    private stringifyHeaderSeperator(align: boolean): string {
-        let colCount = this._data[0].length;
-        let str = [...Array(colCount).keys()].reduce((p, i) => {
-            return p + "-".repeat((align ? this._columnWidths[i] : 0) + 2) + "|";
-        }, "|");
-        return str.trim();
-    }
-    private stringifyRow(row: string[], align: boolean): string {
-        const SPACE = " ";
-        let str = row.reduce((p, c, i) => {
-            return p + c + SPACE.repeat(align ? this._columnWidths[i] - c.length : 0) + " | ";
-        }, "| ");
-        return str.trim();
+        return stringifyMDTable(this);
     }
     private calcColumnWidths(): number[] {
         return [...Array(this._data[0].length).keys()].map(
@@ -71,7 +53,7 @@ export class MDTable {
                     row => i > row.length - 1 ? 0 : row[i].length
                 );
                 let mx = Math.max(...ws);
-                return mx < 3 ? 3 : mx;
+                return mx < 1 ? 1 : mx;
             }
         );
     }
