@@ -25,7 +25,8 @@
     "onCommand:markdownExtended.export",
     "onCommand:markdownExtended.copy",
     "onCommand:markdownExtended.copy.withStyle",
-    "onCommand:markdownExtended.pasteAsTable"
+    "onCommand:markdownExtended.pasteAsTable",
+    "onCommand:markdownExtended.formateTable"
   ],
   "main": "./out/src/extension",
   "contributes": {
@@ -49,6 +50,11 @@
         "command": "markdownExtended.pasteAsTable",
         "title": "%markdownExtended.pasteAsTable%",
         "category": "Markdown"
+      },
+      {
+        "command": "markdownExtended.formateTable",
+        "title": "%markdownExtended.formateTable%",
+        "category": "Markdown"
       }
     ],
     "menus": {
@@ -71,6 +77,11 @@
         {
           "when": "editorLangId == markdown",
           "command": "markdownExtended.pasteAsTable",
+          "group": "markdown"
+        },
+        {
+          "when": "editorLangId == markdown",
+          "command": "markdownExtended.formateTable",
           "group": "markdown"
         }
       ]

@@ -8,6 +8,7 @@ import { plugins } from './plugin/plugins';
 import { CommandCopy, CommandCopyWithStyles } from './commands/copy';
 import { config } from './services/common/config';
 import { CommandPasteTable } from './commands/pasteTable';
+import { CommandFormateTable } from './commands/formateTable';
 
 export var markdown: markdowIt.MarkdownIt;
 export var context: vscode.ExtensionContext;
@@ -16,12 +17,15 @@ export var outputPanel = vscode.window.createOutputChannel("MDExtended");
 // your extension is activated the very first time the command is executed
 export function activate(ctx: vscode.ExtensionContext) {
     context = ctx;
-    ctx.subscriptions.push(outputPanel);
-    ctx.subscriptions.push(config.watch());
-    ctx.subscriptions.push(new CommandExportCurrent());
-    ctx.subscriptions.push(new CommandCopy());
-    ctx.subscriptions.push(new CommandCopyWithStyles());
-    ctx.subscriptions.push(new CommandPasteTable());
+    ctx.subscriptions.push(
+        outputPanel,
+        config.watch(),
+        new CommandExportCurrent(),
+        new CommandCopy(),
+        new CommandCopyWithStyles(),
+        new CommandPasteTable(),
+        new CommandFormateTable()
+    );
     return {
         extendMarkdownIt(md: markdowIt.MarkdownIt) {
             plugins.map(p => {
