@@ -12,6 +12,8 @@ This plugin provides what you see is what you get exporter. That means rendered 
 - Extended Ability
     - Export to HTML / PDF / PNG / JPEG
     - Copy HTML to clipboard
+    - Paste as Markdown Table
+    - Formate Table
 - Extended Plugins
     - [markdown-it-table-of-contents](https://www.npmjs.com/package/markdown-it-table-of-contents)
     - [markdown-it-footnote](https://www.npmjs.com/package/markdown-it-footnote)
@@ -39,6 +41,18 @@ Download phantom binaries here:
 - [Windows](https://github.com/Medium/phantomjs/releases/download/v2.1.1/phantomjs-2.1.1-windows.zip)
 
 ## Demos
+
+### Paste as Markdown Table
+
+Copy a table from Excel, Web and other applications which support the format of Comma-Separated Values (CSV), then run the command `Paste as Markdown Table`, you will get the markdown table.
+
+![pasteTable](./images/pasteTable.gif)
+
+### Formate Table
+
+Select the table area, and run `Formate Table` command, you'll get the table formatted.
+
+![formateTable](./images/formateTable.gif)
 
 ### Export Demo
 

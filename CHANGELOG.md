@@ -1,5 +1,11 @@
 # Change Log
 
+## v0.2.0
+
+- New Feature: Paste as Markdown Table.
+- New Feature: Formate Table.
+- Fix: Copy HTML failed if content contains non-English characters.
+
 ## v0.1.4
 
 - Catch command errors to panel
