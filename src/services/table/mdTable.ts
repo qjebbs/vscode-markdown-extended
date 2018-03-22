@@ -1,3 +1,4 @@
+import { parseMDTAble } from "./mdTableParse";
 import { stringifyMDTable } from "./mdTableStringify";
 
 export enum TableAlign {
@@ -42,6 +43,9 @@ export class MDTable {
     }
     public get columnWidths(): number[] {
         return this._columnWidths;
+    }
+    static parse(source: string): MDTable {
+        return parseMDTAble(source);
     }
     stringify(): string {
         return stringifyMDTable(this);
