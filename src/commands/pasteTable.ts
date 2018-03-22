@@ -1,8 +1,8 @@
 import { Command } from './common';
 import * as vscode from 'vscode';
 import * as clip from 'clipboardy';
-import { convertToMarkdownTable, RangeEdit } from '../services/table/convertTable';
-
+import { convertToMarkdownTable } from '../services/table/convertTable';
+import { editTextDocument } from '../services/common/tools';
 export class CommandPasteTable extends Command {
     execute() {
         let text = clip.readSync().trim();
@@ -10,22 +10,13 @@ export class CommandPasteTable extends Command {
         let tableText = convertToMarkdownTable(text);
         if (!tableText) return;
         let editor = vscode.window.activeTextEditor;
-        applyEdit(
+        editTextDocument(
             editor.document,
-            <RangeEdit>{
-                range: editor.selection,
-                newText: tableText,
-            }
+            editor.selection,
+            tableText
         );
     }
     constructor() {
         super("markdownExtended.pasteAsTable");
     }
-}
-
-async function applyEdit(document: vscode.TextDocument, edit: RangeEdit) {
-    let editor = await vscode.window.showTextDocument(document);
-    editor.edit(e => {
-        e.replace(edit.range, edit.newText);
-    })
 }

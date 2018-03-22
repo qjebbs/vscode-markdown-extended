@@ -69,3 +69,10 @@ export function showMessagePanel(message: any) {
     outputPanel.appendLine(parseError(message));
     outputPanel.show();
 }
+
+export async function editTextDocument(document: vscode.TextDocument, range: vscode.Range, newText: string) {
+    let editor = await vscode.window.showTextDocument(document);
+    editor.edit(e => {
+        e.replace(range, newText);
+    })
+}
