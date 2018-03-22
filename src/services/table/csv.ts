@@ -5,7 +5,9 @@ import { MDTable } from './mdTable';
 export function parse(source: string): MDTable {
     let table = csv.parse(source);
     if (table.errors.length) return undefined;
-    return new MDTable(table.data);
+    //use "new MDTable(table.data)" to do the data regularization, then escape chr
+    let data = escapeChars(new MDTable(table.data));
+    return new MDTable(data);
 }
 
 export function stringify(table: MDTable): string {
@@ -18,4 +20,14 @@ export function stringify(table: MDTable): string {
         newline: "\r\n"
     }
     return csv.unparse(table.data, config);
+}
+function escapeChars(table: MDTable): string[][] {
+    for (let i = 0; i < table.rowCount; i++) {
+        for (let j = 0; j < table.columnCount; j++) {
+            let text = table.data[i][j];
+            if (/[\\|]/g.test(text))
+                table.data[i][j] = text.replace(/([\\|])/g, "\\$1");
+        }
+    }
+    return table.data;
 }
