@@ -1,5 +1,9 @@
 # Change Log
 
+## v0.2.2
+
+- Fix: User styles config logic.
+
 ## v0.2.1
 
 - Improvement: Support user styles (`markdown.styles`) when export.
