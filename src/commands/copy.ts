@@ -33,6 +33,6 @@ function renderMarkdown(style: boolean): string {
         rendered = renderHTML(document);
     else
         rendered = renderHTML(document.getText(selection));
-    if (style) rendered += '\n' + renderStyle();
-    return rendered
+    if (style) rendered += '\n' + renderStyle(document.uri);
+    return rendered;
 }

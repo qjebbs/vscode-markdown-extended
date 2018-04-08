@@ -6,6 +6,7 @@ import * as path from 'path';
 import * as pdf from 'html-pdf';
 import { config } from '../common/config';
 import { markdown } from '../../extension';
+import { mdConfig } from '../common/mdConfig';
 
 export function exportFormats(): string[] {
     let formats = [
@@ -35,7 +36,7 @@ export function exportFile(document: vscode.TextDocument, format: string, fileNa
 
 function exportHTML(document: vscode.TextDocument, fileName: string) {
     mkdirsSync(path.dirname(fileName));
-    fs.writeFileSync(fileName, renderHTML(document) + "\n" + renderStyle(), "utf-8");
+    fs.writeFileSync(fileName, renderHTML(document) + "\n" + renderStyle(document.uri), "utf-8");
 }
 
 function exportPDF(document: vscode.TextDocument, fileName: string, format: string, callback: Function) {
@@ -67,7 +68,7 @@ function exportPDF(document: vscode.TextDocument, fileName: string, format: stri
             break;
     }
     option.phantomPath = config.phantomPath;
-    pdf.create(mdBody + "\n" + renderStyle(), option).toFile(fileName, callback);
+    pdf.create(mdBody + "\n" + renderStyle(document.uri), option).toFile(fileName, callback);
 }
 
 export function renderHTML(document: vscode.TextDocument): string
@@ -83,8 +84,12 @@ export function renderHTML(para) {
 </article>`;
 }
 
-export function renderStyle(): string {
-    return `<style>\n${pluginStyles}\n</style>`;
+export function renderStyle(uri: vscode.Uri): string {
+    return `${mdConfig.URLStyles(uri).join('\n')}
+<style>
+${mdConfig.styles(uri).join('\n')}
+${pluginStyles}
+</style>`;
 }
 
 export function testMarkdown(): boolean {

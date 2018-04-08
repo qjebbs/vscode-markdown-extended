@@ -9,6 +9,7 @@ import { CommandCopy, CommandCopyWithStyles } from './commands/copy';
 import { config } from './services/common/config';
 import { CommandPasteTable } from './commands/pasteTable';
 import { CommandFormateTable } from './commands/formateTable';
+import { mdConfig } from './services/common/mdConfig';
 
 export var markdown: markdowIt.MarkdownIt;
 export var context: vscode.ExtensionContext;
@@ -19,7 +20,8 @@ export function activate(ctx: vscode.ExtensionContext) {
     context = ctx;
     ctx.subscriptions.push(
         outputPanel,
-        config.watch(),
+        config,
+        mdConfig,
         new CommandExportCurrent(),
         new CommandCopy(),
         new CommandCopyWithStyles(),
