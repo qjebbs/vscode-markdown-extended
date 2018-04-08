@@ -24,7 +24,7 @@
     "onLanguage:markdown",
     "onCommand:markdownExtended.export",
     "onCommand:markdownExtended.copy",
-    "onCommand:markdownExtended.copy.withStyle",
+    "onCommand:markdownExtended.copyWithStyle",
     "onCommand:markdownExtended.pasteAsTable",
     "onCommand:markdownExtended.formateTable"
   ],
@@ -42,8 +42,8 @@
         "category": "Markdown"
       },
       {
-        "command": "markdownExtended.copy.withStyle",
-        "title": "%markdownExtended.copy.withStyle%",
+        "command": "markdownExtended.copyWithStyle",
+        "title": "%markdownExtended.copyWithStyle%",
         "category": "Markdown"
       },
       {
@@ -71,7 +71,7 @@
         },
         {
           "when": "editorLangId == markdown",
-          "command": "markdownExtended.copy.withStyle",
+          "command": "markdownExtended.copyWithStyle",
           "group": "markdown"
         },
         {

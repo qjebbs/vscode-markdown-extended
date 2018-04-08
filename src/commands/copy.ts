@@ -21,7 +21,7 @@ export class CommandCopyWithStyles extends Command {
             .then(() => vscode.window.showInformationMessage("Copy success."));
     }
     constructor() {
-        super("markdownExtended.copy.withStyle");
+        super("markdownExtended.copyWithStyle");
     }
 }
 

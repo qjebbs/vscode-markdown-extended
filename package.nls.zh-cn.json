@@ -1,7 +1,7 @@
 {
     "markdownExtended.export.current": "导出为...",
     "markdownExtended.copy": "复制 HTML",
-    "markdownExtended.copy.withStyle": "复制 HTML (含样式)",
+    "markdownExtended.copyWithStyle": "复制 HTML (含样式)",
     "markdownExtended.configuration.phantomPath": "Phantom 可执行文件路径，用于导出 PDF / PNG / JPG",
     "markdownExtended.pasteAsTable": "粘贴为表格",
     "markdownExtended.formateTable": "格式化表格"
