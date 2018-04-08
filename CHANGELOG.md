@@ -1,5 +1,9 @@
 # Change Log
 
+## v0.2.1
+
+- Improvement: Support user styles (`markdown.styles`) when export.
+
 ## v0.2.0
 
 - New Feature: Paste as Markdown Table.
