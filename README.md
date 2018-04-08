@@ -133,7 +133,13 @@ is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
 
 ![container-demo.png](./images/container-demo.png)
 
-*(Rendered with style bootstrap)*
+*(Rendered with style bootstrap, to see the same result, you need the follow config)*
+
+```json
+"markdown.styles": [
+    "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+]
+```
 
 ## Known Issues & Feedback
 
