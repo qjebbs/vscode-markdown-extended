@@ -4,48 +4,44 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { context } from "../../extension";
 
+interface MarkdownStyles {
+    embedded: string[];
+    linked: string[]
+}
+
 class MDConfig extends ConfigReader {
     constructor() {
         super('markdown');
     }
 
-    private _styles: string[] = [];
-    private _URLStyles: string[] = [];
-
-    onChange() {
-        this._styles = [];
-        this._URLStyles = [];
-    }
-    styles(uri: vscode.Uri): string[] {
-        if (!this._styles.length && !this._URLStyles.length) this.calcStyles(uri);
-        return this._styles
-    }
-    URLStyles(uri: vscode.Uri): string[] {
-        if (!this._styles.length && !this._URLStyles.length) this.calcStyles(uri);
-        return this._URLStyles
-    }
-    private calcStyles(uri: vscode.Uri) {
+    onChange() { }
+    styles(uri: vscode.Uri): MarkdownStyles {
         const ISURL = /^http.+/i;
+        let styles: MarkdownStyles = {
+            embedded: [],
+            linked: [],
+        };
         let stylePathes = this.read<string[]>('styles', uri, (root, value) => {
             return value.map(v => {
                 if (ISURL.test(v)) return v;
                 return path.join(root.fsPath, v);
             })
         });
-        if (!stylePathes || !stylePathes.length) return "";
+        if (!stylePathes || !stylePathes.length) return styles;
         stylePathes.map(stl => {
             let style = "";
             if (ISURL.test(stl)) {
-                this._URLStyles.push(`<link rel="stylesheet" href="${stl}">`);
+                styles.linked.push(`<link rel="stylesheet" href="${stl}">`);
             } else {
                 if (fs.existsSync(stl)) {
                     style = `/* ${path.basename(stl)} */\n${fs.readFileSync(stl)}`;
                 } else {
                     style = `/* cannot found ${stl} */`;
                 }
-                this._styles.push(style);
+                styles.embedded.push(style);
             }
         });
+        return styles;
     }
 }
 

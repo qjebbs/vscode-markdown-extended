@@ -85,9 +85,10 @@ export function renderHTML(para) {
 }
 
 export function renderStyle(uri: vscode.Uri): string {
-    return `${mdConfig.URLStyles(uri).join('\n')}
+    let styles = mdConfig.styles(uri);
+    return `${styles.linked.join('\n')}
 <style>
-${mdConfig.styles(uri).join('\n')}
+${styles.embedded.join('\n')}
 ${pluginStyles}
 </style>`;
 }
