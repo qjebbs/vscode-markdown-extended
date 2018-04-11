@@ -1,16 +1,11 @@
 import { MarkdownIt, Token } from 'markdown-it';
 import * as toc from 'markdown-it-table-of-contents';
+import { slugify } from './shared';
 
 export function MarkdownItTOC(md: MarkdownIt) {
     md.renderer.rules.tocAnchor = renderHtml;
     md.core.ruler.push("tocAnchor", tocAnchorWorker);
     md.use(toc, { slugify: slugify, includeLevel: [1, 2, 3] });
-}
-
-function slugify(s: string) {
-    // Unicode-friendly
-    var spaceRegex = /[ \xA0\u1680\u2000-\u200A\u202F\u205F\u3000]/g;
-    return encodeURIComponent(s.replace(spaceRegex, '-').toLowerCase());
 }
 
 function renderHtml(tokens: Token[], idx: number) {

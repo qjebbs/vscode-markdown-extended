@@ -1,6 +1,7 @@
 import * as markdowIt from 'markdown-it';
 import { MarkdownItTOC } from './markdownItTOC';
 import { MarkdownItContainer } from './markdownItContainer';
+import { MarkdownItAnchorLink } from './markdownItAnchorLink';
 
 interface markdowItPlugin {
     plugin: Function,
@@ -9,6 +10,7 @@ interface markdowItPlugin {
 
 export var plugins: markdowItPlugin[] = [
     { plugin: MarkdownItTOC },
+    { plugin: MarkdownItAnchorLink }, // MarkdownItAnchorLink requires MarkdownItTOC
     { plugin: MarkdownItContainer },
     { plugin: require('markdown-it-footnote') },
     { plugin: require('markdown-it-abbr') },
