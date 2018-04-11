@@ -14,6 +14,7 @@ This plugin provides what you see is what you get exporter. That means rendered 
     - Copy HTML to clipboard
     - Paste as Markdown Table
     - Formate Table
+    - Enhanced Anchor Link
 - Extended Plugins
     - [markdown-it-table-of-contents](https://www.npmjs.com/package/markdown-it-table-of-contents)
     - [markdown-it-footnote](https://www.npmjs.com/package/markdown-it-footnote)
@@ -41,6 +42,26 @@ Download phantom binaries here:
 - [Windows](https://github.com/Medium/phantomjs/releases/download/v2.1.1/phantomjs-2.1.1-windows.zip)
 
 ## Demos
+
+### Enhanced Anchor Link
+
+Now, you're able to write anchor links consistent to heading texts.
+
+```markdown
+Go to 
+[简体中文](#简体中文), 
+[Español Título](#Español-Título).
+
+## 简体中文
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+Aenean euismod bibendum laoreet.
+
+## Español Título
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+Aenean euismod bibendum laoreet.
+```
 
 ### Paste as Markdown Table
 

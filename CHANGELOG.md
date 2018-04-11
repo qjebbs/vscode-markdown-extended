@@ -1,5 +1,11 @@
 # Change Log
 
+## v0.3.0
+
+- New Feature: Writing anchor links consistent to heading texts.
+- Fix: TOC anchor.
+- Fix: Read config for unsaved file.
+
 ## v0.2.2
 
 - Fix: User styles config logic.
