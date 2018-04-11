@@ -4,7 +4,7 @@ import { slugify } from './shared';
 const anchorLinkReg = /\[.+?\]\(\s*#(\S+?)\s*\)/ig;
 
 export function MarkdownItAnchorLink(md: MarkdownIt) {
-    md.core.ruler.push("tocAnchor", anchorLinkWorker);
+    md.core.ruler.push("anchorLink", anchorLinkWorker);
 }
 
 function anchorLinkWorker(state: any) {
