@@ -1,6 +1,6 @@
 import * as markdowIt from 'markdown-it';
-import { validate, render } from './markdownItContainer';
-import { slugify, tocAnchorPlugin } from './markdownItTOC';
+import { MarkdownItTOC } from './markdownItTOC';
+import { MarkdownItContainer } from './markdownItContainer';
 
 interface markdowItPlugin {
     plugin: Function,
@@ -8,6 +8,8 @@ interface markdowItPlugin {
 }
 
 export var plugins: markdowItPlugin[] = [
+    { plugin: MarkdownItTOC },
+    { plugin: MarkdownItContainer },
     { plugin: require('markdown-it-footnote') },
     { plugin: require('markdown-it-abbr') },
     { plugin: require('markdown-it-sup') },
@@ -16,7 +18,4 @@ export var plugins: markdowItPlugin[] = [
     { plugin: require('markdown-it-attrs') },
     { plugin: require('markdown-it-kbd') },
     { plugin: require('markdown-it-underline') },
-    { plugin: tocAnchorPlugin },
-    { plugin: require('markdown-it-table-of-contents'), params: [{ slugify: slugify, includeLevel: [1, 2, 3] }] },
-    { plugin: require('markdown-it-container'), params: ["container", { validate: validate, render: render }] },
 ]

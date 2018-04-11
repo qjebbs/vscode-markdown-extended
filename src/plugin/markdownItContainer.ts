@@ -1,8 +1,15 @@
-export function validate(): boolean {
+import { MarkdownIt, Token } from 'markdown-it';
+import * as container from 'markdown-it-container';
+
+export function MarkdownItContainer(md: MarkdownIt) {
+    md.use(container, "container", { validate: validate, render: render });
+}
+
+function validate(): boolean {
     return true;
 }
 
-export function render(tokens, idx): string {
+function render(tokens, idx): string {
     if (tokens[idx].nesting === 1) {
         // opening tag 
         let cls = escape(tokens[idx].info.trim());
