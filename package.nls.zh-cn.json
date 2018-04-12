@@ -1,5 +1,5 @@
 {
-    "markdownExtended.export.current": "导出为...",
+    "markdownExtended.export.current": "导出为文件",
     "markdownExtended.copy": "复制 HTML",
     "markdownExtended.copyWithStyle": "复制 HTML (含样式)",
     "markdownExtended.configuration.phantomPath": "Phantom 可执行文件路径，用于导出 PDF / PNG / JPG",

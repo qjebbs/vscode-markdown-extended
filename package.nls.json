@@ -1,5 +1,5 @@
 {
-    "markdownExtended.export.current": "Export to...",
+    "markdownExtended.export.current": "Export to File",
     "markdownExtended.copy": "Copy HTML",
     "markdownExtended.copyWithStyle": "Copy HTML & Styles",
     "markdownExtended.configuration.phantomPath": "Path of phantom binary used to export PDF / PNG / JPG.",
