@@ -29,7 +29,8 @@ function removeVsUri(content: string, uri: vscode.Uri): string {
     let vsUri = "vscode-resource:" + encodeURI(p.replace(/[\\/]+/g, '/'));
     // FIXME: vscode has a bug encoding shared path, which cannot be replaced
     // nor can vscode display images if workspace is in a shared folder.
-    return content.replace(vsUri, "");
+    // FIXME: can special chr exists in uri that need escape when use regex?
+    return content.replace(new RegExp(vsUri, "gm"), "");
 }
 
 export function renderStyle(uri: vscode.Uri): string {
