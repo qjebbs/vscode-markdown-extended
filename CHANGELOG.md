@@ -1,5 +1,10 @@
 # Change Log
 
+## v0.4.2
+
+- Fix: Parsing meta data
+- Fix: Resources not fully processed
+
 ## v0.4.1
 
 - Fix: Run phantomjs with no meta config
