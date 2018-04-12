@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import * as path from 'path';
 import { markdown } from '../../extension';
 import { mdConfig } from '../common/mdConfig';
 import { pluginStyles } from '../common/styles';
@@ -6,15 +7,17 @@ import { MarkdownDocument } from '../common/markdownDocument';
 
 export function renderHTML(document: MarkdownDocument): string
 export function renderHTML(document: vscode.TextDocument): string
-export function renderHTML(content: string): string
+// export function renderHTML(content: string): string
 export function renderHTML(para) {
     let content = "";
-    if (typeof para === "string")
-        content = markdown.render(para);
+    let doc: MarkdownDocument = undefined;
+    // if (typeof para === "string")
+    // content = markdown.render(para);
     if (para instanceof MarkdownDocument)
-        content = markdown.render(para.content);
+        doc = para;
     else if (para.getText)
-        content = markdown.render(new MarkdownDocument(para).content);
+        doc = new MarkdownDocument(para);
+    content = markdown.render(doc.content);
     return `<article class="markdown-body vscode-body">
     ${content.trim()}
 </article>`;

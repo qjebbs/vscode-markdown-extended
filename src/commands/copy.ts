@@ -2,6 +2,7 @@ import { Command } from './common';
 import * as vscode from 'vscode';
 import * as clip from 'clipboardy';
 import { renderHTML, renderStyle, testMarkdown } from '../services/exporter/shared';
+import { MarkdownDocument } from '../services/common/markdownDocument';
 
 export class CommandCopy extends Command {
     execute() {
@@ -29,10 +30,12 @@ function renderMarkdown(style: boolean): string {
     let document = vscode.window.activeTextEditor.document;
     let selection = vscode.window.activeTextEditor.selection;
     let rendered = "";
+    let doc: MarkdownDocument;
     if (selection.isEmpty)
-        rendered = renderHTML(document);
+        doc = new MarkdownDocument(document);
     else
-        rendered = renderHTML(document.getText(selection));
+        doc = new MarkdownDocument(document, document.getText(selection));
+    rendered = renderHTML(doc);
     if (style) rendered += '\n' + renderStyle(document.uri);
     return rendered;
 }

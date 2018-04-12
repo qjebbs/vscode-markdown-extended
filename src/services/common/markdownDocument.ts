@@ -5,8 +5,9 @@ export class MarkdownDocument {
     private _document: vscode.TextDocument;
     private _meta: MetaData;
     private _content: string;
-    constructor(document: vscode.TextDocument) {
+    constructor(document: vscode.TextDocument, overrideContent?: string) {
         this._document = document;
+        this._content = overrideContent;
         this.load();
     }
     get meta() {
@@ -41,7 +42,7 @@ export class MarkdownDocument {
         else
             meta = "";
         this._meta = new MetaData(meta, this.document.uri);
-        this._content = this.document.getText(
+        if (!this._content) this._content = this.document.getText(
             this.document.lineAt(endLine + 1).range.union(
                 this.document.lineAt(this.document.lineCount - 1).range
             )
