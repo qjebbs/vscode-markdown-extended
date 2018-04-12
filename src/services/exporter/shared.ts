@@ -17,10 +17,19 @@ export function renderHTML(para) {
         doc = para;
     else if (para.getText)
         doc = new MarkdownDocument(para);
-    content = markdown.render(doc.content);
+    content = removeVsUri(markdown.render(doc.content), doc.document.uri);
     return `<article class="markdown-body vscode-body">
     ${content.trim()}
 </article>`;
+}
+
+function removeVsUri(content: string, uri: vscode.Uri): string {
+    let root = vscode.workspace.getWorkspaceFolder(uri);
+    let p = (root && root.uri) ? '/' + root.uri.fsPath + '/' : "";
+    let vsUri = "vscode-resource:" + encodeURI(p.replace(/[\\/]+/g, '/'));
+    // FIXME: vscode has a bug encoding shared path, which cannot be replaced
+    // nor can vscode display images if workspace is in a shared folder.
+    return content.replace(vsUri, "");
 }
 
 export function renderStyle(uri: vscode.Uri): string {
