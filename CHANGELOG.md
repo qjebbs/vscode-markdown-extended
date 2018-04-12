@@ -1,5 +1,10 @@
 # Change Log
 
+## v0.4.1
+
+- Fix: Run phantomjs with no meta config
+- Improvement: Async error catch optimize
+
 ## v0.4.0
 
 - New Feature: Exporters & Exporter Configurations support, [#8](https://github.com/qjebbs/vscode-markdown-extended/issues/8).
