@@ -17,27 +17,23 @@ export class CommandExportCurrent extends Command {
             exporters(),
             <vscode.QuickPickOptions>{ placeHolder: "Select an exporter" }
         );
-        try {
-            let fileName = "";
-            switch (format.type) {
-                case exporterType.HTML:
-                    fileName = calculateExportPath(document.fileName, "htm");
-                    htmlExport(doc, fileName);
-                    vscode.window.showInformationMessage("Export finish.");
-                    break;
-                case exporterType.Phantom:
-                    fileName = calculateExportPath(document.fileName, doc.meta.phantomConfig.type);
-                    phantomExport(
-                        doc,
-                        fileName,
-                        () => vscode.window.showInformationMessage("Export finish.")
-                    );
-                    break;
-                default:
-                    break;
-            }
-        } catch (error) {
-            return Promise.reject(error);
+        let fileName = "";
+        switch (format.type) {
+            case exporterType.HTML:
+                fileName = calculateExportPath(document.fileName, "htm");
+                htmlExport(doc, fileName);
+                vscode.window.showInformationMessage("Export finish.");
+                break;
+            case exporterType.Phantom:
+                fileName = calculateExportPath(document.fileName, doc.meta.phantomConfig.type);
+                phantomExport(
+                    doc,
+                    fileName,
+                    () => vscode.window.showInformationMessage("Export finish.")
+                );
+                break;
+            default:
+                break;
         }
     }
     constructor() {
