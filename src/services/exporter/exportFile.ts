@@ -20,11 +20,11 @@ export function exportFormats(): string[] {
     return formats;
 }
 
-export function exportFile(document: vscode.TextDocument, format: string, fileName: string, callback: Function) {
+export function exportFile(document: vscode.TextDocument, format: string, fileName: string, callback: (err: Error, res: pdf.FileInfo) => void) {
     switch (format) {
         case "HTML":
             exportHTML(document, fileName);
-            callback();
+            callback(null, null);
             break;
         case "PDF":
         case "JPEG":
@@ -39,7 +39,7 @@ function exportHTML(document: vscode.TextDocument, fileName: string) {
     fs.writeFileSync(fileName, renderHTML(document) + "\n" + renderStyle(document.uri), "utf-8");
 }
 
-function exportPDF(document: vscode.TextDocument, fileName: string, format: string, callback: Function) {
+function exportPDF(document: vscode.TextDocument, fileName: string, format: string, callback: (err: Error, res: pdf.FileInfo) => void) {
     mkdirsSync(path.dirname(fileName));
     let mdBody = renderHTML(document);
     let option: any = {};
