@@ -13,18 +13,18 @@ export class CommandExportCurrent extends Command {
         if (!testMarkdown()) return;
         let document = vscode.window.activeTextEditor.document;
         let doc = new MarkdownDocument(document);
-        let format = await vscode.window.showQuickPick(
+        let format = await vscode.window.showQuickPick<ExporterQuickPickItem>(
             exporters(),
             <vscode.QuickPickOptions>{ placeHolder: "Select an exporter" }
         );
         let fileName = "";
-        switch (format) {
-            case "HTML Exporter":
+        switch (format.type) {
+            case exporterType.HTML:
                 fileName = calculateExportPath(document.fileName, "htm");
                 htmlExport(doc, fileName);
                 vscode.window.showInformationMessage("Export finish.");
                 break;
-            case "Phantom Exporter":
+            case exporterType.Phantom:
                 fileName = calculateExportPath(document.fileName, doc.meta.phantomConfig.type);
                 phantomExport(
                     doc,
@@ -41,10 +41,29 @@ export class CommandExportCurrent extends Command {
     }
 }
 
-function exporters(): string[] {
-    let exporters = [
-        "HTML Exporter",
-    ];
-    if (config.phantomPath && fs.existsSync(config.phantomPath)) exporters.push("Phantom Exporter")
-    return exporters;
+enum exporterType {
+    HTML,
+    Phantom,
+}
+
+interface ExporterQuickPickItem extends vscode.QuickPickItem {
+    type: exporterType;
+}
+
+function exporters(): ExporterQuickPickItem[] {
+    let items: ExporterQuickPickItem[] = [];
+    let htmlExporter = <ExporterQuickPickItem>{
+        label: "HTML Exporter",
+        description: "export to html.",
+        type: exporterType.HTML,
+    }
+    let phantomExporter = <ExporterQuickPickItem>{
+        label: "Phantom Exporter",
+        description: "export to pdf/png/jpg.",
+        detail:"see plugin readme to learn how to config the exporter.",
+        type: exporterType.Phantom,
+    }
+    items.push(htmlExporter);
+    if (config.phantomPath && fs.existsSync(config.phantomPath)) items.push(phantomExporter)
+    return items;
 }
