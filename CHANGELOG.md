@@ -1,5 +1,10 @@
 # Change Log
 
+## v0.4.0
+
+- New Feature: Exporters & Exporter Configurations support, [#8](https://github.com/qjebbs/vscode-markdown-extended/issues/8).
+- Fix: missing resources in exported filed, [#7](https://github.com/qjebbs/vscode-markdown-extended/issues/7).
+
 ## v0.3.0
 
 - New Feature: Writing anchor links consistent to heading texts.

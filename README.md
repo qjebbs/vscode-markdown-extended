@@ -30,7 +30,7 @@ This plugin provides what you see is what you get exporter. That means rendered 
 
 ## Requirements
 
-To support extra export formats, like PDF/PNG/JPEG, you need to download phantom binary accordingly, and config User Settings:
+To support extra export formats (with phantom exporter), like PDF/PNG/JPEG, you need to download phantom binary accordingly, and config User Settings:
 
     "markdownExtended.phantomPath": "path/to/phantomjs.exe"
 
@@ -40,6 +40,31 @@ Download phantom binaries here:
 - [Linux 32bit](https://github.com/Medium/phantomjs/releases/download/v2.1.1/phantomjs-2.1.1-linux-i686.tar.bz2)
 - [Mac OS](https://github.com/Medium/phantomjs/releases/download/v2.1.1/phantomjs-2.1.1-macosx.zip)
 - [Windows](https://github.com/Medium/phantomjs/releases/download/v2.1.1/phantomjs-2.1.1-windows.zip)
+
+## Exporter Configurations
+
+Plugin built-in 2 exporters. you can configure them by writing settings within the meta data of the markdown document.
+
+### HTML Exporter Configuration
+
+> (No configuration available for now)
+
+### Phantom Exporter Configuration
+
+```markdown
+---
+phantomjs:
+    type: pdf   # jpeg, png, pdf
+    format: A4
+    orientation: portrait
+    border: 2cm
+---
+contents goes here...
+```
+
+These settings tell the `Phantom Exporter` to export a pdf file with specified size, orientation, and borders.
+
+> See [more available settings](https://github.com/marcbachmann/node-html-pdf#options)
 
 ## Demos
 
