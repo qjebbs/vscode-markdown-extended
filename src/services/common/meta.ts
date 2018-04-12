@@ -7,7 +7,7 @@ export class MetaData {
     private _meta: any;
     constructor(data: string, uri: vscode.Uri) {
         this._uri = uri;
-        this._meta = yaml.parse(data);
+        this._meta = yaml.parse(data) || {};
     }
     get phantomConfig() {
         let conf = this._meta.phantomjs || {};

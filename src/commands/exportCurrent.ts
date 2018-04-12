@@ -17,23 +17,27 @@ export class CommandExportCurrent extends Command {
             exporters(),
             <vscode.QuickPickOptions>{ placeHolder: "Select an exporter" }
         );
-        let fileName = "";
-        switch (format.type) {
-            case exporterType.HTML:
-                fileName = calculateExportPath(document.fileName, "htm");
-                htmlExport(doc, fileName);
-                vscode.window.showInformationMessage("Export finish.");
-                break;
-            case exporterType.Phantom:
-                fileName = calculateExportPath(document.fileName, doc.meta.phantomConfig.type);
-                phantomExport(
-                    doc,
-                    fileName,
-                    () => vscode.window.showInformationMessage("Export finish.")
-                );
-                break;
-            default:
-                break;
+        try {
+            let fileName = "";
+            switch (format.type) {
+                case exporterType.HTML:
+                    fileName = calculateExportPath(document.fileName, "htm");
+                    htmlExport(doc, fileName);
+                    vscode.window.showInformationMessage("Export finish.");
+                    break;
+                case exporterType.Phantom:
+                    fileName = calculateExportPath(document.fileName, doc.meta.phantomConfig.type);
+                    phantomExport(
+                        doc,
+                        fileName,
+                        () => vscode.window.showInformationMessage("Export finish.")
+                    );
+                    break;
+                default:
+                    break;
+            }
+        } catch (error) {
+            return Promise.reject(error);
         }
     }
     constructor() {
@@ -60,7 +64,7 @@ function exporters(): ExporterQuickPickItem[] {
     let phantomExporter = <ExporterQuickPickItem>{
         label: "Phantom Exporter",
         description: "export to pdf/png/jpg.",
-        detail:"see plugin readme to learn how to config the exporter.",
+        detail: "see plugin readme to learn how to config the exporter.",
         type: exporterType.Phantom,
     }
     items.push(htmlExporter);

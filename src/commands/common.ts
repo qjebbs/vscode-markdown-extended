@@ -16,7 +16,10 @@ export abstract class Command extends Disposable {
 
     private executeCatch(...args: any[]): any {
         try {
-            this.execute();
+            let pm = this.execute();
+            if (pm instanceof Promise) {
+                pm.catch(error => showMessagePanel(error))
+            }
         } catch (error) {
             showMessagePanel(error);
         }
