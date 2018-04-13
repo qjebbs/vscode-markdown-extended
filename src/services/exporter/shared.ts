@@ -4,23 +4,27 @@ import { markdown } from '../../extension';
 import { mdConfig } from '../common/mdConfig';
 import { pluginStyles } from '../common/styles';
 import { MarkdownDocument } from '../common/markdownDocument';
+import { template } from './template';
 
-export function renderHTML(document: MarkdownDocument): string
-export function renderHTML(document: vscode.TextDocument): string
-// export function renderHTML(content: string): string
-export function renderHTML(para) {
-    let content = "";
+export function renderHTML(document: MarkdownDocument, withStyle: boolean, injectStyle?: string): string
+export function renderHTML(document: vscode.TextDocument, withStyle: boolean, injectStyle?: string): string
+export function renderHTML(document, withStyle: boolean, injectStyle?: string) {
     let doc: MarkdownDocument = undefined;
-    // if (typeof para === "string")
-    // content = markdown.render(para);
-    if (para instanceof MarkdownDocument)
-        doc = para;
-    else if (para.getText)
-        doc = new MarkdownDocument(para);
-    content = removeVsUri(markdown.render(doc.content), doc.document.uri);
-    return `<article class="markdown-body vscode-body">
-    ${content.trim()}
-</article>`;
+    if (document instanceof MarkdownDocument)
+        doc = document;
+    else if (document.getText)
+        doc = new MarkdownDocument(document);
+
+    let title = doc.document.fileName;
+    let styles = withStyle ? getStyle(doc.document.uri, injectStyle) : "";
+    let html = getHTML(doc);
+    console.log(template);
+    return eval(template);
+}
+
+function getHTML(doc: MarkdownDocument): string {
+    let content = removeVsUri(markdown.render(doc.content), doc.document.uri);
+    return content.trim();
 }
 
 function removeVsUri(content: string, uri: vscode.Uri): string {
@@ -33,10 +37,12 @@ function removeVsUri(content: string, uri: vscode.Uri): string {
     return content.replace(new RegExp(vsUri, "gm"), "");
 }
 
-export function renderStyle(uri: vscode.Uri): string {
+function getStyle(uri: vscode.Uri, injectStyle?: string): string {
     let styles = mdConfig.styles(uri);
+    let inject = injectStyle ? injectStyle : "";
     return `${styles.linked.join('\n')}
 <style>
+${inject}
 ${styles.embedded.join('\n')}
 ${pluginStyles}
 </style>`;

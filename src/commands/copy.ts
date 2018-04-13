@@ -1,7 +1,7 @@
 import { Command } from './common';
 import * as vscode from 'vscode';
 import * as clip from 'clipboardy';
-import { renderHTML, renderStyle, testMarkdown } from '../services/exporter/shared';
+import { renderHTML, testMarkdown } from '../services/exporter/shared';
 import { MarkdownDocument } from '../services/common/markdownDocument';
 
 export class CommandCopy extends Command {
@@ -35,7 +35,6 @@ function renderMarkdown(style: boolean): string {
         doc = new MarkdownDocument(document);
     else
         doc = new MarkdownDocument(document, document.getText(selection));
-    rendered = renderHTML(doc);
-    if (style) rendered += '\n' + renderStyle(document.uri);
+    rendered = renderHTML(doc, style);
     return rendered;
 }
