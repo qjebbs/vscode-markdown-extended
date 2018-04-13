@@ -1,5 +1,11 @@
 # Change Log
 
+## v0.4.3
+
+- Fix: Wrong anchor element.
+- Improvement: Precisely customize phantom pdf border.
+- Improvement: Set default border of phantom pdf to 1cm.
+
 ## v0.4.2
 
 - Fix: Parsing meta data
