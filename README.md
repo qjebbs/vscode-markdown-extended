@@ -2,9 +2,6 @@
 
 Markdown Extended is a plugin that extend syntaxes and abilities to VSCode built-in markdown function.
 
-> It's highly recommended to use this plugin with Markdown Styling plugins, or the export HTML pages are not styled:  
-> [Markdown Preview Github Styling](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles)
-
 ## Features
 
 This plugin provides what you see is what you get exporter. That means rendered HTML page is consistent to what you see in markdown preview, even it contains syntaxes and styles contributed by other plugins.
