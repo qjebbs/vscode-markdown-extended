@@ -17,6 +17,7 @@ export class CommandExportCurrent extends Command {
             exporters(),
             <vscode.QuickPickOptions>{ placeHolder: "Select an exporter" }
         );
+        if (!format) return;
         let fileName = "";
         switch (format.type) {
             case exporterType.HTML:
