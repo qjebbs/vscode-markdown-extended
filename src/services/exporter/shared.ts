@@ -15,10 +15,9 @@ export function renderHTML(document, withStyle: boolean, injectStyle?: string) {
     else if (document.getText)
         doc = new MarkdownDocument(document);
 
-    let title = doc.document.fileName;
+    let title = "";
     let styles = withStyle ? getStyle(doc.document.uri, injectStyle) : "";
     let html = getHTML(doc);
-    console.log(template);
     return eval(template);
 }
 
@@ -46,12 +45,15 @@ function getStyle(uri: vscode.Uri, injectStyle?: string): string {
     return `${conf.linked.join('\n')}
 <style>
 ${inject}
-/* ========== user styles ========== */
-${conf.embedded.join('\n')}
-/* ========== theme ========== */
+/* ========== user styles start ========== */
+${conf.embedded.join('\n').trim()}
+/* ========== user styles end ========== */
+/* ========== theming start ========== */
 ${contribute}
-/* ========== features ========== */
+/* ========== theming end ========== */
+/* ========== features start ========== */
 ${features}
+/* ========== features end ========== */
 </style>`;
 }
 

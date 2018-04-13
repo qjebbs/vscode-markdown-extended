@@ -10,15 +10,15 @@ export namespace contributeStyles {
 
     export function official() {
         readStyles();
-        return officialStyles.join("\n");
+        return officialStyles.join("\n").trim();
     }
     export function thirdParty() {
         readStyles();
-        return thirdPartyStyles.join("\n");
+        return thirdPartyStyles.join("\n").trim();
     }
     export function features() {
         readStyles();
-        return featuresStyles.join("\n");
+        return featuresStyles.join("\n").trim();
     }
     function readStyles() {
         if (officialStyles.length || thirdPartyStyles.length) return;
