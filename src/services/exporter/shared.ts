@@ -2,9 +2,9 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import { markdown } from '../../extension';
 import { mdConfig } from '../common/mdConfig';
-import { pluginStyles } from '../common/styles';
 import { MarkdownDocument } from '../common/markdownDocument';
 import { template } from './template';
+import { contributeStyles } from '../common/styles';
 
 export function renderHTML(document: MarkdownDocument, withStyle: boolean, injectStyle?: string): string
 export function renderHTML(document: vscode.TextDocument, withStyle: boolean, injectStyle?: string): string
@@ -38,13 +38,20 @@ function removeVsUri(content: string, uri: vscode.Uri): string {
 }
 
 function getStyle(uri: vscode.Uri, injectStyle?: string): string {
-    let styles = mdConfig.styles(uri);
+    let conf = mdConfig.styles(uri);
     let inject = injectStyle ? injectStyle : "";
-    return `${styles.linked.join('\n')}
+    let contribute = contributeStyles.thirdParty();
+    if (!contribute) contribute = contributeStyles.official();
+    let features = contributeStyles.features();
+    return `${conf.linked.join('\n')}
 <style>
 ${inject}
-${styles.embedded.join('\n')}
-${pluginStyles}
+/* ========== user styles ========== */
+${conf.embedded.join('\n')}
+/* ========== theme ========== */
+${contribute}
+/* ========== features ========== */
+${features}
 </style>`;
 }
 
