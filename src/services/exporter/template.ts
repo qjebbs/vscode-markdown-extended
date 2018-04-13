@@ -7,7 +7,7 @@ export var template=
     \${styles}
 </head>
 <body>
-    <article class="markdown-body vscode-body">
+    <article class="markdown-body \${mdClass}">
         \${html}
     </article>
 </body>
