@@ -12,7 +12,7 @@ function renderHtml(tokens: Token[], idx: number) {
     // console.log("request anchor for:", idx, tokens[idx].content);
     let token = tokens[idx];
     if (token.type !== "tocAnchor") return tokens[idx].content;
-    return `<a for="toc-anchor" id="${slugify(token.content)}"/>`;
+    return `<a for="toc-anchor" id="${slugify(token.content)}"></a>`;
 }
 
 function tocAnchorWorker(state: any) {
