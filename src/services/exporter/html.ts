@@ -6,7 +6,13 @@ import { renderHTML } from './shared';
 import { MarkdownDocument } from '../common/markdownDocument';
 
 export function htmlExport(document: MarkdownDocument, fileName: string) {
+    let inject = `/* injected by phantomExport */
+    body{
+        padding: 0 26px;
+    }
+    .vscode-body {
+        padding: 0 !important;
+    }`
     mkdirsSync(path.dirname(fileName));
-    fs.writeFileSync(fileName, renderHTML(document, true), "utf-8");
+    fs.writeFileSync(fileName, renderHTML(document, true, inject), "utf-8");
 }
-
