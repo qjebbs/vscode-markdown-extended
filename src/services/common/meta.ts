@@ -10,13 +10,20 @@ export class MetaData {
         this._meta = yaml.parse(data) || {};
     }
     get phantomConfig() {
-        let conf = this._meta.phantomjs || {};
         let folder = vscode.workspace.getWorkspaceFolder(this._uri);
-        if (folder && folder.uri) {
-            conf.base = "file:///" + folder.uri.fsPath + "/";
+
+        let defultConf = {
+            type: "pdf",
+            border: "1cm",
         }
-        if (!conf.type) conf.type = "pdf";
+        let conf = getConfig(defultConf, this._meta.phantomjs);
+        // confs that can not overrided by user
+        conf.base = folder && folder.uri ? "file:///" + folder.uri.fsPath + "/" : "";
         conf.phantomPath = config.phantomPath;
         return conf;
     }
+}
+
+function getConfig(defultConf, userConf) {
+    return Object.assign(defultConf, userConf);
 }
