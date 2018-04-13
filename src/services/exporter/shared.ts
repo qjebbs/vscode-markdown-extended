@@ -38,24 +38,20 @@ function removeVsUri(content: string, uri: vscode.Uri): string {
 }
 
 function getStyle(uri: vscode.Uri, injectStyle?: string): string {
+    let styles: string[] = [];
+    
     let conf = mdConfig.styles(uri);
-    let inject = injectStyle ? injectStyle : "";
-    let contribute = contributeStyles.thirdParty();
-    if (!contribute) contribute = contributeStyles.official();
+    let contributed = contributeStyles.thirdParty();
+    if (!contributed) contributed = contributeStyles.official();
     let features = contributeStyles.features();
-    return `${conf.linked.join('\n')}
-<style>
-${inject}
-/* ========== user styles start ========== */
-${conf.embedded.join('\n').trim()}
-/* ========== user styles end ========== */
-/* ========== theming start ========== */
-${contribute}
-/* ========== theming end ========== */
-/* ========== features start ========== */
-${features}
-/* ========== features end ========== */
-</style>`;
+    let user = conf.embedded.join('\n').trim();
+
+    if (injectStyle) styles.push(injectStyle);
+    if (user) styles.push(`/* === user styles start === */\n${user}\n/* === user styles end === */`);
+    if (contributed) styles.push(`/* === theming start === */\n${contributed}\n/* === theming end === */`);
+    if (features) styles.push(`/* === features start === */\n${features}\n/* === features end === */`);
+
+    return `${conf.linked.join('\n')}\n<style>\n${styles.join('\n').trim()}\n</style>`;
 }
 
 export function testMarkdown(): boolean {
