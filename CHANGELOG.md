@@ -1,5 +1,9 @@
 # Change Log
 
+## v0.4.4
+
+- Improvement: Many export optimizations.
+
 ## v0.4.3
 
 - Fix: Wrong anchor element.
