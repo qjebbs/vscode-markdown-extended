@@ -20,8 +20,9 @@ export namespace contributeStyles {
         readStyles();
         return featuresStyles.join("\n").trim();
     }
+    
     function readStyles() {
-        if (officialStyles.length || thirdPartyStyles.length) return;
+        if (officialStyles.length || thirdPartyStyles.length || features.length) return;
         officialStyles = [];
         thirdPartyStyles = [];
         featuresStyles = [];
