@@ -18,7 +18,8 @@ export function renderHTML(document, withStyle: boolean, injectStyle?: string) {
     let title = "";
     let styles = withStyle ? getStyle(doc.document.uri, injectStyle) : "";
     let html = getHTML(doc);
-    let mdClass = contributeStyles.thirdParty() ? "vscode-body" : "vscode-light";
+    //should put both classes, because we cannot determine if a user style URL is a theme or not
+    let mdClass = "vscode-body vscode-light";
     return eval(template);
 }
 
