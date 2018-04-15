@@ -24,7 +24,10 @@ export function toggleFormat(
     else
         newText = document.getText(target).replace(on, onReplace);
     // console.log(document.getText(target));
-    editTextDocument(document, target, newText);
+    editTextDocument(document, [{
+        range: target,
+        replace: newText
+    }]);
 }
 
 function matchedInCursor(

@@ -11,9 +11,10 @@ export class CommandPasteTable extends Command {
         if (!tableText) return;
         let editor = vscode.window.activeTextEditor;
         editTextDocument(
-            editor.document,
-            editor.selection,
-            tableText
+            editor.document, [{
+                range: editor.selection,
+                replace: tableText
+            }]
         );
     }
     constructor() {

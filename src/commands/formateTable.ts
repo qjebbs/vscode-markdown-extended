@@ -2,25 +2,21 @@ import { Command } from './command';
 import * as vscode from 'vscode';
 import * as clip from 'clipboardy';
 import { convertToMarkdownTable } from '../services/table/convertTable';
-import { editTextDocument } from '../services/common/tools';
+import { editTextDocument, RangeReplace } from '../services/common/tools';
+import { tablesOf } from '../services/table/documentTables';
 export class CommandFormateTable extends Command {
     execute() {
         let editor = vscode.window.activeTextEditor;
         let selection = editor.selection;
-        let text = editor.document.getText(selection).trim();
-        if (!text) {
-            vscode.window.showInformationMessage("Please select the table area first.");
-            return;
-        }
-        let tableText = convertToMarkdownTable(text);
-        if (!tableText) {
-            vscode.window.showInformationMessage("No valid table found.");
-            return;
-        }
+        let tables = tablesOf(editor.document);
+        let edits: RangeReplace[] = [];
+        tables.map(t => {
+            if (t.range.intersection(selection))
+                edits.push({ range: t.range, replace: t.table.stringify() });
+        });
         editTextDocument(
             editor.document,
-            editor.selection,
-            tableText
+            edits
         );
     }
     constructor() {

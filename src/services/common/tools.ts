@@ -70,9 +70,17 @@ export function showMessagePanel(message: any) {
     outputPanel.show();
 }
 
-export async function editTextDocument(document: vscode.TextDocument, range: vscode.Range, newText: string) {
+export interface RangeReplace {
+    range: vscode.Range,
+    replace: string,
+}
+
+export async function editTextDocument(document: vscode.TextDocument, edits: RangeReplace[]) {
     let editor = await vscode.window.showTextDocument(document);
     editor.edit(e => {
-        e.replace(range, newText);
+        edits.map(edit => {
+            if (!edit || !edit.range || !edit.replace) return;
+            e.replace(edit.range, edit.replace);
+        })
     })
 }
