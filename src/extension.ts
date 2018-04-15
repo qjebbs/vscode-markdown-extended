@@ -10,7 +10,7 @@ import { config } from './services/common/config';
 import { CommandPasteTable } from './commands/pasteTable';
 import { CommandFormateTable } from './commands/formateTable';
 import { mdConfig } from './services/common/mdConfig';
-import { commandToggles } from './commands/helpers';
+import { commandToggles } from './commands/toggleFormats';
 
 export var markdown: markdowIt.MarkdownIt;
 export var context: vscode.ExtensionContext;
