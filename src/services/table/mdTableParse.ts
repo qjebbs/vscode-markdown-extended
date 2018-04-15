@@ -17,7 +17,7 @@ export function parseMDTAble(source: string): MDTable {
     return table;
 }
 
-function getColumns(line: string): string[] {
+export function splitColumns(line: string): string[] {
     let cells: string[] = [];
     let start = 0;
     for (let i = 0; i < line.length; i++) {
@@ -28,11 +28,14 @@ function getColumns(line: string): string[] {
         } else if (chr == '|') {
             cells.push(line.substring(start, i));
             start = i + 1;
-        } else if (i == line.length - 1) {
-            cells.push(line.substring(start, i + 1));
         }
     }
-    cells = cells.map(c => c.trim());
+    cells.push(line.substring(start, line.length));
+    return cells;
+}
+
+function getColumns(line: string): string[] {
+    let cells = splitColumns(line).map(c => c.trim());
     if (cells[0] == "") cells.shift();
     if (cells[cells.length - 1] == "") cells.pop();
     return cells;
