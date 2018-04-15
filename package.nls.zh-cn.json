@@ -15,5 +15,11 @@
     "markdownExtended.toggleStrikethrough": "切换删除线",
     "markdownExtended.toggleUList": "切换无序列表",
     "markdownExtended.toggleUnderLine": "切换下划线",
-    "markdownExtended.toggleUpper": "切换上标"
+    "markdownExtended.toggleUpper": "切换上标",
+    "markdownExtended.addColumnRight": "在右侧添加列",
+    "markdownExtended.addColumnLeft": "在左侧添加列",
+    "markdownExtended.addRowBelow": "在下方添加行",
+    "markdownExtended.addRowAbove": "在上方添加行",
+    "markdownExtended.DeleteColumn": "删除列",
+    "markdownExtended.DeleteRow": "删除行"
 }

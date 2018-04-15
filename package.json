@@ -37,7 +37,13 @@
     "onCommand:markdownExtended.toggleUList",
     "onCommand:markdownExtended.toggleUnderLine",
     "onCommand:markdownExtended.toggleUpper",
-    "onCommand:markdownExtended.toggleBlockQuote"
+    "onCommand:markdownExtended.toggleBlockQuote",
+    "onCommand:markdownExtended.addColumnRight",
+    "onCommand:markdownExtended.addColumnLeft",
+    "onCommand:markdownExtended.addRowBelow",
+    "onCommand:markdownExtended.addRowAbove",
+    "onCommand:markdownExtended.DeleteColumn",
+    "onCommand:markdownExtended.DeleteRow"
   ],
   "main": "./out/src/extension",
   "contributes": {
@@ -119,6 +125,36 @@
         "command": "markdownExtended.toggleUpper",
         "title": "%markdownExtended.toggleUpper%",
         "category": "Markdown"
+      },
+      {
+        "command": "markdownExtended.addColumnRight",
+        "title": "%markdownExtended.addColumnRight%",
+        "category": "Markdown"
+      },
+      {
+        "command": "markdownExtended.addColumnLeft",
+        "title": "%markdownExtended.addColumnLeft%",
+        "category": "Markdown"
+      },
+      {
+        "command": "markdownExtended.addRowBelow",
+        "title": "%markdownExtended.addRowBelow%",
+        "category": "Markdown"
+      },
+      {
+        "command": "markdownExtended.addRowAbove",
+        "title": "%markdownExtended.addRowAbove%",
+        "category": "Markdown"
+      },
+      {
+        "command": "markdownExtended.DeleteColumn",
+        "title": "%markdownExtended.DeleteColumn%",
+        "category": "Markdown"
+      },
+      {
+        "command": "markdownExtended.DeleteRow",
+        "title": "%markdownExtended.DeleteRow%",
+        "category": "Markdown"
       }
     ],
     "menus": {
@@ -186,6 +222,30 @@
         "when": "editorLangId == markdown",
         "command": "markdownExtended.toggleUpper",
         "group": "markdown"
+      }, {
+        "when": "editorLangId == markdown",
+        "command": "markdownExtended.addColumnRight",
+        "group": "markdown"
+      }, {
+        "when": "editorLangId == markdown",
+        "command": "markdownExtended.addColumnLeft",
+        "group": "markdown"
+      }, {
+        "when": "editorLangId == markdown",
+        "command": "markdownExtended.addRowBelow",
+        "group": "markdown"
+      }, {
+        "when": "editorLangId == markdown",
+        "command": "markdownExtended.addRowAbove",
+        "group": "markdown"
+      }, {
+        "when": "editorLangId == markdown",
+        "command": "markdownExtended.DeleteColumn",
+        "group": "markdown"
+      }, {
+        "when": "editorLangId == markdown",
+        "command": "markdownExtended.DeleteRow",
+        "group": "markdown"
       }]
     },
     "keybindings": [{
@@ -204,7 +264,7 @@
       "when": "editorTextFocus && editorLangId == 'markdown'",
       "command": "markdownExtended.toggleCodeBlock",
       "key": "shift+alt+`"
-    },{
+    }, {
       "when": "editorTextFocus && editorLangId == 'markdown'",
       "command": "markdownExtended.toggleBlockQuote",
       "key": "ctrl+shift+q"
@@ -240,6 +300,30 @@
       "when": "editorTextFocus && editorLangId == 'markdown'",
       "command": "markdownExtended.toggleLower",
       "key": "ctrl+shift+l"
+    }, {
+      "when": "editorTextFocus && editorLangId == 'markdown'",
+      "command": "markdownExtended.addColumnRight",
+      "key": "ctrl+shift+t ctrl+shift+r"
+    }, {
+      "when": "editorTextFocus && editorLangId == 'markdown'",
+      "command": "markdownExtended.addColumnLeft",
+      "key": "ctrl+shift+t ctrl+shift+l"
+    }, {
+      "when": "editorTextFocus && editorLangId == 'markdown'",
+      "command": "markdownExtended.addRowBelow",
+      "key": "ctrl+shift+t ctrl+shift+b"
+    }, {
+      "when": "editorTextFocus && editorLangId == 'markdown'",
+      "command": "markdownExtended.addRowAbove",
+      "key": "ctrl+shift+t ctrl+shift+a"
+    }, {
+      "when": "editorTextFocus && editorLangId == 'markdown'",
+      "command": "markdownExtended.DeleteColumn",
+      "key": "ctrl+shift+d ctrl+shift+c"
+    }, {
+      "when": "editorTextFocus && editorLangId == 'markdown'",
+      "command": "markdownExtended.DeleteRow",
+      "key": "ctrl+shift+d ctrl+shift+r"
     }],
     "configuration": {
       "type": "object",

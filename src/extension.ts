@@ -11,6 +11,7 @@ import { CommandPasteTable } from './commands/pasteTable';
 import { CommandFormateTable } from './commands/formateTable';
 import { mdConfig } from './services/common/mdConfig';
 import { commandToggles } from './commands/toggleFormats';
+import { commandTableEdits } from './commands/tableEdits';
 
 export var markdown: markdowIt.MarkdownIt;
 export var context: vscode.ExtensionContext;
@@ -24,6 +25,7 @@ export function activate(ctx: vscode.ExtensionContext) {
         config,
         mdConfig,
         commandToggles,
+        commandTableEdits,
         new CommandExportCurrent(),
         new CommandCopy(),
         new CommandCopyWithStyles(),

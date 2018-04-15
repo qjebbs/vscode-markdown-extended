@@ -50,6 +50,36 @@ export class MDTable {
     stringify(): string {
         return stringifyMDTable(this);
     }
+    addRow(pos: number, count: number) {
+        if (pos < 0) return;
+        this._data.splice(pos + 1, 0, ...new Array(count).fill(
+            new Array(this.columnCount).fill("")
+        ));
+        this._rowCount += count;
+    }
+    deleteRow(pos: number, count: number) {
+        if (pos < 0) return;
+        this._data.splice(pos + 1, count);
+        this._rowCount -= count;
+    }
+    addColumn(pos: number, count: number) {
+        if (pos < 0) return;
+        for (let i = 0; i < this._data.length; i++) {
+            this._data[i].splice(pos, 0, ...new Array(count).fill(""));
+        }
+        this._aligns.splice(pos, 0, ...new Array(count).fill(TableAlign.auto));
+        this._columnWidths.splice(pos, 0, ...new Array(count).fill(1));
+        this._columnCount += count;
+    }
+    deleteColumn(pos: number, count: number) {
+        if (pos < 0) return;
+        for (let i = 0; i < this._data.length; i++) {
+            this._data[i].splice(pos, count)
+        }
+        this._aligns.splice(pos, count);
+        this._columnWidths.splice(pos, count);
+        this._columnCount -= count;
+    }
     private calcColumnWidths(): number[] {
         return [...Array(this._data[0].length).keys()].map(
             i => {

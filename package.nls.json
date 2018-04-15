@@ -15,5 +15,11 @@
     "markdownExtended.toggleStrikethrough": "Toggle Strikethrough",
     "markdownExtended.toggleUList": "Toggle Unordered List",
     "markdownExtended.toggleUnderLine": "Toggle Underline",
-    "markdownExtended.toggleUpper": "Toggle Upper"
+    "markdownExtended.toggleUpper": "Toggle Upper",
+    "markdownExtended.addColumnRight": "Add Columns to Right",
+    "markdownExtended.addColumnLeft": "Add Columns to Left",
+    "markdownExtended.addRowBelow": "Add Rows After",
+    "markdownExtended.addRowAbove": "Add Rows Before",
+    "markdownExtended.DeleteColumn": "Delete Columns",
+    "markdownExtended.DeleteRow": "Delete Rows"
 }
