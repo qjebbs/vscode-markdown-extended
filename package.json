@@ -27,12 +27,21 @@
     "onCommand:markdownExtended.copyWithStyle",
     "onCommand:markdownExtended.pasteAsTable",
     "onCommand:markdownExtended.formateTable",
-    "onCommand:markdownExtended.toggle"
+    "onCommand:markdownExtended.toggleBold",
+    "onCommand:markdownExtended.toggleCodeBlock",
+    "onCommand:markdownExtended.toggleCodeInline",
+    "onCommand:markdownExtended.toggleItalics",
+    "onCommand:markdownExtended.toggleLower",
+    "onCommand:markdownExtended.toggleOList",
+    "onCommand:markdownExtended.toggleStrikethrough",
+    "onCommand:markdownExtended.toggleUList",
+    "onCommand:markdownExtended.toggleUnderLine",
+    "onCommand:markdownExtended.toggleUpper",
+    "onCommand:markdownExtended.toggleBlockQuote"
   ],
   "main": "./out/src/extension",
   "contributes": {
-    "commands": [
-      {
+    "commands": [{
         "command": "markdownExtended.export",
         "title": "%markdownExtended.export.current%",
         "category": "Markdown"
@@ -56,47 +65,182 @@
         "command": "markdownExtended.formateTable",
         "title": "%markdownExtended.formateTable%",
         "category": "Markdown"
+      }, {
+        "command": "markdownExtended.toggleBold",
+        "title": "%markdownExtended.toggleBold%",
+        "category": "Markdown"
       },
       {
-        "command": "markdownExtended.toggle",
-        "title": "%markdownExtended.toggle%",
+        "command": "markdownExtended.toggleCodeBlock",
+        "title": "%markdownExtended.toggleCodeBlock%",
+        "category": "Markdown"
+      },
+      {
+        "command": "markdownExtended.toggleBlockQuote",
+        "title": "%markdownExtended.toggleBlockQuote%",
+        "category": "Markdown"
+      },
+      {
+        "command": "markdownExtended.toggleCodeInline",
+        "title": "%markdownExtended.toggleCodeInline%",
+        "category": "Markdown"
+      },
+      {
+        "command": "markdownExtended.toggleItalics",
+        "title": "%markdownExtended.toggleItalics%",
+        "category": "Markdown"
+      },
+      {
+        "command": "markdownExtended.toggleLower",
+        "title": "%markdownExtended.toggleLower%",
+        "category": "Markdown"
+      },
+      {
+        "command": "markdownExtended.toggleOList",
+        "title": "%markdownExtended.toggleOList%",
+        "category": "Markdown"
+      },
+      {
+        "command": "markdownExtended.toggleStrikethrough",
+        "title": "%markdownExtended.toggleStrikethrough%",
+        "category": "Markdown"
+      },
+      {
+        "command": "markdownExtended.toggleUList",
+        "title": "%markdownExtended.toggleUList%",
+        "category": "Markdown"
+      },
+      {
+        "command": "markdownExtended.toggleUnderLine",
+        "title": "%markdownExtended.toggleUnderLine%",
+        "category": "Markdown"
+      },
+      {
+        "command": "markdownExtended.toggleUpper",
+        "title": "%markdownExtended.toggleUpper%",
         "category": "Markdown"
       }
     ],
     "menus": {
-      "editor/context": [
-        {
-          "when": "editorLangId == markdown",
-          "command": "markdownExtended.export",
-          "group": "markdown"
-        },
-        {
-          "when": "editorLangId == markdown",
-          "command": "markdownExtended.copy",
-          "group": "markdown"
-        },
-        {
-          "when": "editorLangId == markdown",
-          "command": "markdownExtended.copyWithStyle",
-          "group": "markdown"
-        },
-        {
-          "when": "editorLangId == markdown",
-          "command": "markdownExtended.pasteAsTable",
-          "group": "markdown"
-        },
-        {
-          "when": "editorLangId == markdown",
-          "command": "markdownExtended.formateTable",
-          "group": "markdown"
-        },
-        {
-          "when": "editorLangId == markdown",
-          "command": "markdownExtended.toggle",
-          "group": "markdown"
-        }
-      ]
+      "editor/context": [{
+        "when": "editorLangId == markdown",
+        "command": "markdownExtended.export",
+        "group": "markdown"
+      }, {
+        "when": "editorLangId == markdown",
+        "command": "markdownExtended.copy",
+        "group": "markdown"
+      }, {
+        "when": "editorLangId == markdown",
+        "command": "markdownExtended.copyWithStyle",
+        "group": "markdown"
+      }, {
+        "when": "editorLangId == markdown",
+        "command": "markdownExtended.pasteAsTable",
+        "group": "markdown"
+      }, {
+        "when": "editorLangId == markdown",
+        "command": "markdownExtended.formateTable",
+        "group": "markdown"
+      }, {
+        "when": "editorLangId == markdown",
+        "command": "markdownExtended.toggleBold",
+        "group": "markdown"
+      }, {
+        "when": "editorLangId == markdown",
+        "command": "markdownExtended.toggleCodeBlock",
+        "group": "markdown"
+      }, {
+        "when": "editorLangId == markdown",
+        "command": "markdownExtended.toggleBlockQuote",
+        "group": "markdown"
+      }, {
+        "when": "editorLangId == markdown",
+        "command": "markdownExtended.toggleCodeInline",
+        "group": "markdown"
+      }, {
+        "when": "editorLangId == markdown",
+        "command": "markdownExtended.toggleItalics",
+        "group": "markdown"
+      }, {
+        "when": "editorLangId == markdown",
+        "command": "markdownExtended.toggleLower",
+        "group": "markdown"
+      }, {
+        "when": "editorLangId == markdown",
+        "command": "markdownExtended.toggleOList",
+        "group": "markdown"
+      }, {
+        "when": "editorLangId == markdown",
+        "command": "markdownExtended.toggleStrikethrough",
+        "group": "markdown"
+      }, {
+        "when": "editorLangId == markdown",
+        "command": "markdownExtended.toggleUList",
+        "group": "markdown"
+      }, {
+        "when": "editorLangId == markdown",
+        "command": "markdownExtended.toggleUnderLine",
+        "group": "markdown"
+      }, {
+        "when": "editorLangId == markdown",
+        "command": "markdownExtended.toggleUpper",
+        "group": "markdown"
+      }]
     },
+    "keybindings": [{
+      "when": "editorTextFocus && editorLangId == 'markdown'",
+      "command": "markdownExtended.pasteAsTable",
+      "key": "ctrl+shift+t ctrl+shift+p"
+    }, {
+      "when": "editorTextFocus && editorLangId == 'markdown'",
+      "command": "markdownExtended.formateTable",
+      "key": "ctrl+shift+t ctrl+shift+f"
+    }, {
+      "when": "editorTextFocus && editorLangId == 'markdown'",
+      "command": "markdownExtended.toggleBold",
+      "key": "ctrl+b"
+    }, {
+      "when": "editorTextFocus && editorLangId == 'markdown'",
+      "command": "markdownExtended.toggleCodeBlock",
+      "key": "shift+alt+`"
+    },{
+      "when": "editorTextFocus && editorLangId == 'markdown'",
+      "command": "markdownExtended.toggleBlockQuote",
+      "key": "ctrl+shift+q"
+    }, {
+      "when": "editorTextFocus && editorLangId == 'markdown'",
+      "command": "markdownExtended.toggleCodeInline",
+      "key": "alt+`"
+    }, {
+      "when": "editorTextFocus && editorLangId == 'markdown'",
+      "command": "markdownExtended.toggleItalics",
+      "key": "ctrl+i"
+    }, {
+      "when": "editorTextFocus && editorLangId == 'markdown'",
+      "command": "markdownExtended.toggleOList",
+      "key": "ctrl+l ctrl+o"
+    }, {
+      "when": "editorTextFocus && editorLangId == 'markdown'",
+      "command": "markdownExtended.toggleStrikethrough",
+      "key": "alt+s"
+    }, {
+      "when": "editorTextFocus && editorLangId == 'markdown'",
+      "command": "markdownExtended.toggleUList",
+      "key": "ctrl+l ctrl+u"
+    }, {
+      "when": "editorTextFocus && editorLangId == 'markdown'",
+      "command": "markdownExtended.toggleUnderLine",
+      "key": "ctrl+u"
+    }, {
+      "when": "editorTextFocus && editorLangId == 'markdown'",
+      "command": "markdownExtended.toggleUpper",
+      "key": "ctrl+shift+u"
+    }, {
+      "when": "editorTextFocus && editorLangId == 'markdown'",
+      "command": "markdownExtended.toggleLower",
+      "key": "ctrl+shift+l"
+    }],
     "configuration": {
       "type": "object",
       "title": "Markdown Extended Configuration",

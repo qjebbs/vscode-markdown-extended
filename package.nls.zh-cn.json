@@ -5,5 +5,15 @@
     "markdownExtended.configuration.phantomPath": "Phantom 可执行文件路径，用于导出 PDF / PNG / JPG",
     "markdownExtended.pasteAsTable": "粘贴为表格",
     "markdownExtended.formateTable": "格式化表格",
-    "markdownExtended.toggle": "切换格式"
+    "markdownExtended.toggleBold": "切换加粗",
+    "markdownExtended.toggleBlockQuote": "切换块引用",
+    "markdownExtended.toggleCodeBlock": "切换代码块",
+    "markdownExtended.toggleCodeInline": "切换内联代码",
+    "markdownExtended.toggleItalics": "切换斜体",
+    "markdownExtended.toggleLower": "切换下标",
+    "markdownExtended.toggleOList": "切换有序列表",
+    "markdownExtended.toggleStrikethrough": "切换删除线",
+    "markdownExtended.toggleUList": "切换无序列表",
+    "markdownExtended.toggleUnderLine": "切换下划线",
+    "markdownExtended.toggleUpper": "切换上标"
 }

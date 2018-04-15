@@ -10,7 +10,7 @@ import { config } from './services/common/config';
 import { CommandPasteTable } from './commands/pasteTable';
 import { CommandFormateTable } from './commands/formateTable';
 import { mdConfig } from './services/common/mdConfig';
-import { CommandToggleTest } from './commands/helpers';
+import { commandToggles } from './commands/helpers';
 
 export var markdown: markdowIt.MarkdownIt;
 export var context: vscode.ExtensionContext;
@@ -23,12 +23,12 @@ export function activate(ctx: vscode.ExtensionContext) {
         outputPanel,
         config,
         mdConfig,
+        commandToggles,
         new CommandExportCurrent(),
         new CommandCopy(),
         new CommandCopyWithStyles(),
         new CommandPasteTable(),
         new CommandFormateTable(),
-        new CommandToggleTest(),
     );
     return {
         extendMarkdownIt(md: markdowIt.MarkdownIt) {

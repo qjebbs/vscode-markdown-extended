@@ -5,5 +5,15 @@
     "markdownExtended.configuration.phantomPath": "Path of phantom binary used to export PDF / PNG / JPG.",
     "markdownExtended.pasteAsTable": "Paste as Table",
     "markdownExtended.formateTable": "Format Table",
-    "markdownExtended.toggle": "Toggle Formate"
+    "markdownExtended.toggleBold": "Toggle Bold",
+    "markdownExtended.toggleBlockQuote": "Toggle Block Quote",
+    "markdownExtended.toggleCodeBlock": "Toggle Code Block",
+    "markdownExtended.toggleCodeInline": "Toggle Code Inline",
+    "markdownExtended.toggleItalics": "Toggle Italics",
+    "markdownExtended.toggleLower": "Toggle Lower",
+    "markdownExtended.toggleOList": "Toggle Ordered List",
+    "markdownExtended.toggleStrikethrough": "Toggle Strikethrough",
+    "markdownExtended.toggleUList": "Toggle Unordered List",
+    "markdownExtended.toggleUnderLine": "Toggle Underline",
+    "markdownExtended.toggleUpper": "Toggle Upper"
 }
