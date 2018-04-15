@@ -1,4 +1,4 @@
-import { Command } from './common';
+import { Command } from './command';
 import * as vscode from 'vscode';
 import { toggleFormat } from '../services/helpers/toggleFormat';
 

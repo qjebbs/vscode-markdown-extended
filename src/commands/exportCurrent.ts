@@ -1,4 +1,4 @@
-import { Command } from './common';
+import { Command } from './command';
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import { calculateExportPath } from '../services/common/tools';

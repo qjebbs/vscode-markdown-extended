@@ -1,4 +1,4 @@
-import { Command } from './common';
+import { Command } from './command';
 import * as vscode from 'vscode';
 import * as clip from 'clipboardy';
 import { convertToMarkdownTable } from '../services/table/convertTable';

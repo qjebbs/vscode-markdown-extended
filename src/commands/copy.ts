@@ -1,4 +1,4 @@
-import { Command } from './common';
+import { Command } from './command';
 import * as vscode from 'vscode';
 import * as clip from 'clipboardy';
 import { renderHTML, testMarkdown } from '../services/exporter/shared';
