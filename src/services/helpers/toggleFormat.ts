@@ -23,6 +23,7 @@ export function toggleFormat(
         newText = document.getText(target).replace(off, offReplace);
     else
         newText = document.getText(target).replace(on, onReplace);
+    // console.log(document.getText(target));
     editTextDocument(document, target, newText);
 }
 
@@ -63,7 +64,7 @@ function convertPosition(pos: vscode.Position, newLinePos: number[]): vscode.Pos
             linePos = p;
         }
     });
-    return new vscode.Position(line + pos.line, pos.character - linePos - line);
+    return new vscode.Position(line + pos.line, pos.character - linePos);
 }
 
 function getWord(document: vscode.TextDocument, selection: vscode.Selection): vscode.Selection {
