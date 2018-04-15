@@ -70,7 +70,7 @@ function convertPosition(pos: vscode.Position, newLinePos: number[]): vscode.Pos
 function getWord(document: vscode.TextDocument, selection: vscode.Selection): vscode.Selection {
     let txtLine = document.lineAt(selection.active.line).text;
     let spacePreceding = txtLine.lastIndexOf(' ', selection.start.character - 1);
-    let spaceFollowing = txtLine.indexOf(' ', selection.start.character);
+    let spaceFollowing = txtLine.indexOf(' ', selection.end.character);
     if (spaceFollowing == -1) {
         spaceFollowing = txtLine.length;
     }
