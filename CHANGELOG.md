@@ -1,5 +1,9 @@
 # Change Log
 
+## v0.5.1
+
+- New Feature: Add move table columns commands.
+
 ## v0.5.0
 
 - New Feature: Add many format and table editing helpers.

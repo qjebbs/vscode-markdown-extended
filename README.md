@@ -21,7 +21,7 @@ This plugin provides what you see is what you get exporter. That means rendered 
 but totally new implements.
 
 | Command                        | Keyboard Shortcut          |
-| ------------------------------ | -------------------------- |
+|--------------------------------|----------------------------|
 | Formate: Toggle Bold           | Ctrl+B                     |
 | Formate: Toggle Italics        | Ctrl+I                     |
 | Formate: Toggle Underline      | Ctrl+U                     |
@@ -41,6 +41,11 @@ but totally new implements.
 | Table: Add Row Below           | Ctrl+Shift+T, Ctrl+Shift+B |
 | Table: Delete Rows             | Ctrl+Shift+D, Ctrl+Shift+R |
 | Table: Delete Columns          | Ctrl+Shift+D, Ctrl+Shift+C |
+| Table: Move Columns Left       | alt+←                      |
+| Table: Move Columns Right      | alt+→                      |
+
+> Looking for `Move Rows Up / Down`?  
+> You can use vscode built-in `Move Line Up / Down`, shortcuts are `alt+↑` and `alt+↓`
 
 ### Extended Language Features
 
