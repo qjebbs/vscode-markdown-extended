@@ -36,8 +36,8 @@ export function splitColumns(line: string): string[] {
 
 function getColumns(line: string): string[] {
     let cells = splitColumns(line).map(c => c.trim());
-    if (cells[0] == "") cells.shift();
-    if (cells[cells.length - 1] == "") cells.pop();
+    if (!cells[0].trim()) cells.shift();
+    if (cells.length && !cells[cells.length - 1].trim()) cells.pop();
     return cells;
 }
 function testSepRow(row: string[]): boolean {

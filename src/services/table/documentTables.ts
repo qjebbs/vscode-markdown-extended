@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import { MDTable } from './mdTable';
 import { parseMDTAble } from './mdTableParse';
 
-interface DocumentTable {
+export interface DocumentTable {
     range: vscode.Range,
     table: MDTable,
 }
