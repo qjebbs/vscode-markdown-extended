@@ -62,6 +62,18 @@ export class MDTable {
         this._data.splice(pos + 1, count);
         this._rowCount -= count;
     }
+    moveRow(start: number, count: number, offset: number) {
+        if (start < 0 || count == 0 || offset == 0) return;
+        this.moveArray(this._data, start, count, offset);
+    }
+    moveColumn(start: number, count: number, offset: number) {
+        if (start < 0 || count == 0 || offset == 0) return;
+        for (let i = 0; i < this._data.length; i++) {
+            this.moveArray(this._data[i], start, count, offset);
+        }
+        this.moveArray(this._aligns, start, count, offset);
+        this.moveArray(this._columnWidths, start, count, offset);
+    }
     addColumn(pos: number, count: number) {
         if (pos < 0) return;
         for (let i = 0; i < this._data.length; i++) {
@@ -97,6 +109,11 @@ export class MDTable {
             if (row.length < this._columnCount)
                 row.push(...new Array(this._columnCount - row.length).fill(""));
         });
+    }
+    private moveArray<T>(arr: T[], start: number, count: number, offset: number): T[] {
+        let moving = arr.splice(start, count);
+        arr.splice(start + offset, 0, ...moving);
+        return arr;
     }
 }
 

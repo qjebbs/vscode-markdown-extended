@@ -34,6 +34,16 @@ const cmds: CommandConfig[] = [
         worker: editTables,
         args: [editType.delete, targetType.column]
     },
+    {
+        commandId: "markdownExtended.MoveColumnLeft",
+        worker: editTables,
+        args: [editType.move, targetType.column, true]
+    },
+    {
+        commandId: "markdownExtended.MoveColumnRight",
+        worker: editTables,
+        args: [editType.move, targetType.column, false]
+    },
 ]
 
 export var commandTableEdits = new Commands(cmds);

@@ -43,7 +43,9 @@
     "onCommand:markdownExtended.addRowBelow",
     "onCommand:markdownExtended.addRowAbove",
     "onCommand:markdownExtended.DeleteColumn",
-    "onCommand:markdownExtended.DeleteRow"
+    "onCommand:markdownExtended.DeleteRow",
+    "onCommand:markdownExtended.MoveColumnLeft",
+    "onCommand:markdownExtended.MoveColumnRight"
   ],
   "main": "./out/src/extension",
   "contributes": {
@@ -154,6 +156,16 @@
       {
         "command": "markdownExtended.DeleteRow",
         "title": "%markdownExtended.DeleteRow%",
+        "category": "Markdown"
+      },
+      {
+        "command": "markdownExtended.MoveColumnLeft",
+        "title": "%markdownExtended.MoveColumnLeft%",
+        "category": "Markdown"
+      },
+      {
+        "command": "markdownExtended.MoveColumnRight",
+        "title": "%markdownExtended.MoveColumnRight%",
         "category": "Markdown"
       }
     ],
@@ -324,6 +336,14 @@
       "when": "editorTextFocus && editorLangId == 'markdown'",
       "command": "markdownExtended.DeleteRow",
       "key": "ctrl+shift+d ctrl+shift+r"
+    }, {
+      "when": "editorTextFocus && editorLangId == 'markdown'",
+      "command": "markdownExtended.MoveColumnLeft",
+      "key": "alt+left"
+    }, {
+      "when": "editorTextFocus && editorLangId == 'markdown'",
+      "command": "markdownExtended.MoveColumnRight",
+      "key": "alt+right"
     }],
     "configuration": {
       "type": "object",

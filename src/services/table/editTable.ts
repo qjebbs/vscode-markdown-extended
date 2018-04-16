@@ -40,6 +40,9 @@ export function getTableEdit(editor: vscode.TextEditor, table: DocumentTable, et
             case editType.delete:
                 table.table.deleteRow(rng.start, rng.count);
                 break;
+            case editType.move:
+                table.table.moveRow(rng.start, rng.count, before ? -1 : 1);
+                break;
             default:
                 break;
         }
@@ -52,6 +55,9 @@ export function getTableEdit(editor: vscode.TextEditor, table: DocumentTable, et
                 break;
             case editType.delete:
                 table.table.deleteColumn(rng.start, rng.count);
+                break;
+            case editType.move:
+                table.table.moveColumn(rng.start, rng.count, before ? -1 : 1);
                 break;
             default:
                 break;

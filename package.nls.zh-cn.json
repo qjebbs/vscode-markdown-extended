@@ -21,5 +21,7 @@
     "markdownExtended.addRowBelow": "在下方添加行",
     "markdownExtended.addRowAbove": "在上方添加行",
     "markdownExtended.DeleteColumn": "删除列",
-    "markdownExtended.DeleteRow": "删除行"
+    "markdownExtended.DeleteRow": "删除行",
+    "markdownExtended.MoveColumnLeft": "右移列",
+    "markdownExtended.MoveColumnRight": "左移列"
 }
