@@ -32,7 +32,7 @@ const togglers: CommandConfig[] = [
         ]
     },
     {
-        commandId: "markdownExtended.toggleUpper",
+        commandId: "markdownExtended.toggleSuperscript",
         worker: toggle,
         args: [
             /\^(\S.*?\S)\^/ig, false,
@@ -41,7 +41,7 @@ const togglers: CommandConfig[] = [
         ]
     },
     {
-        commandId: "markdownExtended.toggleLower",
+        commandId: "markdownExtended.toggleSubscript",
         worker: toggle,
         args: [
             /~(\S.*?\S)~(?!=~)/ig, false,

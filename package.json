@@ -31,12 +31,12 @@
     "onCommand:markdownExtended.toggleCodeBlock",
     "onCommand:markdownExtended.toggleCodeInline",
     "onCommand:markdownExtended.toggleItalics",
-    "onCommand:markdownExtended.toggleLower",
+    "onCommand:markdownExtended.toggleSubscript",
     "onCommand:markdownExtended.toggleOList",
     "onCommand:markdownExtended.toggleStrikethrough",
     "onCommand:markdownExtended.toggleUList",
     "onCommand:markdownExtended.toggleUnderLine",
-    "onCommand:markdownExtended.toggleUpper",
+    "onCommand:markdownExtended.toggleSuperscript",
     "onCommand:markdownExtended.toggleBlockQuote",
     "onCommand:markdownExtended.addColumnRight",
     "onCommand:markdownExtended.addColumnLeft",
@@ -97,8 +97,8 @@
         "category": "Markdown"
       },
       {
-        "command": "markdownExtended.toggleLower",
-        "title": "%markdownExtended.toggleLower%",
+        "command": "markdownExtended.toggleSubscript",
+        "title": "%markdownExtended.toggleSubscript%",
         "category": "Markdown"
       },
       {
@@ -122,8 +122,8 @@
         "category": "Markdown"
       },
       {
-        "command": "markdownExtended.toggleUpper",
-        "title": "%markdownExtended.toggleUpper%",
+        "command": "markdownExtended.toggleSuperscript",
+        "title": "%markdownExtended.toggleSuperscript%",
         "category": "Markdown"
       },
       {
@@ -200,7 +200,7 @@
         "group": "markdown"
       }, {
         "when": "editorLangId == markdown",
-        "command": "markdownExtended.toggleLower",
+        "command": "markdownExtended.toggleSubscript",
         "group": "markdown"
       }, {
         "when": "editorLangId == markdown",
@@ -220,7 +220,7 @@
         "group": "markdown"
       }, {
         "when": "editorLangId == markdown",
-        "command": "markdownExtended.toggleUpper",
+        "command": "markdownExtended.toggleSuperscript",
         "group": "markdown"
       }, {
         "when": "editorLangId == markdown",
@@ -294,11 +294,11 @@
       "key": "ctrl+u"
     }, {
       "when": "editorTextFocus && editorLangId == 'markdown'",
-      "command": "markdownExtended.toggleUpper",
+      "command": "markdownExtended.toggleSuperscript",
       "key": "ctrl+shift+u"
     }, {
       "when": "editorTextFocus && editorLangId == 'markdown'",
-      "command": "markdownExtended.toggleLower",
+      "command": "markdownExtended.toggleSubscript",
       "key": "ctrl+shift+l"
     }, {
       "when": "editorTextFocus && editorLangId == 'markdown'",
