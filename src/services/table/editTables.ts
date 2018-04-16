@@ -1,10 +1,10 @@
 import * as vscode from 'vscode';
 import { tablesOf } from "./documentTables";
-import { editType, getTableEdit } from './editTable';
+import { editType, getTableEdit, targetType } from './editTable';
 import { editTextDocument } from '../common/tools';
 
 
-export function editTables(t: editType, before: boolean) {
+export function editTables(et: editType, tt: targetType, before: boolean) {
     let editor = vscode.window.activeTextEditor;
     let document = editor.document;
     let selection = editor.selection;
@@ -14,6 +14,6 @@ export function editTables(t: editType, before: boolean) {
 
     editTextDocument(
         editor.document,
-        tables.map(tb => getTableEdit(editor, tb, t, before))
+        tables.map(tb => getTableEdit(editor, tb, et, tt, before))
     );
 }

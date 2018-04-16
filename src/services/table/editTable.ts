@@ -4,10 +4,14 @@ import { splitColumns } from './mdTableParse';
 import { RangeReplace, editTextDocument } from '../common/tools';
 
 export enum editType {
-    addRow,
-    addColumn,
-    deleteRow,
-    deleteColumn
+    add,
+    delete,
+    move,
+}
+
+export enum targetType {
+    row,
+    column,
 }
 
 interface SelectedRange {
@@ -15,25 +19,25 @@ interface SelectedRange {
     count: number,
 }
 
-export function editTable(editor: vscode.TextEditor, table: DocumentTable, t: editType, before: boolean) {
+export function editTable(editor: vscode.TextEditor, table: DocumentTable, et: editType, tt: targetType, before: boolean) {
     editTextDocument(
         editor.document,
-        [getTableEdit(editor, table, t, before)]
+        [getTableEdit(editor, table, et, tt, before)]
     );
 }
 
-export function getTableEdit(editor: vscode.TextEditor, table: DocumentTable, t: editType, before: boolean): RangeReplace {
+export function getTableEdit(editor: vscode.TextEditor, table: DocumentTable, et: editType, tt: targetType, before: boolean): RangeReplace {
     let document = editor.document;
     let selection = editor.selection;
 
     let rng: SelectedRange = undefined;
-    if (t == editType.addRow || t == editType.deleteRow) {
-        rng = getSelectedRow(table, selection, t == editType.addRow ? before : true);
-        switch (t) {
-            case editType.addRow:
+    if (tt == targetType.row) {
+        rng = getSelectedRow(table, selection, et == editType.add ? before : true);
+        switch (et) {
+            case editType.add:
                 table.table.addRow(rng.start, rng.count);
                 break;
-            case editType.deleteRow:
+            case editType.delete:
                 table.table.deleteRow(rng.start, rng.count);
                 break;
             default:
@@ -41,12 +45,12 @@ export function getTableEdit(editor: vscode.TextEditor, table: DocumentTable, t:
         }
     }
     else {
-        rng = getSelectedColumn(table, selection, t == editType.addColumn ? before : true, document);
-        switch (t) {
-            case editType.addColumn:
+        rng = getSelectedColumn(table, selection, et == editType.add ? before : true, document);
+        switch (et) {
+            case editType.add:
                 table.table.addColumn(rng.start, rng.count);
                 break;
-            case editType.deleteColumn:
+            case editType.delete:
                 table.table.deleteColumn(rng.start, rng.count);
                 break;
             default:

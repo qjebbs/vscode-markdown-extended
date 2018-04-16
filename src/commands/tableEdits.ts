@@ -1,38 +1,38 @@
 import { CommandConfig, Commands } from './commands';
 import { editTables } from '../services/table/editTables';
-import { editType } from '../services/table/editTable';
+import { editType, targetType } from '../services/table/editTable';
 
 
 const cmds: CommandConfig[] = [
     {
         commandId: "markdownExtended.addRowAbove",
         worker: editTables,
-        args: [editType.addRow, true]
+        args: [editType.add, targetType.row, true]
     },
     {
         commandId: "markdownExtended.addRowBelow",
         worker: editTables,
-        args: [editType.addRow, false]
+        args: [editType.add, targetType.row, false]
     },
     {
         commandId: "markdownExtended.DeleteRow",
         worker: editTables,
-        args: [editType.deleteRow]
+        args: [editType.delete, targetType.row]
     },
     {
         commandId: "markdownExtended.addColumnLeft",
         worker: editTables,
-        args: [editType.addColumn, true]
+        args: [editType.add, targetType.column, true]
     },
     {
         commandId: "markdownExtended.addColumnRight",
         worker: editTables,
-        args: [editType.addColumn, false]
+        args: [editType.add, targetType.column, false]
     },
     {
         commandId: "markdownExtended.DeleteColumn",
         worker: editTables,
-        args: [editType.deleteColumn]
+        args: [editType.delete, targetType.column]
     },
 ]
 
