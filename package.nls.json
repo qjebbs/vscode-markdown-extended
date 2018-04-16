@@ -18,8 +18,8 @@
     "markdownExtended.toggleSuperscript": "Toggle Upperscript",
     "markdownExtended.addColumnRight": "Add Columns to Right",
     "markdownExtended.addColumnLeft": "Add Columns to Left",
-    "markdownExtended.addRowBelow": "Add Rows After",
-    "markdownExtended.addRowAbove": "Add Rows Before",
+    "markdownExtended.addRowBelow": "Add Rows Below",
+    "markdownExtended.addRowAbove": "Add Rows Above",
     "markdownExtended.DeleteColumn": "Delete Columns",
     "markdownExtended.DeleteRow": "Delete Rows"
 }
