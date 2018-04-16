@@ -1,5 +1,11 @@
 # Change Log
 
+## v0.5.0
+
+- New Feature: Add many format and table editing helpers.
+- Small improvements
+- Some Fixes and Code Optimization.
+
 ## v0.4.4
 
 - Improvement: Many export optimizations.

@@ -6,22 +6,53 @@ Markdown Extended is a plugin that extend syntaxes and abilities to VSCode built
 
 This plugin provides what you see is what you get exporter. That means rendered HTML page is consistent to what you see in markdown preview, even it contains syntaxes and styles contributed by other plugins.
 
-- Extended Ability
-    - Export to HTML / PDF / PNG / JPEG
-    - Copy HTML to clipboard
-    - Paste as Markdown Table
-    - Formate Table
-    - Enhanced Anchor Link
-- Extended Plugins
-    - [markdown-it-table-of-contents](https://www.npmjs.com/package/markdown-it-table-of-contents)
-    - [markdown-it-footnote](https://www.npmjs.com/package/markdown-it-footnote)
-    - [markdown-it-abbr](https://www.npmjs.com/package/markdown-it-abbr)
-    - [markdown-it-sup](https://www.npmjs.com/package/markdown-it-sup)
-    - [markdown-it-sub](https://www.npmjs.com/package/markdown-it-sub)
-    - [markdown-it-checkbox](https://www.npmjs.com/package/markdown-it-checkbox)
-    - [markdown-it-attrs](https://www.npmjs.com/package/markdown-it-attrs)
-    - [markdown-it-kbd](https://www.npmjs.com/package/markdown-it-kbd)
-    - [markdown-it-underline](https://www.npmjs.com/package/markdown-it-underline)
+### Extended Ability
+
+- Export to HTML / PDF / PNG / JPEG
+- Copy HTML to clipboard
+- Enhanced Anchor Link
+- Editing Helpers
+- Extended Language Features
+
+### Editing Helpers and Keys
+
+> Inspired by 
+[joshbax.mdhelper](https://marketplace.visualstudio.com/items?itemName=joshbax.mdhelper),
+but totally new implements.
+
+| Command                        | Keyboard Shortcut          |
+| ------------------------------ | -------------------------- |
+| Formate: Toggle Bold           | Ctrl+B                     |
+| Formate: Toggle Italics        | Ctrl+I                     |
+| Formate: Toggle Underline      | Ctrl+U                     |
+| Formate: Toggle Strikethrough  | Alt+S                      |
+| Formate: Toggle Code Inline    | Alt+`                      |
+| Formate: Toggle Code Block     | Alt+Shift+`                |
+| Formate: Toggle Block Quote    | Ctrl+Shift+Q               |
+| Formate: Toggle Superscript    | Ctrl+Shift+U               |
+| Formate: Toggle Subscript      | Ctrl+Shift+L               |
+| Formate: Toggle Unordered List | Ctrl+L, Ctrl+U             |
+| Formate: Toggle Ordered List   | Ctrl+L, Ctrl+O             |
+| Table: Paste as Table          | Ctrl+Shift+T, Ctrl+Shift+P |
+| Table: Format Table            | Ctrl+Shift+T, Ctrl+Shift+F |
+| Table: Add Columns to Left     | Ctrl+Shift+T, Ctrl+Shift+L |
+| Table: Add Columns to Right    | Ctrl+Shift+T, Ctrl+Shift+R |
+| Table: Add Rows Above          | Ctrl+Shift+T, Ctrl+Shift+A |
+| Table: Add Row Below           | Ctrl+Shift+T, Ctrl+Shift+B |
+| Table: Delete Rows             | Ctrl+Shift+D, Ctrl+Shift+R |
+| Table: Delete Columns          | Ctrl+Shift+D, Ctrl+Shift+C |
+
+### Extended Language Features
+
+- [markdown-it-table-of-contents](https://www.npmjs.com/package/markdown-it-table-of-contents)
+- [markdown-it-footnote](https://www.npmjs.com/package/markdown-it-footnote)
+- [markdown-it-abbr](https://www.npmjs.com/package/markdown-it-abbr)
+- [markdown-it-sup](https://www.npmjs.com/package/markdown-it-sup)
+- [markdown-it-sub](https://www.npmjs.com/package/markdown-it-sub)
+- [markdown-it-checkbox](https://www.npmjs.com/package/markdown-it-checkbox)
+- [markdown-it-attrs](https://www.npmjs.com/package/markdown-it-attrs)
+- [markdown-it-kbd](https://www.npmjs.com/package/markdown-it-kbd)
+- [markdown-it-underline](https://www.npmjs.com/package/markdown-it-underline)
 
 > Post an issue on [GitHub][issues] if you want other plugins.
 
@@ -85,17 +116,17 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Aenean euismod bibendum laoreet.
 ```
 
-### Paste as Markdown Table
+###  Editing Helpers
+
+#### Table Editing
+
+![formateTable](./images/tableEdit.gif)
+
+#### Paste as Markdown Table
 
 Copy a table from Excel, Web and other applications which support the format of Comma-Separated Values (CSV), then run the command `Paste as Markdown Table`, you will get the markdown table.
 
 ![pasteTable](./images/pasteTable.gif)
-
-### Formate Table
-
-Select the table area, and run `Formate Table` command, you'll get the table formatted.
-
-![formateTable](./images/formateTable.gif)
 
 ### Export Demo
 
