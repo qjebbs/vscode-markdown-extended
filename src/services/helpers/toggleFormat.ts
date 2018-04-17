@@ -2,14 +2,15 @@ import * as vscode from 'vscode';
 import { editTextDocument } from '../common/tools';
 
 export function toggleFormat(
-    document: vscode.TextDocument,
-    selection: vscode.Selection,
+    editor: vscode.TextEditor,
     detect: RegExp,
     on: RegExp, onReplace: string,
     off: RegExp, offReplace: string,
     multiLine: boolean
 ) {
     let isOn = false;
+    let document = editor.document;
+    let selection = editor.selection;
     let target = matchedInCursor(document, selection, detect);
     let newText = "";
     if (target)
@@ -19,6 +20,8 @@ export function toggleFormat(
             target = getLines(document, selection);
         else
             target = getWord(document, selection);
+    // select target for better user experience.
+    editor.selections = [target];
     if (isOn)
         newText = document.getText(target).replace(off, offReplace);
     else
