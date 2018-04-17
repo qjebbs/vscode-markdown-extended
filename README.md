@@ -125,7 +125,9 @@ Aenean euismod bibendum laoreet.
 
 #### Table Editing
 
-![formateTable](./images/tableEdit.gif)
+![tableEdit](./images/tableEdit.gif)
+
+![moveCols](./images/moveCols.gif)
 
 #### Paste as Markdown Table
 
