@@ -13,7 +13,13 @@ export class Commands extends Disposable {
 
     constructor(protected cmds: CommandConfig[]) {
         super(() => this.dispose());
-        cmds.map(cmd => commands.registerCommand(cmd.commandId, this.makeExecutor(cmd.worker, ...cmd.args)))
+        this._disposables.push(
+            ...cmds.map(
+                cmd => commands.registerCommand(
+                    cmd.commandId, this.makeExecutor(cmd.worker, ...cmd.args)
+                )
+            )
+        );
     }
 
     dispose() {
