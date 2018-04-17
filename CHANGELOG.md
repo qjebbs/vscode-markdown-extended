@@ -1,5 +1,9 @@
 # Change Log
 
+## v0.5.3
+
+- Fix: Small bug fixes.
+
 ## v0.5.2
 
 - Improvement: Keep selections after table editing.
