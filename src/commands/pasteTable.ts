@@ -2,7 +2,7 @@ import { Command } from './command';
 import * as vscode from 'vscode';
 import * as clip from 'clipboardy';
 import { convertToMarkdownTable } from '../services/table/convertTable';
-import { editTextDocument } from '../services/common/tools';
+import { editTextDocument } from '../services/common/editTextDocument';
 export class CommandPasteTable extends Command {
     execute() {
         let text = clip.readSync().trim();

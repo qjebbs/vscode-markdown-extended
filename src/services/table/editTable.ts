@@ -1,8 +1,7 @@
 import * as vscode from 'vscode';
 import { DocumentTable } from "./documentTables";
 import { splitColumns } from './mdTableParse';
-import { RangeReplace, editTextDocument } from '../common/tools';
-import { SelectionOffset } from '../common/selectionOffset';
+import { Edit, editTextDocument } from '../common/editTextDocument';
 
 export enum editType {
     add,
@@ -28,7 +27,7 @@ export function editTable(editor: vscode.TextEditor, table: DocumentTable, et: e
     );
 }
 
-export function getTableEdit(editor: vscode.TextEditor, table: DocumentTable, et: editType, tt: targetType, before: boolean): RangeReplace {
+export function getTableEdit(editor: vscode.TextEditor, table: DocumentTable, et: editType, tt: targetType, before: boolean): Edit {
     let document = editor.document;
     let selection = editor.selection;
     let offsetLine = 0;
@@ -83,7 +82,7 @@ export function getTableEdit(editor: vscode.TextEditor, table: DocumentTable, et
                 break;
         }
     }
-    return <RangeReplace>{
+    return <Edit>{
         range: table.range,
         replace: table.table.stringify(),
         selectionOffset: {

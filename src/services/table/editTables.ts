@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import { tablesOf } from "./documentTables";
 import { editType, getTableEdit, targetType } from './editTable';
-import { editTextDocument } from '../common/tools';
+import { editTextDocument } from '../common/editTextDocument';
 
 
 export function editTables(et: editType, tt: targetType, before: boolean) {

@@ -2,7 +2,6 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
 import { outputPanel } from '../../extension';
-import { SelectionOffset, applyOffset } from './selectionOffset';
 
 export function calculateExportPath(source: string, format: string): string {
     let outDirName = ""; //config.exportOutDirName
@@ -69,23 +68,4 @@ export function showMessagePanel(message: any) {
     outputPanel.clear();
     outputPanel.appendLine(parseError(message));
     outputPanel.show();
-}
-
-export interface RangeReplace {
-    range: vscode.Range,
-    replace: string,
-    selectionOffset?: SelectionOffset,
-}
-
-export async function editTextDocument(document: vscode.TextDocument, edits: RangeReplace[]) {
-    let editor = await vscode.window.showTextDocument(document);
-    editor.edit(e => {
-        edits.map(edit => {
-            if (!edit || !edit.range || !edit.replace) return;
-            e.replace(edit.range, edit.replace);
-        })
-    }).then(() => {
-        let offsets = edits.map(e => e.selectionOffset).filter(s => !!s);
-        applyOffset(editor, offsets);
-    });
 }

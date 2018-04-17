@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { editTextDocument } from '../common/tools';
+import { editTextDocument } from '../common/editTextDocument';
 
 export function toggleFormat(
     editor: vscode.TextEditor,
