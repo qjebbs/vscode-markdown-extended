@@ -39,7 +39,7 @@ export function getTableEdit(editor: vscode.TextEditor, table: DocumentTable, et
         rng = getSelectedRow(table, selection, et == editType.add ? before : true);
         switch (et) {
             case editType.add:
-                offsetLine = before ? rng.count : -rng.count;
+                offsetLine = before ? rng.count : 0;
                 offsetCharachter = 0;
                 table.table.addRow(rng.start, rng.count);
                 break;
