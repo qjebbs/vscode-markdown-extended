@@ -1,5 +1,12 @@
 # Change Log
 
+## v0.5.2
+
+- Improvement: Keep selections after table editing.
+- Improvement: Optimize selection after toggle format.
+
+> With these two improvements, you can smoothly toggling format and editing tables.
+
 ## v0.5.1
 
 - New Feature: Add move table columns commands.
