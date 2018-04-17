@@ -20,29 +20,29 @@ This plugin provides what you see is what you get exporter. That means rendered 
 [joshbax.mdhelper](https://marketplace.visualstudio.com/items?itemName=joshbax.mdhelper),
 but totally new implements.
 
-| Command                        | Keyboard Shortcut          |
-|--------------------------------|----------------------------|
-| Formate: Toggle Bold           | Ctrl+B                     |
-| Formate: Toggle Italics        | Ctrl+I                     |
-| Formate: Toggle Underline      | Ctrl+U                     |
-| Formate: Toggle Strikethrough  | Alt+S                      |
-| Formate: Toggle Code Inline    | Alt+`                      |
-| Formate: Toggle Code Block     | Alt+Shift+`                |
-| Formate: Toggle Block Quote    | Ctrl+Shift+Q               |
-| Formate: Toggle Superscript    | Ctrl+Shift+U               |
-| Formate: Toggle Subscript      | Ctrl+Shift+L               |
-| Formate: Toggle Unordered List | Ctrl+L, Ctrl+U             |
-| Formate: Toggle Ordered List   | Ctrl+L, Ctrl+O             |
-| Table: Paste as Table          | Ctrl+Shift+T, Ctrl+Shift+P |
-| Table: Format Table            | Ctrl+Shift+T, Ctrl+Shift+F |
-| Table: Add Columns to Left     | Ctrl+Shift+T, Ctrl+Shift+L |
-| Table: Add Columns to Right    | Ctrl+Shift+T, Ctrl+Shift+R |
-| Table: Add Rows Above          | Ctrl+Shift+T, Ctrl+Shift+A |
-| Table: Add Row Below           | Ctrl+Shift+T, Ctrl+Shift+B |
-| Table: Delete Rows             | Ctrl+Shift+D, Ctrl+Shift+R |
-| Table: Delete Columns          | Ctrl+Shift+D, Ctrl+Shift+C |
-| Table: Move Columns Left       | alt+←                      |
-| Table: Move Columns Right      | alt+→                      |
+| Command                       | Keyboard Shortcut          |
+|-------------------------------|----------------------------|
+| Format: Toggle Bold           | Ctrl+B                     |
+| Format: Toggle Italics        | Ctrl+I                     |
+| Format: Toggle Underline      | Ctrl+U                     |
+| Format: Toggle Strikethrough  | Alt+S                      |
+| Format: Toggle Code Inline    | Alt+`                      |
+| Format: Toggle Code Block     | Alt+Shift+`                |
+| Format: Toggle Block Quote    | Ctrl+Shift+Q               |
+| Format: Toggle Superscript    | Ctrl+Shift+U               |
+| Format: Toggle Subscript      | Ctrl+Shift+L               |
+| Format: Toggle Unordered List | Ctrl+L, Ctrl+U             |
+| Format: Toggle Ordered List   | Ctrl+L, Ctrl+O             |
+| Table: Paste as Table         | Ctrl+Shift+T, Ctrl+Shift+P |
+| Table: Format Table           | Ctrl+Shift+T, Ctrl+Shift+F |
+| Table: Add Columns to Left    | Ctrl+Shift+T, Ctrl+Shift+L |
+| Table: Add Columns to Right   | Ctrl+Shift+T, Ctrl+Shift+R |
+| Table: Add Rows Above         | Ctrl+Shift+T, Ctrl+Shift+A |
+| Table: Add Row Below          | Ctrl+Shift+T, Ctrl+Shift+B |
+| Table: Delete Rows            | Ctrl+Shift+D, Ctrl+Shift+R |
+| Table: Delete Columns         | Ctrl+Shift+D, Ctrl+Shift+C |
+| Table: Move Columns Left      | alt+←                      |
+| Table: Move Columns Right     | alt+→                      |
 
 > Looking for `Move Rows Up / Down`?  
 > You can use vscode built-in `Move Line Up / Down`, shortcuts are `alt+↑` and `alt+↓`
