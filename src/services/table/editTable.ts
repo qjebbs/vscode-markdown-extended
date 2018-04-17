@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import { DocumentTable } from "./documentTables";
 import { splitColumns } from './mdTableParse';
 import { RangeReplace, editTextDocument } from '../common/tools';
+import { SelectionOffset } from '../common/selectionOffset';
 
 export enum editType {
     add,
@@ -15,8 +16,9 @@ export enum targetType {
 }
 
 interface SelectedRange {
-    start: number,
-    count: number,
+    range: vscode.Range, // effective rang extracted from selection
+    start: number, // start of table column/row
+    count: number, // count of table column/row
 }
 
 export function editTable(editor: vscode.TextEditor, table: DocumentTable, et: editType, tt: targetType, before: boolean) {
@@ -29,18 +31,26 @@ export function editTable(editor: vscode.TextEditor, table: DocumentTable, et: e
 export function getTableEdit(editor: vscode.TextEditor, table: DocumentTable, et: editType, tt: targetType, before: boolean): RangeReplace {
     let document = editor.document;
     let selection = editor.selection;
+    let offsetLine = 0;
+    let offsetCharachter = 0;
 
     let rng: SelectedRange = undefined;
     if (tt == targetType.row) {
         rng = getSelectedRow(table, selection, et == editType.add ? before : true);
         switch (et) {
             case editType.add:
+                offsetLine = before ? rng.count : -rng.count;
+                offsetCharachter = 0;
                 table.table.addRow(rng.start, rng.count);
                 break;
             case editType.delete:
+                offsetLine = 0;
+                offsetCharachter = 0;
                 table.table.deleteRow(rng.start, rng.count);
                 break;
             case editType.move:
+                offsetLine = before ? -rng.count : rng.count;
+                offsetCharachter = 0;
                 table.table.moveRow(rng.start, rng.count, before ? -1 : 1);
                 break;
             default:
@@ -51,13 +61,23 @@ export function getTableEdit(editor: vscode.TextEditor, table: DocumentTable, et
         rng = getSelectedColumn(table, selection, et == editType.add ? before : true, document);
         switch (et) {
             case editType.add:
+                offsetLine = 0;
+                offsetCharachter = before ? 4 * rng.count : 0;
                 table.table.addColumn(rng.start, rng.count);
                 break;
             case editType.delete:
+                offsetLine = 0;
+                offsetCharachter = 0;
                 table.table.deleteColumn(rng.start, rng.count);
                 break;
             case editType.move:
-                table.table.moveColumn(rng.start, rng.count, before ? -1 : 1);
+                offsetLine = 0;
+                offsetCharachter = 0;
+                let offsetCol = table.table.columnWidths[rng.start + (before ? -1 : rng.count)];
+                if (offsetCol) {
+                    offsetCharachter = before ? -table.table.columnWidths[rng.start - 1] - 3 : table.table.columnWidths[rng.start + rng.count] + 3;
+                    table.table.moveColumn(rng.start, rng.count, before ? -1 : 1);
+                }
                 break;
             default:
                 break;
@@ -66,6 +86,13 @@ export function getTableEdit(editor: vscode.TextEditor, table: DocumentTable, et
     return <RangeReplace>{
         range: table.range,
         replace: table.table.stringify(),
+        selectionOffset: {
+            orignal: rng.range,
+            offset: {
+                line: offsetLine,
+                charachter: offsetCharachter,
+            }
+        }
     }
 }
 
@@ -87,6 +114,7 @@ function getSelectedRow(table: DocumentTable, selection: vscode.Selection, inser
     }
     if (!insertBefore) rowStart += rowCount;
     return {
+        range: intersection,
         start: rowStart,
         count: rowCount,
     }
@@ -96,6 +124,7 @@ function getSelectedRow(table: DocumentTable, selection: vscode.Selection, inser
 function getSelectedColumn(table: DocumentTable, selection: vscode.Selection, insertBefore: boolean, document: vscode.TextDocument): SelectedRange {
     let intersectSelection = selection.intersection(table.range);
     let selectionStartLine = document.lineAt(intersectSelection.start.line).range;
+    let effectiveRange = intersectSelection.intersection(selectionStartLine);
     let selectionEndLine = document.lineAt(intersectSelection.end.line).range;
     let colStart = -1;
     let colCount = 0;
@@ -133,6 +162,7 @@ function getSelectedColumn(table: DocumentTable, selection: vscode.Selection, in
 
     if (!insertBefore) colStart += colCount;
     return {
+        range: effectiveRange,
         start: colStart,
         count: colCount,
     }
