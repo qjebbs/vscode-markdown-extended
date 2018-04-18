@@ -5,6 +5,7 @@ import { mdConfig } from '../common/mdConfig';
 import { MarkdownDocument } from '../common/markdownDocument';
 import { template } from './template';
 import { contributeStyles } from '../common/styles';
+import { MarkdownItEnv } from '../common/interfaces';
 
 export function renderHTML(document: MarkdownDocument, withStyle: boolean, injectStyle?: string): string
 export function renderHTML(document: vscode.TextDocument, withStyle: boolean, injectStyle?: string): string
@@ -24,23 +25,32 @@ export function renderHTML(document, withStyle: boolean, injectStyle?: string) {
 }
 
 function getHTML(doc: MarkdownDocument): string {
-    let content = removeVsUri(markdown.render(doc.content), doc.document.uri);
+    let env: MarkdownItEnv = {
+        htmlExporter: {
+            workspaceFolder: getworkspaceFolder(doc.document.uri),
+            vsUri: getVsUri(doc.document.uri),
+            embedImage: true,
+        }
+    }
+    let content = markdown.render(doc.content, env);
     return content.trim();
 }
-
-function removeVsUri(content: string, uri: vscode.Uri): string {
+function getworkspaceFolder(uri): string {
+    let root = vscode.workspace.getWorkspaceFolder(uri);
+    return (root && root.uri) ? root.uri.fsPath : "";
+}
+function getVsUri(uri: vscode.Uri): string {
     let root = vscode.workspace.getWorkspaceFolder(uri);
     let p = (root && root.uri) ? '/' + root.uri.fsPath + '/' : "";
-    let vsUri = "vscode-resource:" + encodeURI(p.replace(/[\\/]+/g, '/'));
     // FIXME: vscode has a bug encoding shared path, which cannot be replaced
     // nor can vscode display images if workspace is in a shared folder.
     // FIXME: can special chr exists in uri that need escape when use regex?
-    return content.replace(new RegExp(vsUri, "gm"), "");
+    return "vscode-resource:" + encodeURI(p.replace(/[\\/]+/g, '/'));
 }
 
 function getStyle(uri: vscode.Uri, injectStyle?: string): string {
     let styles: string[] = [];
-    
+
     let conf = mdConfig.styles(uri);
     let contributed = contributeStyles.thirdParty();
     if (!contributed) contributed = contributeStyles.official();

@@ -2,6 +2,7 @@ import * as markdowIt from 'markdown-it';
 import { MarkdownItTOC } from './markdownItTOC';
 import { MarkdownItContainer } from './markdownItContainer';
 import { MarkdownItAnchorLink } from './markdownItAnchorLink';
+import { MarkdownItExportHelper } from './markdownItExportHelper';
 
 interface markdowItPlugin {
     plugin: Function,
@@ -20,4 +21,5 @@ export var plugins: markdowItPlugin[] = [
     { plugin: require('markdown-it-attrs') },
     { plugin: require('markdown-it-kbd') },
     { plugin: require('markdown-it-underline') },
+    { plugin: MarkdownItExportHelper }
 ]
