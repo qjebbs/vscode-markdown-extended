@@ -1,5 +1,9 @@
 # Change Log
 
+## v0.5.4
+
+- Improvement: Export html as self contained file.
+
 ## v0.5.3
 
 - Fix: Small bug fixes.
