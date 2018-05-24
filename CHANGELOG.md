@@ -1,5 +1,10 @@
 # Change Log
 
+## v0.5.5
+
+- Improvement: add `markdown-it-deflist`, resolve [#9](https://github.com/qjebbs/vscode-markdown-extended/issues/9)
+- Improvement: add styles for `<kbd>`.
+
 ## v0.5.4
 
 - Improvement: Export html as self contained file.
