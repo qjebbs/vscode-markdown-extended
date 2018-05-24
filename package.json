@@ -49,7 +49,8 @@
   ],
   "main": "./out/src/extension",
   "contributes": {
-    "commands": [{
+    "commands": [
+      {
         "command": "markdownExtended.export",
         "title": "%markdownExtended.export.current%",
         "category": "Markdown"
@@ -73,7 +74,8 @@
         "command": "markdownExtended.formateTable",
         "title": "%markdownExtended.formateTable%",
         "category": "Markdown"
-      }, {
+      },
+      {
         "command": "markdownExtended.toggleBold",
         "title": "%markdownExtended.toggleBold%",
         "category": "Markdown"
@@ -170,181 +172,226 @@
       }
     ],
     "menus": {
-      "editor/context": [{
-        "when": "editorLangId == markdown",
-        "command": "markdownExtended.export",
-        "group": "markdown"
-      }, {
-        "when": "editorLangId == markdown",
-        "command": "markdownExtended.copy",
-        "group": "markdown"
-      }, {
-        "when": "editorLangId == markdown",
-        "command": "markdownExtended.copyWithStyle",
-        "group": "markdown"
-      }, {
-        "when": "editorLangId == markdown",
-        "command": "markdownExtended.pasteAsTable",
-        "group": "markdown"
-      }, {
-        "when": "editorLangId == markdown",
-        "command": "markdownExtended.formateTable",
-        "group": "markdown"
-      }, {
-        "when": "editorLangId == markdown",
-        "command": "markdownExtended.toggleBold",
-        "group": "markdown"
-      }, {
-        "when": "editorLangId == markdown",
-        "command": "markdownExtended.toggleCodeBlock",
-        "group": "markdown"
-      }, {
-        "when": "editorLangId == markdown",
-        "command": "markdownExtended.toggleBlockQuote",
-        "group": "markdown"
-      }, {
-        "when": "editorLangId == markdown",
-        "command": "markdownExtended.toggleCodeInline",
-        "group": "markdown"
-      }, {
-        "when": "editorLangId == markdown",
-        "command": "markdownExtended.toggleItalics",
-        "group": "markdown"
-      }, {
-        "when": "editorLangId == markdown",
-        "command": "markdownExtended.toggleSubscript",
-        "group": "markdown"
-      }, {
-        "when": "editorLangId == markdown",
-        "command": "markdownExtended.toggleOList",
-        "group": "markdown"
-      }, {
-        "when": "editorLangId == markdown",
-        "command": "markdownExtended.toggleStrikethrough",
-        "group": "markdown"
-      }, {
-        "when": "editorLangId == markdown",
-        "command": "markdownExtended.toggleUList",
-        "group": "markdown"
-      }, {
-        "when": "editorLangId == markdown",
-        "command": "markdownExtended.toggleUnderLine",
-        "group": "markdown"
-      }, {
-        "when": "editorLangId == markdown",
-        "command": "markdownExtended.toggleSuperscript",
-        "group": "markdown"
-      }, {
-        "when": "editorLangId == markdown",
-        "command": "markdownExtended.addColumnRight",
-        "group": "markdown"
-      }, {
-        "when": "editorLangId == markdown",
-        "command": "markdownExtended.addColumnLeft",
-        "group": "markdown"
-      }, {
-        "when": "editorLangId == markdown",
-        "command": "markdownExtended.addRowBelow",
-        "group": "markdown"
-      }, {
-        "when": "editorLangId == markdown",
-        "command": "markdownExtended.addRowAbove",
-        "group": "markdown"
-      }, {
-        "when": "editorLangId == markdown",
-        "command": "markdownExtended.DeleteColumn",
-        "group": "markdown"
-      }, {
-        "when": "editorLangId == markdown",
-        "command": "markdownExtended.DeleteRow",
-        "group": "markdown"
-      }]
+      "editor/context": [
+        {
+          "when": "editorLangId == markdown",
+          "command": "markdownExtended.export",
+          "group": "markdown"
+        },
+        {
+          "when": "editorLangId == markdown",
+          "command": "markdownExtended.copy",
+          "group": "markdown"
+        },
+        {
+          "when": "editorLangId == markdown",
+          "command": "markdownExtended.copyWithStyle",
+          "group": "markdown"
+        },
+        {
+          "when": "editorLangId == markdown",
+          "command": "markdownExtended.pasteAsTable",
+          "group": "markdown"
+        },
+        {
+          "when": "editorLangId == markdown",
+          "command": "markdownExtended.formateTable",
+          "group": "markdown"
+        },
+        {
+          "when": "editorLangId == markdown",
+          "command": "markdownExtended.toggleBold",
+          "group": "markdown"
+        },
+        {
+          "when": "editorLangId == markdown",
+          "command": "markdownExtended.toggleCodeBlock",
+          "group": "markdown"
+        },
+        {
+          "when": "editorLangId == markdown",
+          "command": "markdownExtended.toggleBlockQuote",
+          "group": "markdown"
+        },
+        {
+          "when": "editorLangId == markdown",
+          "command": "markdownExtended.toggleCodeInline",
+          "group": "markdown"
+        },
+        {
+          "when": "editorLangId == markdown",
+          "command": "markdownExtended.toggleItalics",
+          "group": "markdown"
+        },
+        {
+          "when": "editorLangId == markdown",
+          "command": "markdownExtended.toggleSubscript",
+          "group": "markdown"
+        },
+        {
+          "when": "editorLangId == markdown",
+          "command": "markdownExtended.toggleOList",
+          "group": "markdown"
+        },
+        {
+          "when": "editorLangId == markdown",
+          "command": "markdownExtended.toggleStrikethrough",
+          "group": "markdown"
+        },
+        {
+          "when": "editorLangId == markdown",
+          "command": "markdownExtended.toggleUList",
+          "group": "markdown"
+        },
+        {
+          "when": "editorLangId == markdown",
+          "command": "markdownExtended.toggleUnderLine",
+          "group": "markdown"
+        },
+        {
+          "when": "editorLangId == markdown",
+          "command": "markdownExtended.toggleSuperscript",
+          "group": "markdown"
+        },
+        {
+          "when": "editorLangId == markdown",
+          "command": "markdownExtended.addColumnRight",
+          "group": "markdown"
+        },
+        {
+          "when": "editorLangId == markdown",
+          "command": "markdownExtended.addColumnLeft",
+          "group": "markdown"
+        },
+        {
+          "when": "editorLangId == markdown",
+          "command": "markdownExtended.addRowBelow",
+          "group": "markdown"
+        },
+        {
+          "when": "editorLangId == markdown",
+          "command": "markdownExtended.addRowAbove",
+          "group": "markdown"
+        },
+        {
+          "when": "editorLangId == markdown",
+          "command": "markdownExtended.DeleteColumn",
+          "group": "markdown"
+        },
+        {
+          "when": "editorLangId == markdown",
+          "command": "markdownExtended.DeleteRow",
+          "group": "markdown"
+        }
+      ]
     },
-    "keybindings": [{
-      "when": "editorTextFocus && editorLangId == 'markdown'",
-      "command": "markdownExtended.pasteAsTable",
-      "key": "ctrl+shift+t ctrl+shift+p"
-    }, {
-      "when": "editorTextFocus && editorLangId == 'markdown'",
-      "command": "markdownExtended.formateTable",
-      "key": "ctrl+shift+t ctrl+shift+f"
-    }, {
-      "when": "editorTextFocus && editorLangId == 'markdown'",
-      "command": "markdownExtended.toggleBold",
-      "key": "ctrl+b"
-    }, {
-      "when": "editorTextFocus && editorLangId == 'markdown'",
-      "command": "markdownExtended.toggleCodeBlock",
-      "key": "shift+alt+`"
-    }, {
-      "when": "editorTextFocus && editorLangId == 'markdown'",
-      "command": "markdownExtended.toggleBlockQuote",
-      "key": "ctrl+shift+q"
-    }, {
-      "when": "editorTextFocus && editorLangId == 'markdown'",
-      "command": "markdownExtended.toggleCodeInline",
-      "key": "alt+`"
-    }, {
-      "when": "editorTextFocus && editorLangId == 'markdown'",
-      "command": "markdownExtended.toggleItalics",
-      "key": "ctrl+i"
-    }, {
-      "when": "editorTextFocus && editorLangId == 'markdown'",
-      "command": "markdownExtended.toggleOList",
-      "key": "ctrl+l ctrl+o"
-    }, {
-      "when": "editorTextFocus && editorLangId == 'markdown'",
-      "command": "markdownExtended.toggleStrikethrough",
-      "key": "alt+s"
-    }, {
-      "when": "editorTextFocus && editorLangId == 'markdown'",
-      "command": "markdownExtended.toggleUList",
-      "key": "ctrl+l ctrl+u"
-    }, {
-      "when": "editorTextFocus && editorLangId == 'markdown'",
-      "command": "markdownExtended.toggleUnderLine",
-      "key": "ctrl+u"
-    }, {
-      "when": "editorTextFocus && editorLangId == 'markdown'",
-      "command": "markdownExtended.toggleSuperscript",
-      "key": "ctrl+shift+u"
-    }, {
-      "when": "editorTextFocus && editorLangId == 'markdown'",
-      "command": "markdownExtended.toggleSubscript",
-      "key": "ctrl+shift+l"
-    }, {
-      "when": "editorTextFocus && editorLangId == 'markdown'",
-      "command": "markdownExtended.addColumnRight",
-      "key": "ctrl+shift+t ctrl+shift+r"
-    }, {
-      "when": "editorTextFocus && editorLangId == 'markdown'",
-      "command": "markdownExtended.addColumnLeft",
-      "key": "ctrl+shift+t ctrl+shift+l"
-    }, {
-      "when": "editorTextFocus && editorLangId == 'markdown'",
-      "command": "markdownExtended.addRowBelow",
-      "key": "ctrl+shift+t ctrl+shift+b"
-    }, {
-      "when": "editorTextFocus && editorLangId == 'markdown'",
-      "command": "markdownExtended.addRowAbove",
-      "key": "ctrl+shift+t ctrl+shift+a"
-    }, {
-      "when": "editorTextFocus && editorLangId == 'markdown'",
-      "command": "markdownExtended.DeleteColumn",
-      "key": "ctrl+shift+d ctrl+shift+c"
-    }, {
-      "when": "editorTextFocus && editorLangId == 'markdown'",
-      "command": "markdownExtended.DeleteRow",
-      "key": "ctrl+shift+d ctrl+shift+r"
-    }, {
-      "when": "editorTextFocus && editorLangId == 'markdown'",
-      "command": "markdownExtended.MoveColumnLeft",
-      "key": "alt+left"
-    }, {
-      "when": "editorTextFocus && editorLangId == 'markdown'",
-      "command": "markdownExtended.MoveColumnRight",
-      "key": "alt+right"
-    }],
+    "keybindings": [
+      {
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "command": "markdownExtended.pasteAsTable",
+        "key": "ctrl+shift+t ctrl+shift+p"
+      },
+      {
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "command": "markdownExtended.formateTable",
+        "key": "ctrl+shift+t ctrl+shift+f"
+      },
+      {
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "command": "markdownExtended.toggleBold",
+        "key": "ctrl+b"
+      },
+      {
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "command": "markdownExtended.toggleCodeBlock",
+        "key": "shift+alt+`"
+      },
+      {
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "command": "markdownExtended.toggleBlockQuote",
+        "key": "ctrl+shift+q"
+      },
+      {
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "command": "markdownExtended.toggleCodeInline",
+        "key": "alt+`"
+      },
+      {
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "command": "markdownExtended.toggleItalics",
+        "key": "ctrl+i"
+      },
+      {
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "command": "markdownExtended.toggleOList",
+        "key": "ctrl+l ctrl+o"
+      },
+      {
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "command": "markdownExtended.toggleStrikethrough",
+        "key": "alt+s"
+      },
+      {
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "command": "markdownExtended.toggleUList",
+        "key": "ctrl+l ctrl+u"
+      },
+      {
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "command": "markdownExtended.toggleUnderLine",
+        "key": "ctrl+u"
+      },
+      {
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "command": "markdownExtended.toggleSuperscript",
+        "key": "ctrl+shift+u"
+      },
+      {
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "command": "markdownExtended.toggleSubscript",
+        "key": "ctrl+shift+l"
+      },
+      {
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "command": "markdownExtended.addColumnRight",
+        "key": "ctrl+shift+t ctrl+shift+r"
+      },
+      {
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "command": "markdownExtended.addColumnLeft",
+        "key": "ctrl+shift+t ctrl+shift+l"
+      },
+      {
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "command": "markdownExtended.addRowBelow",
+        "key": "ctrl+shift+t ctrl+shift+b"
+      },
+      {
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "command": "markdownExtended.addRowAbove",
+        "key": "ctrl+shift+t ctrl+shift+a"
+      },
+      {
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "command": "markdownExtended.DeleteColumn",
+        "key": "ctrl+shift+d ctrl+shift+c"
+      },
+      {
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "command": "markdownExtended.DeleteRow",
+        "key": "ctrl+shift+d ctrl+shift+r"
+      },
+      {
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "command": "markdownExtended.MoveColumnLeft",
+        "key": "alt+left"
+      },
+      {
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "command": "markdownExtended.MoveColumnRight",
+        "key": "alt+right"
+      }
+    ],
     "configuration": {
       "type": "object",
       "title": "Markdown Extended Configuration",
@@ -384,6 +431,7 @@
     "markdown-it-attrs": "^1.1.0",
     "markdown-it-checkbox": "^1.1.0",
     "markdown-it-container": "^2.0.0",
+    "markdown-it-deflist": "^2.0.3",
     "markdown-it-footnote": "^3.0.1",
     "markdown-it-kbd": "^1.1.0",
     "markdown-it-sub": "^1.0.0",

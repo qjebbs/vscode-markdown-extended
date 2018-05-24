@@ -88,6 +88,7 @@ but totally new implements.
 - [markdown-it-table-of-contents](https://www.npmjs.com/package/markdown-it-table-of-contents)
 - [markdown-it-footnote](https://www.npmjs.com/package/markdown-it-footnote)
 - [markdown-it-abbr](https://www.npmjs.com/package/markdown-it-abbr)
+- [markdown-it-deflist](https://www.npmjs.com/package/markdown-it-deflist)
 - [markdown-it-sup](https://www.npmjs.com/package/markdown-it-sup)
 - [markdown-it-sub](https://www.npmjs.com/package/markdown-it-sub)
 - [markdown-it-checkbox](https://www.npmjs.com/package/markdown-it-checkbox)
@@ -141,6 +142,16 @@ Aenean euismod bibendum laoreet.
 
 <p data-line="15" class="code-line">The <abbr title="Hyper Text Markup Language">HTML</abbr> specification
 is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
+
+### markdown-it-deflist
+
+    Apple
+    :   Pomaceous fruit of plants of the genus Malus in the family Rosaceae.
+
+<dl>
+<dt>Apple</dt>
+<dd>Pomaceous fruit of plants of the genus Malus in the family Rosaceae.</dd>
+</dl>
 
 ### markdown-it-sup markdown-it-sub
 
