@@ -121,7 +121,7 @@ Aenean euismod bibendum laoreet.
 ### markdown-it-table-of-contents
 
     [[TOC]]
-    
+
 <div>
 <ul><li><a href="#markdown-extended-readme">Markdown Extended Readme</a><ul><li><a href="#features">Features</a></li><li><a href="#requirements">Requirements</a></li><li><a href="#demos">Demos</a><ul>
 </div>
@@ -245,3 +245,19 @@ Please post and view issues on [GitHub][issues]
 **Enjoy!**
 
 [issues]: https://github.com/qjebbs/vscode-markdown-extended/issues "Post issues"
+
+<style>
+.vscode-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: solid 1px #d1d5da;
+  border-bottom-color: #c6cbd1;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #c6cbd1;
+}
+</style>
