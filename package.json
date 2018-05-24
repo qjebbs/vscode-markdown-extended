@@ -404,7 +404,7 @@
       }
     },
     "markdown.markdownItPlugins": true,
-    "markdown.previewStyles": []
+    "markdown.previewStyles": ["markdown-extended.css"]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
