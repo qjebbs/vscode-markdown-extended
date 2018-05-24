@@ -121,8 +121,10 @@ Aenean euismod bibendum laoreet.
 ### markdown-it-table-of-contents
 
     [[TOC]]
-
-![toc](./images/toc-demo.png)
+    
+<div>
+<ul><li><a href="#markdown-extended-readme">Markdown Extended Readme</a><ul><li><a href="#features">Features</a></li><li><a href="#requirements">Requirements</a></li><li><a href="#demos">Demos</a><ul>
+</div>
 
 ### markdown-it-footnote
 
