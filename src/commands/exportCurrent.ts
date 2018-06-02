@@ -11,7 +11,13 @@ import { config } from '../services/common/config';
 export class CommandExportCurrent extends Command {
     async execute() {
         if (!testMarkdown()) return;
-        let document = vscode.window.activeTextEditor.document;
+        let editor = vscode.window.activeTextEditor;
+        if (!editor) editor = vscode.window.visibleTextEditors[0];
+        if (!editor || !editor.document) {
+            vscode.window.showInformationMessage("No document found.");
+            return;
+        }
+        let document = editor.document;
         let doc = new MarkdownDocument(document);
         let format = await vscode.window.showQuickPick<ExporterQuickPickItem>(
             exporters(),
