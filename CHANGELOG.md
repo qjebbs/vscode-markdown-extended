@@ -1,5 +1,9 @@
 # Change Log
 
+## v0.5.6
+
+- Fix: Active document detect in export command, fix [#10](https://github.com/qjebbs/vscode-markdown-extended/issues/10)
+
 ## v0.5.5
 
 - Improvement: add `markdown-it-deflist`, resolve [#9](https://github.com/qjebbs/vscode-markdown-extended/issues/9)
