@@ -6,10 +6,13 @@ import { MarkdownDocument } from '../common/markdownDocument';
 import { template } from './template';
 import { contributeStyles } from '../common/styles';
 import { MarkdownItEnv } from '../common/interfaces';
+import { exportFormate } from './interfaces';
 
+export function renderHTML(document: MarkdownDocument, withStyle: boolean, formate: exportFormate): string
 export function renderHTML(document: MarkdownDocument, withStyle: boolean, injectStyle?: string): string
 export function renderHTML(document: vscode.TextDocument, withStyle: boolean, injectStyle?: string): string
-export function renderHTML(document, withStyle: boolean, injectStyle?: string) {
+export function renderHTML(document, withStyle: boolean, arg: any) {
+    let injectStyle = typeof arg == "string" ? arg : getInjectStyle(arg);
     let doc: MarkdownDocument = undefined;
     if (document instanceof MarkdownDocument)
         doc = document;
@@ -79,4 +82,25 @@ export function testMarkdown(): boolean {
         return false;
     }
     return true;
+}
+
+function getInjectStyle(formate: exportFormate): string {
+    switch (formate) {
+        case exportFormate.PDF:
+            return `/* injected by phantomExport */
+            body, .vscode-body {
+                max-width: 100% !important;
+                width: 1000px !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }`;
+        case exportFormate.JPG:
+        case exportFormate.PNG:
+            return `/* injected by phantomExport */
+            body, .vscode-body {
+                width: 1000px !important;
+            }`;
+        default:
+            return "";
+    }
 }

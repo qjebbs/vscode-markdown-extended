@@ -4,33 +4,21 @@ import * as path from 'path';
 import * as pdf from 'html-pdf';
 import { renderHTML } from './shared';
 import { MarkdownDocument } from '../common/markdownDocument';
+import { MarkdownExporter, exportFormate } from './interfaces';
 
-export function phantomExport(
-    document: MarkdownDocument,
-    fileName: string,
-    callback: (err: Error, res: pdf.FileInfo) => void
-) {
-    let inject = "";
-    switch (document.meta.phantomConfig.type) {
-        case "pdf":
-            inject = `/* injected by phantomExport */
-                    body, .vscode-body {
-                        max-width: 100% !important;
-                        width: 1000px !important;
-                        margin: 0 !important;
-                        padding: 0 !important;
-                    }`
-            break;
-        case "png":
-        case "jpeg":
-            inject = `/* injected by phantomExport */
-                    body, .vscode-body {
-                        width: 1000px !important;
-                    }`
-        default:
-            break;
+export class PhantomExporter implements MarkdownExporter {
+    async Export(document: MarkdownDocument, formate: exportFormate, fileName: string) {
+        let html = renderHTML(document, true, formate);
+        mkdirsSync(path.dirname(fileName));
+        return new Promise((resolve, reject) => {
+            pdf.create(html, document.meta.phantomConfig)
+                .toFile(
+                    fileName,
+                    (err: Error, res: pdf.FileInfo) => {
+                        if (err) reject(err); else resolve(res);
+                    }
+                );
+        });
+
     }
-    mkdirsSync(path.dirname(fileName));
-    let html = renderHTML(document, true, inject);
-    pdf.create(html, document.meta.phantomConfig).toFile(fileName, callback);
 }
