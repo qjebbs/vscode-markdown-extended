@@ -25,8 +25,14 @@ export class MetaData {
     get puppeteerConfig() {
 
         let defultConf = {
-            format: "A4",
-            printBackground: true
+            pdf: {
+                format: "A4",
+                printBackground: true
+            },
+            image: {
+                quality: 100,
+                fullPage: true,
+            }
         }
         let conf = getConfig(defultConf, this._meta.puppeteer);
         return conf;
