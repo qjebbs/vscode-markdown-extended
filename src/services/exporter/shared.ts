@@ -12,14 +12,14 @@ export function renderHTML(document: MarkdownDocument, withStyle: boolean, forma
 export function renderHTML(document: MarkdownDocument, withStyle: boolean, injectStyle?: string): string
 export function renderHTML(document: vscode.TextDocument, withStyle: boolean, injectStyle?: string): string
 export function renderHTML(document, withStyle: boolean, arg: any) {
-    let injectStyle = typeof arg == "string" ? arg : getInjectStyle(arg);
+    let injectStyle = arg.indexOf('}')>-1 ? arg : getInjectStyle(arg);
     let doc: MarkdownDocument = undefined;
     if (document instanceof MarkdownDocument)
         doc = document;
     else if (document.getText)
         doc = new MarkdownDocument(document);
 
-    let title = "";
+    let title = path.basename(doc.document.uri.fsPath);
     let styles = withStyle ? getStyle(doc.document.uri, injectStyle) : "";
     let html = getHTML(doc);
     //should put both classes, because we cannot determine if a user style URL is a theme or not

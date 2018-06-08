@@ -11,6 +11,7 @@ export enum exportFormate {
 export enum exporterType {
     HTML,
     Phantom,
+    Puppeteer,
 }
 
 export interface ExporterQuickPickItem extends vscode.QuickPickItem {

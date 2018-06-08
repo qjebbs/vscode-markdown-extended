@@ -22,6 +22,15 @@ export class MetaData {
         conf.phantomPath = config.phantomPath;
         return conf;
     }
+    get puppeteerConfig() {
+
+        let defultConf = {
+            format: "A4",
+            printBackground: true
+        }
+        let conf = getConfig(defultConf, this._meta.puppeteer);
+        return conf;
+    }
 }
 
 function getConfig(defultConf, userConf) {

@@ -22,9 +22,11 @@ export class CommandExportCurrent extends Command {
         if (!exporter) return;
         let formate = exportFormate.PDF;
         let fileName = calculateExportPath(document.fileName, formate);
-        exporter.Export(doc, formate, fileName).then(
-            () => vscode.window.showInformationMessage("Export finish.")
-        );
+        vscode.window.withProgress(<vscode.ProgressOptions>{
+            location: vscode.ProgressLocation.Window,
+            title: `MarkdownExtended: Exporting to ${formate}...`
+        }, p => exporter.Export(doc, formate, fileName))
+            .then(() => vscode.window.showInformationMessage("Export finish."));
     }
     constructor() {
         super("markdownExtended.export");
