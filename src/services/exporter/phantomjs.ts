@@ -4,10 +4,10 @@ import * as path from 'path';
 import * as pdf from 'html-pdf';
 import { renderHTML } from './shared';
 import { MarkdownDocument } from '../common/markdownDocument';
-import { MarkdownExporter, exportFormate } from './interfaces';
+import { MarkdownExporter, exportFormat } from './interfaces';
 
-export class PhantomExporter implements MarkdownExporter {
-    async Export(document: MarkdownDocument, format: exportFormate, fileName: string) {
+class PhantomExporter implements MarkdownExporter {
+    async Export(document: MarkdownDocument, format: exportFormat, fileName: string) {
         let html = renderHTML(document, true, format);
         mkdirsSync(path.dirname(fileName));
         return new Promise((resolve, reject) => {
@@ -21,4 +21,12 @@ export class PhantomExporter implements MarkdownExporter {
         });
 
     }
+    FormatAvailable(format: exportFormat) {
+        return [
+            exportFormat.PDF,
+            exportFormat.JPG,
+            exportFormat.PNG
+        ].indexOf(format) > -1;
+    }
 }
+export const phantomExporter = new PhantomExporter();

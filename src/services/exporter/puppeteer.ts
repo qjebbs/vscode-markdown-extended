@@ -3,10 +3,11 @@ import { MarkdownDocument } from '../common/markdownDocument';
 import { mkdirsSync } from '../common/tools';
 import { renderHTML } from './shared';
 import * as path from 'path';
-import { MarkdownExporter, exportFormate } from './interfaces';
+import { MarkdownExporter, exportFormat } from './interfaces';
+import { format } from 'url';
 
-export class PuppeteerExporter implements MarkdownExporter {
-    async Export(document: MarkdownDocument, format: exportFormate, fileName: string) {
+class PuppeteerExporter implements MarkdownExporter {
+    async Export(document: MarkdownDocument, format: exportFormat, fileName: string) {
         let html = renderHTML(document, true, format);
         let conf = Object.assign({ path: fileName }, document.meta.puppeteerConfig);
         mkdirsSync(path.dirname(fileName));
@@ -17,4 +18,12 @@ export class PuppeteerExporter implements MarkdownExporter {
         await page.pdf(conf);
         await browser.close();
     }
+    FormatAvailable(format: exportFormat) {
+        return [
+            exportFormat.PDF,
+            exportFormat.JPG,
+            exportFormat.PNG
+        ].indexOf(format) > -1;
+    }
 }
+export const puppeteerExporter = new PuppeteerExporter();

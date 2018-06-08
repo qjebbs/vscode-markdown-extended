@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import { MarkdownDocument } from '../common/markdownDocument';
 
-export enum exportFormate {
+export enum exportFormat {
     PDF = "pdf",
     HTML = "html",
     JPG = "jpg",
@@ -14,11 +14,15 @@ export enum exporterType {
     Puppeteer,
 }
 
+export interface FormatQuickPickItem extends vscode.QuickPickItem {
+    format: exportFormat;
+}
+
 export interface ExporterQuickPickItem extends vscode.QuickPickItem {
-    type: exporterType;
+    exporter: MarkdownExporter;
 }
 
 export interface MarkdownExporter {
-    Export: (document: MarkdownDocument, format: exportFormate, fileName: string) => Promise<any>;
-
+    Export: (document: MarkdownDocument, format: exportFormat, fileName: string) => Promise<any>;
+    FormatAvailable: (format: exportFormat) => boolean;
 }

@@ -6,9 +6,9 @@ import { MarkdownDocument } from '../common/markdownDocument';
 import { template } from './template';
 import { contributeStyles } from '../common/styles';
 import { MarkdownItEnv } from '../common/interfaces';
-import { exportFormate } from './interfaces';
+import { exportFormat } from './interfaces';
 
-export function renderHTML(document: MarkdownDocument, withStyle: boolean, format: exportFormate): string
+export function renderHTML(document: MarkdownDocument, withStyle: boolean, format: exportFormat): string
 export function renderHTML(document: MarkdownDocument, withStyle: boolean, injectStyle?: string): string
 export function renderHTML(document: vscode.TextDocument, withStyle: boolean, injectStyle?: string): string
 export function renderHTML(document, withStyle: boolean, arg: any) {
@@ -84,9 +84,9 @@ export function testMarkdown(): boolean {
     return true;
 }
 
-function getInjectStyle(formate: exportFormate): string {
+function getInjectStyle(formate: exportFormat): string {
     switch (formate) {
-        case exportFormate.PDF:
+        case exportFormat.PDF:
             return `/* injected by phantomExport */
             body, .vscode-body {
                 max-width: 100% !important;
@@ -94,8 +94,8 @@ function getInjectStyle(formate: exportFormate): string {
                 margin: 0 !important;
                 padding: 0 !important;
             }`;
-        case exportFormate.JPG:
-        case exportFormate.PNG:
+        case exportFormat.JPG:
+        case exportFormat.PNG:
             return `/* injected by phantomExport */
             body, .vscode-body {
                 width: 1000px !important;
