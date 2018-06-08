@@ -1,5 +1,10 @@
 # Change Log
 
+## v0.6.0
+
+- Improvement: Switch to puppeteer as PDF/PNG/JPG exporter
+- Improvement: Remove some helper menus
+
 ## v0.5.6
 
 - Fix: Active document detect in export command, fix [#10](https://github.com/qjebbs/vscode-markdown-extended/issues/10)

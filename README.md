@@ -1,35 +1,48 @@
 # Markdown Extended Readme
 
-Markdown Extended is a extension that extend syntaxes and abilities to VSCode built-in markdown function, including lots of editing helpers and a `what you see is what you get exporter`.
+Markdown Extended is a extension that extend syntaxes and abilities to VSCode built-in markdown function, including lots of editing helpers and a `what you see is what you get exporter`, which means export files are consistent to what you see in markdown preview, even it contains syntaxes and styles contributed by other plugins.
 
 ## Features
 
-- Export to HTML (Self Contained) / PDF / PNG / JPEG ([View Detail](#exporter-configurations))
+- Export to Self Contained HTML / PDF / PNG / JPEG
 - Copy exported HTML to clipboard
 - Editing Helpers ([View Detail](#editing-helpers-and-keys)): 
 
-    > Paste, format table.  
-    > Add, delete and move table columns & rows.  
-    > Toggle various formates, eg.: bold, italics, underline, strikethrough, code inline, code block, block quote, superscript, subscript, unordered list, ordered list.
+    - Paste, format table.  
+    - Add, delete and move table columns & rows.  
+    - Toggle various formates, eg.: bold, italics, underline, strikethrough, code inline, code block, block quote, superscript, subscript, unordered list, ordered list.
 
 - Extended Language Features ([View Detail](#extended-syntaxes)):
 
-    > Enhanced anchor link, table of contents, footnote, abbr, sup, sub, checkbox, attrs, kbd, underline.
+    - Enhanced anchor link, table of contents, footnote, abbr, sup, sub, checkbox, attrs, kbd, underline.
 
+## Export Configurations
 
+You can configure exporting for multiple documents with user settings.
 
-## Requirements
+Further, you can add per-file settings inside markdown to override user settings, it has the highest priority:
 
-To support extra export formats (with phantom exporter), like PDF/PNG/JPEG, you need to download phantom binary accordingly, and config User Settings:
+```markdown
+---
+puppeteer:
+    pdf:
+        format: A4
+        displayHeaderFooter: true
+        margin:
+            top: 1cm
+            right: 1cm
+            bottom: 1cm
+            left: 1cm
+    image:
+        quality: 90
+        fullPage: true
+---
+contents goes here...
+```
 
-    "markdownExtended.phantomPath": "path/to/phantomjs.exe"
-
-Download phantom binaries here:
-
-- [Linux 64bit](https://github.com/Medium/phantomjs/releases/download/v2.1.1/phantomjs-2.1.1-linux-x86_64.tar.bz2)
-- [Linux 32bit](https://github.com/Medium/phantomjs/releases/download/v2.1.1/phantomjs-2.1.1-linux-i686.tar.bz2)
-- [Mac OS](https://github.com/Medium/phantomjs/releases/download/v2.1.1/phantomjs-2.1.1-macosx.zip)
-- [Windows](https://github.com/Medium/phantomjs/releases/download/v2.1.1/phantomjs-2.1.1-windows.zip)
+See all available settings for 
+[puppeteer.pdf](https://github.com/GoogleChrome/puppeteer/blob/v1.4.0/docs/api.md#pagepdfoptions), and
+[puppeteer.image](https://github.com/GoogleChrome/puppeteer/blob/v1.4.0/docs/api.md#pagescreenshotoptions)
 
 ## Demos
 
@@ -210,33 +223,6 @@ is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
     "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 ]
 ```
-
-## Exporter Configurations
-
-This plugin provides what you see is what you get exporter. That means rendered HTML page is consistent to what you see in markdown preview, even it contains syntaxes and styles contributed by other plugins.
-
-Plugin built-in 2 exporters. you can configure them by writing settings within the meta data of the markdown document.
-
-### HTML Exporter Configuration
-
-> (No configuration available for now)
-
-### Phantom Exporter Configuration
-
-```markdown
----
-phantomjs:
-    type: pdf   # jpeg, png, pdf
-    format: A4
-    orientation: portrait
-    border: 2cm
----
-contents goes here...
-```
-
-These settings tell the `Phantom Exporter` to export a pdf file with specified size, orientation, and borders.
-
-> See [more available settings](https://github.com/marcbachmann/node-html-pdf#options)
 
 ## Known Issues & Feedback
 
