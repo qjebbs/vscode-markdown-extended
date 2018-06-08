@@ -7,8 +7,8 @@ import { MarkdownDocument } from '../common/markdownDocument';
 import { MarkdownExporter, exportFormate } from './interfaces';
 
 export class PhantomExporter implements MarkdownExporter {
-    async Export(document: MarkdownDocument, formate: exportFormate, fileName: string) {
-        let html = renderHTML(document, true, formate);
+    async Export(document: MarkdownDocument, format: exportFormate, fileName: string) {
+        let html = renderHTML(document, true, format);
         mkdirsSync(path.dirname(fileName));
         return new Promise((resolve, reject) => {
             pdf.create(html, document.meta.phantomConfig)

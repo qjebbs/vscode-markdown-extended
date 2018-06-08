@@ -11,6 +11,7 @@ export async function pickExporter(): Promise<MarkdownExporter> {
         exporters(),
         <vscode.QuickPickOptions>{ placeHolder: "Select an exporter" }
     );
+    if (!pick) return undefined;
     switch (pick.type) {
         case exporterType.HTML:
             return new HtmlExporter();

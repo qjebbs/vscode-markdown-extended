@@ -6,8 +6,8 @@ import * as path from 'path';
 import { MarkdownExporter, exportFormate } from './interfaces';
 
 export class PuppeteerExporter implements MarkdownExporter {
-    async Export(document: MarkdownDocument, formate: exportFormate, fileName: string) {
-        let html = renderHTML(document, true, formate);
+    async Export(document: MarkdownDocument, format: exportFormate, fileName: string) {
+        let html = renderHTML(document, true, format);
         let conf = Object.assign({ path: fileName }, document.meta.puppeteerConfig);
         mkdirsSync(path.dirname(fileName));
 

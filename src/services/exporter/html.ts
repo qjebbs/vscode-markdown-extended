@@ -6,8 +6,8 @@ import { MarkdownDocument } from '../common/markdownDocument';
 import { MarkdownExporter, exportFormate } from './interfaces';
 
 export class HtmlExporter implements MarkdownExporter {
-    async Export(document: MarkdownDocument, formate: exportFormate, fileName: string) {
-        let html = renderHTML(document, true, formate);
+    async Export(document: MarkdownDocument, format: exportFormate, fileName: string) {
+        let html = renderHTML(document, true, format);
         mkdirsSync(path.dirname(fileName));
         return new Promise((resolve, reject) => {
             try {
