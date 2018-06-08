@@ -1,5 +1,9 @@
 # Change Log
 
+## v0.6.1
+
+- Fix: copy html issue.
+
 ## v0.6.0
 
 - Improvement: Switch to puppeteer as PDF/PNG/JPG exporter
