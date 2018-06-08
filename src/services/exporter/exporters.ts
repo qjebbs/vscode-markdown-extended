@@ -2,7 +2,6 @@ import * as fs from 'fs';
 import * as vscode from 'vscode';
 import { config } from '../common/config';
 import { ExporterQuickPickItem, exporterType, MarkdownExporter, exportFormat, FormatQuickPickItem } from './interfaces';
-import { phantomExporter } from './phantomjs';
 import { htmlExporter } from './html';
 import { puppeteerExporter } from './puppeteer';
 
@@ -65,13 +64,5 @@ function getAvailableExporters(format: exportFormat): ExporterQuickPickItem[] {
             exporter: puppeteerExporter,
         }
     );
-    if (phantomExporter.FormatAvailable(format) && config.phantomPath && fs.existsSync(config.phantomPath))
-        items.push(
-            <ExporterQuickPickItem>{
-                label: "Phantom Exporter",
-                description: "export to pdf/png/jpg.",
-                detail: "see plugin readme to learn how to config the exporter.",
-                exporter: phantomExporter,
-            });
     return items;
 }
