@@ -12,7 +12,7 @@ export function renderHTML(document: MarkdownDocument, withStyle: boolean, forma
 export function renderHTML(document: MarkdownDocument, withStyle: boolean, injectStyle?: string): string
 export function renderHTML(document: vscode.TextDocument, withStyle: boolean, injectStyle?: string): string
 export function renderHTML(document, withStyle: boolean, arg: any) {
-    let injectStyle = arg.indexOf('}')>-1 ? arg : getInjectStyle(arg);
+    let injectStyle = arg.indexOf('}') > -1 ? arg : getInjectStyle(arg);
     let doc: MarkdownDocument = undefined;
     if (document instanceof MarkdownDocument)
         doc = document;
@@ -55,8 +55,8 @@ function getStyle(uri: vscode.Uri, injectStyle?: string): string {
     let styles: string[] = [];
 
     let conf = mdConfig.styles(uri);
-    let contributed = contributeStyles.thirdParty();
-    if (!contributed) contributed = contributeStyles.official();
+    let contributed = contributeStyles.official();
+    contributed += '\n' + contributeStyles.thirdParty();
     let features = contributeStyles.features();
     let user = conf.embedded.join('\n').trim();
 
