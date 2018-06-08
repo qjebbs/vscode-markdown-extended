@@ -19,6 +19,7 @@ export class CommandExportCurrent extends Command {
         let document = editor.document;
         let doc = new MarkdownDocument(document);
         let format = await pickFormat();
+        if (!format) return;
         let exporter = await pickExporter(format);
         if (!exporter) return;
         let fileName = calculateExportPath(document.fileName, format);
