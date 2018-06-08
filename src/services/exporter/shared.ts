@@ -8,11 +8,12 @@ import { contributeStyles } from '../common/styles';
 import { MarkdownItEnv } from '../common/interfaces';
 import { exportFormat } from './interfaces';
 
-export function renderHTML(document: MarkdownDocument, withStyle: boolean, format: exportFormat): string
+export function renderHTML(document: MarkdownDocument, withStyle: boolean, format?: exportFormat): string
+export function renderHTML(document: vscode.TextDocument, withStyle: boolean, format?: exportFormat): string
 export function renderHTML(document: MarkdownDocument, withStyle: boolean, injectStyle?: string): string
 export function renderHTML(document: vscode.TextDocument, withStyle: boolean, injectStyle?: string): string
 export function renderHTML(document, withStyle: boolean, arg: any) {
-    let injectStyle = arg.indexOf('}') > -1 ? arg : getInjectStyle(arg);
+    let injectStyle = arg ? arg.indexOf('}') > -1 ? arg : getInjectStyle(arg) : "";
     let doc: MarkdownDocument = undefined;
     if (document instanceof MarkdownDocument)
         doc = document;
