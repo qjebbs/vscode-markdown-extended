@@ -1,6 +1,8 @@
 import * as vscode from 'vscode';
 import { MarkdownDocument } from '../common/markdownDocument';
 
+export type Progress = vscode.Progress<{ message?: string; increment?: number }>;
+
 export enum exportFormat {
     PDF = "pdf",
     HTML = "html",
@@ -23,6 +25,6 @@ export interface ExporterQuickPickItem extends vscode.QuickPickItem {
 }
 
 export interface MarkdownExporter {
-    Export: (document: MarkdownDocument, format: exportFormat, fileName: string) => Promise<any>;
+    Export: (document: MarkdownDocument, format: exportFormat, fileName: string, progress: Progress) => Promise<any>;
     FormatAvailable: (format: exportFormat) => boolean;
 }

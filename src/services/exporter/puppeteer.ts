@@ -1,14 +1,27 @@
 import * as puppeteer from 'puppeteer';
+import * as fs from 'fs';
+import * as path from 'path';
 import { MarkdownDocument } from '../common/markdownDocument';
 import { mkdirsSync, mergeSettings } from '../common/tools';
 import { renderHTML } from './shared';
-import * as path from 'path';
-import { MarkdownExporter, exportFormat } from './interfaces';
-import { format } from 'url';
+import { MarkdownExporter, exportFormat, Progress } from './interfaces';
 import { config } from '../common/config';
+import { context } from '../../extension';
 
 class PuppeteerExporter implements MarkdownExporter {
-    async Export(document: MarkdownDocument, format: exportFormat, fileName: string) {
+    async Export(
+        document: MarkdownDocument,
+        format: exportFormat,
+        fileName: string,
+        progress: Progress
+    ) {
+
+        if (!this.checkPuppeteerBinary()) await this.fetchBinary(progress);
+
+        progress.report({
+            message: `MarkdownExtended: Exporting ${path.basename(fileName)}...`,
+        });
+
         let html = renderHTML(document, true, format);
         let conf: any = {};
         mkdirsSync(path.dirname(fileName));
@@ -48,6 +61,30 @@ class PuppeteerExporter implements MarkdownExporter {
             exportFormat.JPG,
             exportFormat.PNG
         ].indexOf(format) > -1;
+    }
+
+    private checkPuppeteerBinary() {
+        let executablePath = puppeteer.executablePath();
+        return fs.existsSync(executablePath);
+    }
+    private async fetchBinary(progress: Progress) {
+        let pt = require('puppeteer');
+        let fetcher = pt.createBrowserFetcher();
+        const revision = require(path.join(context.extensionPath, 'node_modules', 'puppeteer', 'package.json')).puppeteer.chromium_revision;
+        const revisionInfo = fetcher.revisionInfo(revision);
+        let lastPg = 0;
+        progress.report({
+            message: `MarkdownExtended: Downloading dependency Chromium (0%)`,
+            increment: 0
+        });
+        return fetcher.download(revisionInfo.revision, (downloadedBytes: number, totalBytes: number) => {
+            let pg: number = ~~(downloadedBytes / totalBytes * 100);
+            progress.report({
+                message: `MarkdownExtended: Downloading dependency Chromium (${pg}%)`,
+                increment: pg - lastPg
+            });
+            lastPg = pg;
+        });
     }
 }
 export const puppeteerExporter = new PuppeteerExporter();
