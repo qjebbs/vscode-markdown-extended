@@ -1,8 +1,7 @@
 {
-    "markdownExtended.export.current": "导出为文件",
+    "markdownExtended.exportCurrent": "导出为文件",
     "markdownExtended.copy": "复制 HTML",
     "markdownExtended.copyWithStyle": "复制 HTML (含样式)",
-    "markdownExtended.configuration.phantomPath": "Phantom 可执行文件路径，用于导出 PDF / PNG / JPG",
     "markdownExtended.pasteAsTable": "粘贴为表格",
     "markdownExtended.formateTable": "格式化表格",
     "markdownExtended.toggleBold": "切换加粗",
@@ -23,5 +22,20 @@
     "markdownExtended.DeleteColumn": "删除列",
     "markdownExtended.DeleteRow": "删除行",
     "markdownExtended.MoveColumnLeft": "右移列",
-    "markdownExtended.MoveColumnRight": "左移列"
+    "markdownExtended.MoveColumnRight": "左移列",
+    "markdownExtended.configuration.exportOutDirName": "导出文件将被组织到项目根目录下以此设置为名称的目录下。",
+    "markdownExtended.configuration.pdfFormat": "纸张格式。此设置优先级高于 pdfWidth 和 pdfHeight。",
+    "markdownExtended.configuration.pdfWidth": "PDF 纸张宽度, 接受带单位的数值。",
+    "markdownExtended.configuration.pdfHeight": "PDF 纸张高度, 接受带单位的数值。",
+    "markdownExtended.configuration.pdfLandscape": "PDF 纸张方向。 true：横向；false：纵向。",
+    "markdownExtended.configuration.pdfMarginTop": "PDF 上边距, 接受带单位的数值。",
+    "markdownExtended.configuration.pdfMarginRight": "PDF 右边距, 接受带单位的数值。",
+    "markdownExtended.configuration.pdfMarginBottom": "PDF 下边距, 接受带单位的数值。",
+    "markdownExtended.configuration.pdfMarginLeft": "PDF 左边距, 接受带单位的数值。",
+    "markdownExtended.configuration.pdfDisplayHeaderFooter": "PDF 中是否显示页头页脚。",
+    "markdownExtended.configuration.pdfPageRanges": "要打印的页码, 例如 '1-5, 8, 11-13'。 默认为空，表示打印所有页面。",
+    "markdownExtended.configuration.pdfHeaderTemplate": "页头模板。内容为有效的 HTML 代码，在元素中使用如下的类名可以注入相应的信息:\ndate：打印日期\ntitle：文档标题\nurl：文档位置\npageNumber：当前页码\ntotalPages：总页数。",
+    "markdownExtended.configuration.pdfFooterTemplate": "页脚模板。内容为有效的 HTML 代码，在元素中使用如下的类名可以注入相应的信息:\ndate：打印日期\ntitle：文档标题\nurl：文档位置\npageNumber：当前页码\ntotalPages：总页数。",
+    "markdownExtended.configuration.imageQuality": "图片质量，0-100 之间的数字。不适用于 PNG 图片。",
+    "markdownExtended.configuration.imageOmitBackground": "隐藏默认的白色背景，生成透明背景的图片。"
 }

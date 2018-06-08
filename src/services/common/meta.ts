@@ -1,6 +1,5 @@
 import * as vscode from 'vscode';
 import * as yaml from 'node-yaml';
-import { config } from "./config";
 
 export class MetaData {
     private _uri: vscode.Uri;
@@ -9,36 +8,12 @@ export class MetaData {
         this._uri = uri;
         this._meta = yaml.parse(data) || {};
     }
-    get phantomConfig() {
-        let folder = vscode.workspace.getWorkspaceFolder(this._uri);
-
-        let defultConf = {
-            type: "pdf",
-            border: "1cm",
-        }
-        let conf = getConfig(defultConf, this._meta.phantomjs);
-        // confs that can not overrided by user
-        conf.base = folder && folder.uri ? "file:///" + folder.uri.fsPath + "/" : "";
-        conf.phantomPath = config.phantomPath;
-        return conf;
+    get puppeteerPDF() {
+        if (!this._meta.puppeteer) return {};
+        return this._meta.puppeteer.pdf || {};
     }
-    get puppeteerConfig() {
-
-        let defultConf = {
-            pdf: {
-                format: "A4",
-                printBackground: true
-            },
-            image: {
-                quality: 100,
-                fullPage: true,
-            }
-        }
-        let conf = getConfig(defultConf, this._meta.puppeteer);
-        return conf;
+    get puppeteerImage() {
+        if (!this._meta.puppeteer) return {};
+        return this._meta.puppeteer.image || {};
     }
-}
-
-function getConfig(defultConf, userConf) {
-    return Object.assign(defultConf, userConf);
 }

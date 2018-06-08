@@ -1,8 +1,7 @@
 {
-    "markdownExtended.export.current": "Export to File",
+    "markdownExtended.exportCurrent": "Export to File",
     "markdownExtended.copy": "Copy HTML",
     "markdownExtended.copyWithStyle": "Copy HTML & Styles",
-    "markdownExtended.configuration.phantomPath": "Path of phantom binary used to export PDF / PNG / JPG.",
     "markdownExtended.pasteAsTable": "Paste as Table",
     "markdownExtended.formateTable": "Format Table",
     "markdownExtended.toggleBold": "Toggle Bold",
@@ -23,5 +22,20 @@
     "markdownExtended.DeleteColumn": "Delete Columns",
     "markdownExtended.DeleteRow": "Delete Rows",
     "markdownExtended.MoveColumnLeft": "Move Columns Left",
-    "markdownExtended.MoveColumnRight": "Move Columns Right"
+    "markdownExtended.MoveColumnRight": "Move Columns Right",
+    "markdownExtended.configuration.exportOutDirName": "Export files will be organized in a directory named with value specified here.",
+    "markdownExtended.configuration.pdfFormat": "Paper format. If set, takes priority over pdfWidth or pdfHeight options.",
+    "markdownExtended.configuration.pdfWidth": "PDF paper width, accepts values labeled with units",
+    "markdownExtended.configuration.pdfHeight": "PDF paper height, accepts values labeled with units",
+    "markdownExtended.configuration.pdfLandscape": "PDF paper orientation. true: landscape, false: portrait.",
+    "markdownExtended.configuration.pdfMarginTop": "PDF top margin, accepts values labeled with units.",
+    "markdownExtended.configuration.pdfMarginRight": "PDF right margin, accepts values labeled with units.",
+    "markdownExtended.configuration.pdfMarginBottom": "PDF bottom margin, accepts values labeled with units.",
+    "markdownExtended.configuration.pdfMarginLeft": "PDF left margin, accepts values labeled with units.",
+    "markdownExtended.configuration.pdfDisplayHeaderFooter": "PDF display header and footer.",
+    "markdownExtended.configuration.pdfPageRanges": "Paper ranges to print, e.g., '1-5, 8, 11-13'. Defaults to the empty string, which means print all pages.",
+    "markdownExtended.configuration.pdfHeaderTemplate": "HTML template for the print header. Should be valid HTML markup with following classes used to inject printing values into them:\ndate: formatted print date\ntitle: document title\nurl: document location\npageNumber: current page number\ntotalPages: total pages in the document.",
+    "markdownExtended.configuration.pdfFooterTemplate": "HTML template for the print footer. Should be valid HTML markup with following classes used to inject printing values into them:\ndate: formatted print date\ntitle: document title\nurl: document location\npageNumber: current page number\ntotalPages: total pages in the document.",
+    "markdownExtended.configuration.imageQuality": "The quality of the image, between 0-100. Not applicable to png images.",
+    "markdownExtended.configuration.imageOmitBackground": "Hides default white background and allows capturing screenshots with transparency."
 }

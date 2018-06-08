@@ -49,10 +49,9 @@
   ],
   "main": "./out/src/extension",
   "contributes": {
-    "commands": [
-      {
+    "commands": [{
         "command": "markdownExtended.export",
-        "title": "%markdownExtended.export.current%",
+        "title": "%markdownExtended.exportCurrent%",
         "category": "Markdown"
       },
       {
@@ -172,8 +171,7 @@
       }
     ],
     "menus": {
-      "editor/context": [
-        {
+      "editor/context": [{
           "when": "editorLangId == markdown",
           "command": "markdownExtended.export",
           "group": "markdown"
@@ -285,8 +283,7 @@
         }
       ]
     },
-    "keybindings": [
-      {
+    "keybindings": [{
         "when": "editorTextFocus && editorLangId == 'markdown'",
         "command": "markdownExtended.pasteAsTable",
         "key": "ctrl+shift+t ctrl+shift+p"
@@ -396,10 +393,93 @@
       "type": "object",
       "title": "Markdown Extended Configuration",
       "properties": {
-        "markdownExtended.phantomPath": {
+        "markdownExtended.exportOutDirName": {
+          "type": "string",
+          "default": "out",
+          "description": "%markdownExtended.configuration.exportOutDirName%"
+        },
+        "markdownExtended.pdfFormat": {
+          "type": "string",
+          "default": "A4",
+          "enum": [
+            "Letter",
+            "Legal",
+            "Tabloid",
+            "Ledger",
+            "A0",
+            "A1",
+            "A2",
+            "A3",
+            "A4",
+            "A5",
+            "A6"
+          ],
+          "description": "%markdownExtended.configuration.pdfFormat%"
+        },
+        "markdownExtended.pdfWidth": {
           "type": "string",
           "default": "",
-          "description": "%markdownExtended.configuration.phantomPath%"
+          "description": "%markdownExtended.configuration.pdfWidth%"
+        },
+        "markdownExtended.pdfHeight": {
+          "type": "string",
+          "default": "",
+          "description": "%markdownExtended.configuration.pdfHeight%"
+        },
+        "markdownExtended.pdfLandscape": {
+          "type": "boolean",
+          "default": false,
+          "description": "%markdownExtended.configuration.pdfLandscape%"
+        },
+        "markdownExtended.pdfMarginTop": {
+          "type": "string",
+          "default": "1cm",
+          "description": "%markdownExtended.configuration.pdfMarginTop%"
+        },
+        "markdownExtended.pdfMarginRight": {
+          "type": "string",
+          "default": "1cm",
+          "description": "%markdownExtended.configuration.pdfMarginRight%"
+        },
+        "markdownExtended.pdfMarginBottom": {
+          "type": "string",
+          "default": "1cm",
+          "description": "%markdownExtended.configuration.pdfMarginBottom%"
+        },
+        "markdownExtended.pdfMarginLeft": {
+          "type": "string",
+          "default": "1cm",
+          "description": "%markdownExtended.configuration.pdfMarginLeft%"
+        },
+        "markdownExtended.pdfDisplayHeaderFooter": {
+          "type": "boolean",
+          "default": true,
+          "description": "%markdownExtended.configuration.pdfDisplayHeaderFooter%"
+        },
+        "markdownExtended.pdfPageRanges": {
+          "type": "string",
+          "default": "",
+          "description": "%markdownExtended.configuration.pdfPageRanges%"
+        },
+        "markdownExtended.pdfHeaderTemplate": {
+          "type": "string",
+          "default": "<div style=\"font-size: 9px; margin-left: 1cm;\"> <span class='title'></span></div> <div style=\"font-size: 9px; margin-left: auto; margin-right: 1cm; \"> <span class='date'></span></div>",
+          "description": "%markdownExtended.configuration.pdfHeaderTemplate%"
+        },
+        "markdownExtended.pdfFooterTemplate": {
+          "type": "string",
+          "default": "<div style=\"font-size: 9px; margin: 0 auto;\"> <span class='pageNumber'></span> / <span class='totalPages'></span></div>",
+          "description": "%markdownExtended.configuration.pdfFooterTemplate%"
+        },
+        "markdownExtended.imageQuality": {
+          "type": "integer",
+          "default": 100,
+          "description": "%markdownExtended.configuration.imageQuality%"
+        },
+        "markdownExtended.imageOmitBackground": {
+          "type": "boolean",
+          "default": false,
+          "description": "%markdownExtended.configuration.imageOmitBackground%"
         }
       }
     },

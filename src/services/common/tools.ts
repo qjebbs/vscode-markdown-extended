@@ -2,9 +2,10 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
 import { outputPanel } from '../../extension';
+import { config } from './config';
 
 export function calculateExportPath(source: string, format: string): string {
-    let outDirName = ""; //config.exportOutDirName
+    let outDirName = config.exportOutDirName;
     let dir = "";
     let wkdir = vscode.workspace.rootPath;
     //if current document is in workspace, organize exports in 'out' directory.
@@ -68,4 +69,10 @@ export function showMessagePanel(message: any) {
     outputPanel.clear();
     outputPanel.appendLine(parseError(message));
     outputPanel.show();
+}
+
+export function mergeSettings(...args: any[]) {
+    return args.reduce((p, c) => {
+        return Object.assign(p, c);
+    }, {});
 }
