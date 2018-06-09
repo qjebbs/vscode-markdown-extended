@@ -100,6 +100,7 @@ class PuppeteerExporter implements MarkdownExporter {
         return fetcher.download(revisionInfo.revision, (downloadedBytes: number, totalBytes: number) => {
             let pg: number = ~~(downloadedBytes / totalBytes * 100);
             if (pg - lastPg) progress.report({
+                message: `Downloading Chromium...(${pg}%)`,
                 increment: pg - lastPg
             });
             lastPg = pg;
