@@ -24,12 +24,12 @@ async function exportDocument(arg: vscode.TextDocument | vscode.Uri[], option: e
             return p
                 .then(() => vscode.workspace.openTextDocument(uri))
                 .then(doc => {
-                    let fileName = calculateExportPath(doc.fileName, option.format);
+                    let fileName = calculateExportPath(uri, option.format);
                     return option.exporter.Export(new MarkdownDocument(doc), option.format, fileName, option.progress);
                 });
         }, Promise.resolve());
     } else {
-        let fileName = calculateExportPath(arg.fileName, option.format);
+        let fileName = calculateExportPath(arg.uri, option.format);
         return option.exporter.Export(new MarkdownDocument(arg), option.format, fileName, option.progress)
     }
 }

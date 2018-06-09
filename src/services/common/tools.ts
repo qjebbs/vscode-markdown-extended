@@ -4,22 +4,23 @@ import * as fs from 'fs';
 import { outputPanel } from '../../extension';
 import { config } from './config';
 
-export function calculateExportPath(source: string, format: string): string {
+export function calculateExportPath(uri: vscode.Uri, format: string): string {
     let outDirName = config.exportOutDirName;
     let dir = "";
-    let wkdir = vscode.workspace.rootPath;
+    let folder = vscode.workspace.getWorkspaceFolder(uri);
+    let wkdir = folder ? folder.uri.fsPath : "";
     //if current document is in workspace, organize exports in 'out' directory.
     //if not, export beside the document.
-    if (wkdir && isSubPath(source, wkdir)) dir = path.join(wkdir, outDirName);
+    if (wkdir && isSubPath(uri.fsPath, wkdir)) dir = path.join(wkdir, outDirName);
 
-    let exportDir = path.dirname(source);
+    let exportDir = path.dirname(uri.fsPath);
     if (!path.isAbsolute(exportDir)) return "";
     if (dir && wkdir) {
         let temp = path.relative(wkdir, exportDir);
         exportDir = path.join(dir, temp);
     }
 
-    return path.join(exportDir, path.basename(source, ".md") + `.${format.toLowerCase()}`);
+    return path.join(exportDir, path.basename(uri.fsPath, ".md") + `.${format.toLowerCase()}`);
 }
 
 export function isSubPath(from: string, to: string): boolean {
