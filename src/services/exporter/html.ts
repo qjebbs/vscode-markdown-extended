@@ -1,26 +1,43 @@
+import * as vscode from 'vscode';
 import * as fs from 'fs';
 import { mkdirsSync } from '../common/tools';
 import * as path from 'path';
 import { renderHTML } from './shared';
-import { MarkdownDocument } from '../common/markdownDocument';
-import { MarkdownExporter, exportFormat, Progress } from './interfaces';
+import { MarkdownExporter, exportFormat, Progress, ExportItem } from './interfaces';
+import { setTimeout } from 'timers';
 
 class HtmlExporter implements MarkdownExporter {
-    async Export(document: MarkdownDocument, format: exportFormat, fileName: string, progress: Progress) {
-        progress.report({
-            message: `MarkdownExtended: Exporting ${path.basename(fileName)}...`,
-        });
-        let html = renderHTML(document, true, format);
-        mkdirsSync(path.dirname(fileName));
+    async Export(items: ExportItem[], progress: Progress) {
+        let count = items.length;
+        return items.reduce((p, c, i) => {
+            return p
+                .then(
+                    () => this.exportFile(c)
+                )
+                .then(
+                    () => {
+                        if (progress) progress.report({
+                            message: `Exporting ${path.basename(c.fileName)} (${i + 1}/${count})`,
+                            increment: ~~(1 / count
+                                * 100)
+                        });
+                    }
+                );
+        }, Promise.resolve(null));
+    }
+    private async exportFile(item: ExportItem) {
+
+        let document = await vscode.workspace.openTextDocument(item.uri);
+        let html = renderHTML(document, true, item.format);
+        mkdirsSync(path.dirname(item.fileName));
         return new Promise((resolve, reject) => {
             try {
-                fs.writeFileSync(fileName, html, "utf-8");
+                fs.writeFileSync(item.fileName, html, "utf-8");
                 resolve("ok");
             } catch (error) {
                 reject(error);
             }
         });
-
     }
     FormatAvailable(format: exportFormat) {
         return exportFormat.HTML == format;

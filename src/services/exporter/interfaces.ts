@@ -24,8 +24,13 @@ export interface ExporterQuickPickItem extends vscode.QuickPickItem {
     exporter: MarkdownExporter;
 }
 
+export interface ExportItem {
+    uri: vscode.Uri,
+    format: exportFormat,
+    fileName: string,
+}
 export interface MarkdownExporter {
-    Export: (document: MarkdownDocument, format: exportFormat, fileName: string, progress: Progress) => Promise<any>;
+    Export: (confs: ExportItem[], progress: Progress) => Promise<any>;
     FormatAvailable: (format: exportFormat) => boolean;
 }
 export interface exportOption {

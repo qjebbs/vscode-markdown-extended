@@ -15,7 +15,6 @@ export class CommandExportCurrent extends Command {
             vscode.window.showInformationMessage("No document found.");
             return;
         }
-        let document = editor.document;
         let format = await pickFormat();
         if (!format) return;
         let exporter = await pickExporter(format);
@@ -27,7 +26,7 @@ export class CommandExportCurrent extends Command {
                 title: `Exporting to ${format}...`
             },
             progress => MarkdownExport(
-                document,
+                editor.document.uri,
                 <exportOption>{
                     exporter: exporter,
                     progress: progress,

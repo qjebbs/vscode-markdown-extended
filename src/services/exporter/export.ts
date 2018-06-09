@@ -1,37 +1,24 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
-import { exportOption } from "./interfaces";
+import { exportOption, ExportItem } from "./interfaces";
 import { calculateExportPath, isSubPath } from "../common/tools";
 import { MarkdownDocument } from '../common/markdownDocument';
 
-export function MarkdownExport(document: vscode.TextDocument, option: exportOption);
 export function MarkdownExport(uri: vscode.Uri, option: exportOption);
 export function MarkdownExport(uris: vscode.Uri[], option: exportOption);
-export async function MarkdownExport(arg: vscode.TextDocument | vscode.Uri | vscode.Uri[], option: exportOption) {
-    if (!arg) {
-        return exportDocument(await getFileList(), option);
-    } else if (arg instanceof vscode.Uri || arg instanceof Array) {
-        return exportDocument(await getFileList(arg), option);
-    } else {
-        return exportDocument(arg, option);
-    }
+export async function MarkdownExport(arg: vscode.Uri | vscode.Uri[], option: exportOption) {
+    if (!arg) return exportDocument(await getFileList(), option);
+    return exportDocument(await getFileList(arg), option);
 }
 
-async function exportDocument(arg: vscode.TextDocument | vscode.Uri[], option: exportOption) {
-    if (arg instanceof Array) {
-        return arg.reduce((p, uri) => {
-            return p
-                .then(() => vscode.workspace.openTextDocument(uri))
-                .then(doc => {
-                    let fileName = calculateExportPath(uri, option.format);
-                    return option.exporter.Export(new MarkdownDocument(doc), option.format, fileName, option.progress);
-                });
-        }, Promise.resolve());
-    } else {
-        let fileName = calculateExportPath(arg.uri, option.format);
-        return option.exporter.Export(new MarkdownDocument(arg), option.format, fileName, option.progress)
-    }
+async function exportDocument(uris: vscode.Uri[], option: exportOption) {
+    let confs = uris.map(uri => <ExportItem>{
+        uri: uri,
+        format: option.format,
+        fileName: calculateExportPath(uri, option.format)
+    });
+    return option.exporter.Export(confs, option.progress);
 }
 
 async function getFileList(arg?: vscode.Uri | vscode.Uri[]): Promise<vscode.Uri[]> {

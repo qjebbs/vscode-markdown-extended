@@ -5,13 +5,13 @@ import * as path from 'path';
 import { MarkdownDocument } from '../common/markdownDocument';
 import { mkdirsSync, mergeSettings } from '../common/tools';
 import { renderHTML } from './shared';
-import { MarkdownExporter, exportFormat, Progress } from './interfaces';
+import { MarkdownExporter, exportFormat, Progress, ExportItem } from './interfaces';
 import { config } from '../common/config';
 import { context } from '../../extension';
 
 class PuppeteerExporter implements MarkdownExporter {
-    async Export(document: MarkdownDocument, format: exportFormat, fileName: string, progress: Progress) {
-
+    async Export(items: ExportItem[], progress: Progress) {
+        let count = items.length;
         if (!this.checkPuppeteerBinary()) {
             let result = await vscode.window.showInformationMessage("Do you want to download exporter dependency Chromium?", "Yes", "No");
             if (result == "Yes") {
@@ -21,47 +21,61 @@ class PuppeteerExporter implements MarkdownExporter {
                 return;
             }
         }
-
-        progress.report({
-            message: `Exporting ${path.basename(fileName)}...`,
-        });
-
-        let html = renderHTML(document, true, format);
-        let conf: any = {};
-        mkdirsSync(path.dirname(fileName));
-
         let exec = config.puppeteerExecutable;
         let opt = exec ? <puppeteer.LaunchOptions>{
             executablePath: exec
         } : undefined;
         const browser = await puppeteer.launch(opt);
         const page = await browser.newPage();
+
+        return items.reduce((p, c, i) => {
+            return p
+                .then(
+                    () => this.exportFile(c, page)
+                )
+                .then(
+                    () => {
+                        console.log(i + 1)
+                        if (progress) progress.report({
+                            message: `Exporting ${path.basename(c.fileName)} (${i + 1}/${count})`,
+                            increment: ~~(1 / count * 100)
+                        });
+                    }
+                );
+        }, Promise.resolve(null)).then(async () => await browser.close());
+
+    }
+    private async exportFile(item: ExportItem, page: puppeteer.Page) {
+        let document = new MarkdownDocument(await vscode.workspace.openTextDocument(item.uri));
+        let html = renderHTML(document, true, item.format);
+        let ptConf: any = {};
+        mkdirsSync(path.dirname(item.fileName));
+
         await page.setContent(html);
-        switch (format) {
+        switch (item.format) {
             case exportFormat.PDF:
-                conf = mergeSettings(
+                ptConf = mergeSettings(
                     config.puppeteerDefaultSetting.pdf,
                     config.puppeteerUserSetting.pdf,
                     document.meta.puppeteerPDF
                 );
-                conf = Object.assign(conf, { path: fileName });
-                await page.pdf(conf);
+                ptConf = Object.assign(ptConf, { path: item.fileName });
+                await page.pdf(ptConf);
                 break;
             case exportFormat.JPG:
             case exportFormat.PNG:
-                conf = mergeSettings(
+                ptConf = mergeSettings(
                     config.puppeteerDefaultSetting.image,
                     config.puppeteerUserSetting.image,
                     document.meta.puppeteerImage
                 );
-                conf = Object.assign(conf, { path: fileName, type: format == exportFormat.JPG ? "jpeg" : "png" });
-                if (format == exportFormat.PNG) conf.quality = undefined;
-                await page.screenshot(conf);
+                ptConf = Object.assign(ptConf, { path: item.fileName, type: item.format == exportFormat.JPG ? "jpeg" : "png" });
+                if (item.format == exportFormat.PNG) ptConf.quality = undefined;
+                await page.screenshot(ptConf);
                 break;
             default:
                 return Promise.reject("PuppeteerExporter does not support HTML export.");
         }
-        await browser.close();
     }
     FormatAvailable(format: exportFormat) {
         return [
