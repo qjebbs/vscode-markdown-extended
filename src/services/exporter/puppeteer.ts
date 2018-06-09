@@ -1,4 +1,5 @@
 import * as puppeteer from 'puppeteer';
+import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
 import { MarkdownDocument } from '../common/markdownDocument';
@@ -9,24 +10,31 @@ import { config } from '../common/config';
 import { context } from '../../extension';
 
 class PuppeteerExporter implements MarkdownExporter {
-    async Export(
-        document: MarkdownDocument,
-        format: exportFormat,
-        fileName: string,
-        progress: Progress
-    ) {
+    async Export(document: MarkdownDocument, format: exportFormat, fileName: string, progress: Progress) {
 
-        if (!this.checkPuppeteerBinary()) await this.fetchBinary(progress);
+        if (!this.checkPuppeteerBinary()) {
+            let result = await vscode.window.showInformationMessage("Do you want to download exporter dependency Chromium?", "Yes", "No");
+            if (result == "Yes") {
+                await this.fetchBinary(progress);
+            } else {
+                vscode.window.showInformationMessage("Download cancelled. Try configure 'puppeteerExecutable' to use customize executable.");
+                return;
+            }
+        }
 
         progress.report({
-            message: `MarkdownExtended: Exporting ${path.basename(fileName)}...`,
+            message: `Exporting ${path.basename(fileName)}...`,
         });
 
         let html = renderHTML(document, true, format);
         let conf: any = {};
         mkdirsSync(path.dirname(fileName));
 
-        const browser = await puppeteer.launch();
+        let exec = config.puppeteerExecutable;
+        let opt = exec ? <puppeteer.LaunchOptions>{
+            executablePath: exec
+        } : undefined;
+        const browser = await puppeteer.launch(opt);
         const page = await browser.newPage();
         await page.setContent(html);
         switch (format) {
@@ -64,8 +72,7 @@ class PuppeteerExporter implements MarkdownExporter {
     }
 
     private checkPuppeteerBinary() {
-        let executablePath = puppeteer.executablePath();
-        return fs.existsSync(executablePath);
+        return config.puppeteerExecutable || fs.existsSync(puppeteer.executablePath());
     }
     private async fetchBinary(progress: Progress) {
         let pt = require('puppeteer');
@@ -74,13 +81,11 @@ class PuppeteerExporter implements MarkdownExporter {
         const revisionInfo = fetcher.revisionInfo(revision);
         let lastPg = 0;
         progress.report({
-            message: `MarkdownExtended: Downloading dependency Chromium (0%)`,
-            increment: 0
+            message: "Downloading Chromium...",
         });
         return fetcher.download(revisionInfo.revision, (downloadedBytes: number, totalBytes: number) => {
             let pg: number = ~~(downloadedBytes / totalBytes * 100);
-            progress.report({
-                message: `MarkdownExtended: Downloading dependency Chromium (${pg}%)`,
+            if (pg - lastPg) progress.report({
                 increment: pg - lastPg
             });
             lastPg = pg;

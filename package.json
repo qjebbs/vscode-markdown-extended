@@ -308,6 +308,11 @@
       "type": "object",
       "title": "Markdown Extended Configuration",
       "properties": {
+        "markdownExtended.puppeteerExecutable": {
+          "type": "string",
+          "default": "",
+          "description": "%markdownExtended.configuration.puppeteerExecutable%"
+        },
         "markdownExtended.exportOutDirName": {
           "type": "string",
           "default": "out",

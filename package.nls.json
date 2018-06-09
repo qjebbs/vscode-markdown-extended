@@ -24,6 +24,7 @@
     "markdownExtended.MoveColumnLeft": "Move Columns Left",
     "markdownExtended.MoveColumnRight": "Move Columns Right",
     "markdownExtended.configuration.exportOutDirName": "Export files will be organized in a directory named with value specified here.",
+    "markdownExtended.configuration.puppeteerExecutable": "Customize puppeteer executable for exporting PDF and images.\nCould be path of Chromium or Chrome\ne.g. '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'\ne.g. 'C:/Users/<username>/AppData/Local/Google/Chrome/Application/chrome.exe'",
     "markdownExtended.configuration.pdfFormat": "Paper format. If set, takes priority over pdfWidth or pdfHeight options.",
     "markdownExtended.configuration.pdfWidth": "PDF paper width, accepts values labeled with units",
     "markdownExtended.configuration.pdfHeight": "PDF paper height, accepts values labeled with units",

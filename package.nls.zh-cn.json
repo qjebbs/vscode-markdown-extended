@@ -24,6 +24,7 @@
     "markdownExtended.MoveColumnLeft": "右移列",
     "markdownExtended.MoveColumnRight": "左移列",
     "markdownExtended.configuration.exportOutDirName": "导出文件将被组织到项目根目录下以此设置为名称的目录下。",
+    "markdownExtended.configuration.puppeteerExecutable": "自定义 puppeteer 可执行文件，用于导出 PDF 和图片。\n可以是 Chromium 或 Chrome\n例如：'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'\n例如：'C:/Users/<username>/AppData/Local/Google/Chrome/Application/chrome.exe'",
     "markdownExtended.configuration.pdfFormat": "纸张格式。此设置优先级高于 pdfWidth 和 pdfHeight。",
     "markdownExtended.configuration.pdfWidth": "PDF 纸张宽度, 接受带单位的数值。",
     "markdownExtended.configuration.pdfHeight": "PDF 纸张高度, 接受带单位的数值。",

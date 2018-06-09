@@ -25,7 +25,7 @@ export class CommandExportCurrent extends Command {
         let fileName = calculateExportPath(document.fileName, format);
         return vscode.window.withProgress(<vscode.ProgressOptions>{
             location: vscode.ProgressLocation.Notification,
-            title: `MarkdownExtended: Exporting to ${format}...`
+            title: `Exporting to ${format}...`
         }, progress => exporter.Export(doc, format, fileName, progress));
     }
     constructor() {

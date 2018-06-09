@@ -11,6 +11,10 @@ class Config extends ConfigReader {
     get exportOutDirName(): string {
         return this.read<string>('exportOutDirName');
     }
+    get puppeteerExecutable(): string {
+        let exe = this.read<string>('puppeteerExecutable');
+        return fs.existsSync(exe) ? exe : "";
+    }
     get pdfFormat(): string {
         return this.read<string>('pdfFormat');
     }
