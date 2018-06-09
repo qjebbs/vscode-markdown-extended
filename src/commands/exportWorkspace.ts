@@ -6,16 +6,9 @@ import { testMarkdown } from '../services/exporter/shared';
 import { exportOption } from "../services/exporter/interfaces";
 import { MarkdownExport } from "../services/exporter/export";
 
-export class CommandExportCurrent extends Command {
-    async execute() {
+export class CommandExportWorkSpace extends Command {
+    async execute(uri) {
         if (!testMarkdown()) return;
-        let editor = vscode.window.activeTextEditor;
-        if (!editor) editor = vscode.window.visibleTextEditors[0];
-        if (!editor || !editor.document) {
-            vscode.window.showInformationMessage("No document found.");
-            return;
-        }
-        let document = editor.document;
         let format = await pickFormat();
         if (!format) return;
         let exporter = await pickExporter(format);
@@ -27,7 +20,7 @@ export class CommandExportCurrent extends Command {
                 title: `Exporting to ${format}...`
             },
             progress => MarkdownExport(
-                document,
+                uri,
                 <exportOption>{
                     exporter: exporter,
                     progress: progress,
@@ -37,7 +30,6 @@ export class CommandExportCurrent extends Command {
         );
     }
     constructor() {
-        super("markdownExtended.export");
+        super("markdownExtended.exportWorkspace");
     }
 }
-

@@ -1,5 +1,6 @@
 {
     "markdownExtended.exportCurrent": "Export to File",
+    "markdownExtended.exportWorkspace": "Export Markdwon to File",
     "markdownExtended.copy": "Copy HTML",
     "markdownExtended.copyWithStyle": "Copy HTML & Styles",
     "markdownExtended.pasteAsTable": "Paste as Table",

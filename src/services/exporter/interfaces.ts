@@ -28,3 +28,8 @@ export interface MarkdownExporter {
     Export: (document: MarkdownDocument, format: exportFormat, fileName: string, progress: Progress) => Promise<any>;
     FormatAvailable: (format: exportFormat) => boolean;
 }
+export interface exportOption {
+    exporter: MarkdownExporter,
+    progress: Progress,
+    format: exportFormat
+}

@@ -23,6 +23,7 @@
   "activationEvents": [
     "onLanguage:markdown",
     "onCommand:markdownExtended.export",
+    "onCommand:markdownExtended.exportWorkspace",
     "onCommand:markdownExtended.copy",
     "onCommand:markdownExtended.copyWithStyle",
     "onCommand:markdownExtended.pasteAsTable",
@@ -52,6 +53,11 @@
     "commands": [{
         "command": "markdownExtended.export",
         "title": "%markdownExtended.exportCurrent%",
+        "category": "Markdown"
+      },
+      {
+        "command": "markdownExtended.exportWorkspace",
+        "title": "%markdownExtended.exportWorkspace%",
         "category": "Markdown"
       },
       {
@@ -196,7 +202,11 @@
           "command": "markdownExtended.formateTable",
           "group": "markdown"
         }
-      ]
+      ],
+      "explorer/context": [{
+        "command": "markdownExtended.exportWorkspace",
+        "group": "markdown"
+      }]
     },
     "keybindings": [{
         "when": "editorTextFocus && editorLangId == 'markdown'",
