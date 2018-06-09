@@ -1,5 +1,10 @@
 # Change Log
 
+## v0.7.0
+
+- New Feature: Workspace export support
+- New Setting: Customize puppeteer executable
+
 ## v0.6.1
 
 - Fix: copy html issue.

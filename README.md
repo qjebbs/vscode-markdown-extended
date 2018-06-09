@@ -5,6 +5,7 @@ Markdown Extended is a extension that extend syntaxes and abilities to VSCode bu
 ## Features
 
 - Export to Self Contained HTML / PDF / PNG / JPEG
+- Export current document / whole workspace
 - Copy exported HTML to clipboard
 - Editing Helpers ([View Detail](#editing-helpers-and-keys)): 
 
