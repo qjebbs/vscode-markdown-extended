@@ -1,6 +1,6 @@
 # Change Log
 
-## v0.7.0
+## v0.7.1
 
 - New Feature: Workspace export support
 - New Setting: Customize puppeteer executable
