@@ -50,7 +50,8 @@
   ],
   "main": "./out/src/extension",
   "contributes": {
-    "commands": [{
+    "commands": [
+      {
         "command": "markdownExtended.export",
         "title": "%markdownExtended.exportCurrent%",
         "category": "Markdown"
@@ -177,7 +178,8 @@
       }
     ],
     "menus": {
-      "editor/context": [{
+      "editor/context": [
+        {
           "when": "editorLangId == markdown",
           "command": "markdownExtended.export",
           "group": "markdown"
@@ -203,12 +205,15 @@
           "group": "markdown"
         }
       ],
-      "explorer/context": [{
-        "command": "markdownExtended.exportWorkspace",
-        "group": "markdown"
-      }]
+      "explorer/context": [
+        {
+          "command": "markdownExtended.exportWorkspace",
+          "group": "markdown"
+        }
+      ]
     },
-    "keybindings": [{
+    "keybindings": [
+      {
         "when": "editorTextFocus && editorLangId == 'markdown'",
         "command": "markdownExtended.pasteAsTable",
         "key": "ctrl+shift+t ctrl+shift+p"
@@ -415,7 +420,8 @@
     },
     "markdown.markdownItPlugins": true,
     "markdown.previewStyles": [
-      "markdown-extended.css"
+      "styles/markdown-it-admonition.css",
+      "styles/markdown-it-kbd.css"
     ]
   },
   "scripts": {
@@ -439,6 +445,7 @@
     "clipboardy": "^1.2.3",
     "highlight.js": "^9.12.0",
     "markdown-it-abbr": "^1.0.4",
+    "markdown-it-admonition": "^1.0.3",
     "markdown-it-attrs": "^1.1.0",
     "markdown-it-checkbox": "^1.1.0",
     "markdown-it-container": "^2.0.0",

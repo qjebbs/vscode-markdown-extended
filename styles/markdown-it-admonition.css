@@ -1,0 +1,102 @@
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: 
+    local("Material Icons"), 
+    local("MaterialIcons-Regular"), 
+    url("data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAXEAAsAAAAACKgAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAARAAAAFZW7kkzY21hcAAAAYAAAACPAAAB9FgpBh1nbHlmAAACEAAAAYIAAAG83zAUHGhlYWQAAAOUAAAALwAAADYRp9ZxaGhlYQAAA8QAAAAcAAAAJAeKAzVobXR4AAAD4AAAABIAAAAgHGQAAGxvY2EAAAP0AAAAEgAAABIB+gGIbWF4cAAABAgAAAAfAAAAIAEVACxuYW1lAAAEKAAAAVcAAAKFkAhoC3Bvc3QAAAWAAAAAQwAAAGdU9/j2eJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2Bk7mWcwMDKwMHUyXSGgYGhH0IzvmYwYuRgYGBiYGVmwAoC0lxTGBwYKl7wMev812GIYa5iuAIUZgTJAQD6AAu3eJzFkUEKhDAMRX9arSCDzM5LzFE8g6s5hGdw5bW8hVJBb9H5aYSZAff+8Ar5pGlJAJQAPHmRApAJAtVIV7LvUWe/QM/8ydD6YXFrF+e4b+3RpHTp/EryzW+oU6KCQ2BndpSA2yT3Pf2vRz7fZ1aR4YRfXJyhO1s7Q2vibHCWiLvBqWJrDd3r0RjwH1AMJ4QAeJxNUL9Lw0AUfi+nidVSqs0PEWlrW5OSqcQ06SA2iINDKSKhiDg6lOIoRRxKEBERByfnDiIiQfInODgEXCX4BziW4uCoVy8Vxbt7d/e+d/fddx8gwGgABojAAdgrkpgVy8AaF0/EIzIkIAWAgmZbRg5lMYEKFslhs99MlpL7yS/A1z4t97lOjDCgRJ0x8sMxGpAWOYZpyAIsG5ap8QIviXJGnpNEPq9WTZtlhlU1VQ0/Wt35tfOjrTPvOqRv4cXOyXZ66qD74G4vLnRqTZJq0+juMgwvX2/S63u7G+U2IyVjnREXMZ0ZyDGlFcuQRb6gmkKFMZtqgRdJxcpPKPxEvqRZeKu2G412Q6kHvV7Q2/RwFaFWGwF9GrEV39VGXH+u9+I6OjvB1VXAAv7eIg7bCexPgNWipLCYTCCnu65LXYxYd3z/vtXyiP4ZwdhfLr7Ds/NLZAVni6ij7/v0xSMO9Smgx2hxzK1zjzATu60IGnNcsxWb6MPh6u/gTv8l35Z8ducAAHicY2BkYGAA4iW5lYXx/DZfGbhZGEDguosnO4L+/4aFgbkKyOVgYAKJAgAHcAj4AHicY2BkYGDW+a/DEMPCAAJAkpEBFXAAADNeAcl4nGNhAIIUBgYWBuwYAAx8AIEAAAAAAAAADAAuAGAAlgCwAMQA3gAAeJxjYGRgYOBgUGBgZgABJiDmAkIGhv9gPgMADIcBQgB4nGWRu27CQBRExzzyAClCiZQmirRN0hDMQ6lQOiQoI1HQG7MGI7+0XpBIlw/Id+UT0qXLJ6TPYK4bxyvvnjszd30lA7jGNxycnnu+J3ZwwerENZzjQbhO/Um4QX4WbqKNF+Ez6jPhFrp4FW7jBm+8wWlcshrjQ9hBB5/CNVzhS7hO/Ue4Qf4VbuLWaQqfoePcCbewcLrCbTw67y2lJkZ7Vq/U8qCCNLE93zMm1IZO6KfJUZrr9S7yTFmW50KbPEwTNXQHpTTTiTblbfl+PbI2UIFJYzWlq6MoVZlJt9q37sbabNzvB6K7fhpzPMU1gYGGB8t9xXqJA/cAKRJqPfj0DFdI30hPSPXol6k5vTV2iIps1a3Wi+KmnPqxVhjCxeBfasZUUiSrs+XY82sjqpbp46yGPTFpKr2ak0RkhazwtlR86i42RVfGn93nCip5t5gh/gPYnXLBAHicY2BigAAuBuyAg5GJkZmRhZGVkY2RnZGDkZOBsYK9NC/T1djZEkxbGLiCaRNDczBtYGAEkXeF8A1NnBkYAJH4DjMA") format("woff");
+}
+
+.admonition {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12), 0 3px 1px -2px rgba(0, 0, 0, .2);
+  position: relative;
+  margin: 1.5625em 0;
+  padding: 0 1.2rem;
+  border-left: .4rem solid rgba(68, 138, 255, .8);
+  border-radius: .2rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  overflow: auto;
+}
+
+.admonition>.admonition-title {
+  margin: 0 -1.2rem;
+  padding: .8rem 1.2rem .8rem 3.6rem;
+  border-bottom: .1rem solid rgba(68, 138, 255, .1);
+  background-color: rgba(68, 138, 255, .1);
+  font-weight: 700;
+}
+
+.admonition>.admonition-title:before {
+  position: absolute;
+  left: 1.2rem;
+  font-size: 1.5rem;
+  color: rgba(68, 138, 255, .8);
+  content: "\E3C9";
+}
+
+.admonition>.admonition-title:before {
+  font-family: Material Icons;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 2rem;
+  text-transform: none;
+  white-space: nowrap;
+  speak: none;
+  word-wrap: normal;
+  direction: ltr;
+}
+
+.admonition.hint {
+  border-left-color: rgba(0, 191, 165, .8);
+}
+
+.admonition.hint>.admonition-title {
+  background-color: rgba(0, 191, 165, .1);
+}
+
+.admonition.hint>.admonition-title:before {
+  color: #00bfa5;
+  content: "\E80E";
+}
+
+.admonition.attention,
+.admonition.caution {
+  border-left-color: rgba(255, 145, 0, .8);
+}
+
+.admonition.attention>.admonition-title,
+.admonition.caution>.admonition-title {
+  background-color: rgba(255, 145, 0, .1);
+}
+
+.admonition.attention>.admonition-title:before {
+  color: #ff9100;
+  content: "\E417";
+}
+
+.admonition.caution>.admonition-title:before {
+  color: #ff9100;
+  content: "\E002";
+}
+
+.admonition.danger,
+.admonition.error {
+  border-left-color: rgba(255, 23, 68, .8);
+}
+
+.admonition.danger>.admonition-title,
+.admonition.error>.admonition-title {
+  background-color: rgba(255, 23, 68, .1);
+}
+
+.admonition.danger>.admonition-title:before {
+  color: #ff1744;
+  content: "\E3E7";
+}
+
+.admonition.error>.admonition-title:before {
+  color: #ff1744;
+  content: "\E14C";
+}
