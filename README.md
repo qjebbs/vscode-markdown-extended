@@ -103,6 +103,7 @@ but totally new implements.
 - [markdown-it-footnote](https://www.npmjs.com/package/markdown-it-footnote)
 - [markdown-it-abbr](https://www.npmjs.com/package/markdown-it-abbr)
 - [markdown-it-deflist](https://www.npmjs.com/package/markdown-it-deflist)
+- [markdown-it-admonition](https://www.npmjs.com/package/markdown-it-admonition)
 - [markdown-it-sup](https://www.npmjs.com/package/markdown-it-sup)
 - [markdown-it-sub](https://www.npmjs.com/package/markdown-it-sub)
 - [markdown-it-checkbox](https://www.npmjs.com/package/markdown-it-checkbox)
@@ -168,6 +169,24 @@ is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
 <dt>Apple</dt>
 <dd>Pomaceous fruit of plants of the genus Malus in the family Rosaceae.</dd>
 </dl>
+
+### markdown-it-admonition
+
+    !!! note
+    This is the admonition body
+    ```css
+    /* code block inside admonition */
+    .admonition>.admonition-title {
+    margin: 0 -1.2rem;
+    padding: .8rem 1.2rem .8rem 3.6rem;
+    border-bottom: .1rem solid rgba(68, 138, 255, .1);
+    background-color: rgba(68, 138, 255, .1);
+    font-weight: 700;
+    }
+    ```
+    !!!
+
+![admonition-demo](images/admonition-demo.png)
 
 ### markdown-it-sup markdown-it-sub
 

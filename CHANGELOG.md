@@ -1,5 +1,9 @@
 # Change Log
 
+## v0.8.0
+
+- New Feature: markdown-it-admonition support
+
 ## v0.7.1
 
 - New Feature: Workspace export support
