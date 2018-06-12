@@ -1,5 +1,9 @@
 # Change Log
 
+## v0.8.1
+
+- Fix: Wait for external resources before export to pdf/png/jpg, resolve [#14](https://github.com/qjebbs/vscode-markdown-extended/issues/14)
+
 ## v0.8.0
 
 - New Feature: markdown-it-admonition support
