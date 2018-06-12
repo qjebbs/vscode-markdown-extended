@@ -51,7 +51,7 @@ class PuppeteerExporter implements MarkdownExporter {
         let ptConf: any = {};
         mkdirsSync(path.dirname(item.fileName));
 
-        await page.setContent(html);
+        await page.goto(`data:text/html,${html}`, { waitUntil: 'networkidle0' });
         switch (item.format) {
             case exportFormat.PDF:
                 ptConf = mergeSettings(
