@@ -1,43 +1,67 @@
 import { MDTable, TableAlign } from "./mdTable";
-const _ALIGN: boolean = true;
-export function stringifyMDTable(table: MDTable): string {
-    const ALIGN = true;
-    let rows = table.data.map(row => stringifyRow(row, table.columnWidths));
+export function stringifyMDTable(table: MDTable, compact?: boolean, padding?: number): string {
+    padding = padding || 1;
+    let rows = table.data.map(row => stringifyRow(row, table.columnWidths, table.aligns, compact, padding));
     let header = rows.shift();
-    let Sep = stringifyHeaderSeperator(table);
+    let Sep = stringifyHeaderSeperator(table, compact, padding);
     return header + '\n'
         + Sep + '\n'
         + rows.join('\n');
 }
 
-function stringifyHeaderSeperator(table: MDTable): string {
+function stringifyHeaderSeperator(table: MDTable, compact: boolean, padding: number): string {
     let colCount = table.data[0].length;
-    let str = [...Array(colCount).keys()].reduce((p, i) => {
-        let sepCell = "";
-        let columnWidth = table.columnWidths[i];
-        switch (table.aligns[i]) {
-            case TableAlign.center:
-                sepCell = ":" + "-".repeat(_ALIGN ? columnWidth : 0) + ":";
-                break;
-            case TableAlign.left:
-                sepCell = ":" + "-".repeat((_ALIGN ? columnWidth : 0) + 1);
-                break;
-            case TableAlign.right:
-                sepCell = "-".repeat((_ALIGN ? columnWidth : 0) + 1) + ":";
-                break;
-            case TableAlign.auto:
-            default:
-                sepCell = "-".repeat((_ALIGN ? columnWidth : 0) + 2);
-                break;
-        }
-        return p + sepCell + "|";
-    }, "|");
-    return str.trim();
+    return [...Array(colCount).keys()].reduce(
+        (p, i) => p + formatHeaderCell(table.aligns[i], table.columnWidths[i], compact, padding) + "|"
+        , "|"
+    );
 }
-function stringifyRow(row: string[], columnWidths: number[]): string {
+function stringifyRow(row: string[], columnWidths: number[], aligns: TableAlign[], compact: boolean, padding: number): string {
+    return row.reduce((p, c, i) => {
+        return p + (compact ? c : formatCell(c, columnWidths[i], aligns[i], padding)) + "|";
+    }, "|");
+}
+function formatHeaderCell(align: TableAlign, columnWidth: number, compact: boolean, padding: number) {
+    switch (align) {
+        case TableAlign.center:
+            if (compact) return ":-:";
+            return addPadding(":" + "-".repeat(columnWidth - 2) + ":", padding, padding);
+        case TableAlign.left:
+            if (compact) return ":-";
+            return addPadding(":" + "-".repeat(columnWidth - 1), padding, padding);
+        case TableAlign.right:
+            if (compact) return "-:";
+            return addPadding("-".repeat(columnWidth - 1) + ":", padding, padding);
+        case TableAlign.auto:
+        default:
+            if (compact) return "-";
+            return addPadding("-".repeat(columnWidth), padding, padding);
+    }
+}
+function formatCell(cell: string, width: number, align: TableAlign, padding: number): string {
+    let leftPadding = padding;
+    let rightPadding = padding;
+    switch (align) {
+        case TableAlign.center:
+            leftPadding += ~~((width - cell.length) / 2);
+            rightPadding += ~~((width - cell.length) / 2);
+            if (leftPadding + rightPadding != width - cell.length + padding * 2) rightPadding += 1;
+            break;
+        case TableAlign.left:
+            rightPadding += (width - cell.length);
+            break;
+        case TableAlign.right:
+            leftPadding += (width - cell.length);
+            break;
+        case TableAlign.auto:
+        default:
+            rightPadding += (width - cell.length);
+            break;
+    }
+    return addPadding(cell.trim(), leftPadding, rightPadding);
+}
+
+function addPadding(cell: string, left: number, right: number): string {
     const SPACE = " ";
-    let str = row.reduce((p, c, i) => {
-        return p + c + SPACE.repeat(_ALIGN ? columnWidths[i] - c.length : 0) + " | ";
-    }, "| ");
-    return str.trim();
+    return SPACE.repeat(left) + cell.trim() + SPACE.repeat(right);
 }

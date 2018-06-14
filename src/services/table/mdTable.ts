@@ -24,8 +24,8 @@ export class MDTable {
         this._data = data;
         this._rowCount = this._data.length;
         this.alignColumns();
-        this._columnWidths = this.calcColumnWidths();
         this._aligns = data[0].map(() => TableAlign.auto);
+        this._columnWidths = this.calcColumnWidths();
     }
     public get columnCount(): number {
         return this._columnCount;
@@ -47,8 +47,8 @@ export class MDTable {
     static parse(source: string): MDTable {
         return parseMDTAble(source);
     }
-    stringify(): string {
-        return stringifyMDTable(this);
+    stringify(compact?: boolean, padding?: number): string {
+        return stringifyMDTable(this, compact, padding);
     }
     addRow(pos: number, count: number) {
         if (pos < 0) return;
@@ -98,8 +98,20 @@ export class MDTable {
                 let ws = this._data.map(
                     row => i > row.length - 1 ? 0 : row[i].length
                 );
-                let mx = Math.max(...ws);
-                return mx < 1 ? 1 : mx;
+                switch (this._aligns[i]) {
+                    case TableAlign.left:
+                    case TableAlign.right:
+                        ws.push(2);
+                        break;
+                    case TableAlign.center:
+                        ws.push(3);
+                        break;
+                    case TableAlign.auto:
+                    default:
+                        ws.push(1);
+                        break;
+                }
+                return Math.max(...ws);
             }
         );
     }
