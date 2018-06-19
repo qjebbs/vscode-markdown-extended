@@ -43,7 +43,7 @@ function getColumns(line: string): string[] {
 function testSepRow(row: string[]): boolean {
     return row.reduce((p, c) => {
         if (!p) return false;
-        return /:?-+:?/i.test(c);
+        return /^:?-+:?$/i.test(c.trim());
     }, true);
 }
 function parseAlins(row: string[]): TableAlign[] {
