@@ -24,6 +24,5 @@ export var plugins: markdowItPlugin[] = [
     { plugin: require('markdown-it-kbd') },
     { plugin: require('markdown-it-underline') },
     { plugin: require('markdown-it-deflist') },
-    { plugin: require('markdown-it-admonition') },
     { plugin: MarkdownItExportHelper }
 ]
