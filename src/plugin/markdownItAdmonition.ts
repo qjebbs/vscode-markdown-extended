@@ -84,18 +84,20 @@ function admonition(state, startLine, endLine, silent) {
     token.info = type;
     token.map = [startLine, startLine + 1];
 
-    // admonition title
-    token = state.push("admonition_title_open", "p", 1);
-    token.markup = markup + " " + type;
-    token.map = [startLine, startLine + 1];
+    if (title != '""') {
+        // admonition title
+        token = state.push("admonition_title_open", "p", 1);
+        token.markup = markup + " " + type;
+        token.map = [startLine, startLine + 1];
 
-    token = state.push("inline", "", 0);
-    token.content = title;
-    token.map = [startLine, startLine + 1];
-    token.children = [];
+        token = state.push("inline", "", 0);
+        token.content = title;
+        token.map = [startLine, startLine + 1];
+        token.children = [];
 
-    token = state.push("admonition_title_close", "p", -1);
-    token.markup = markup + " " + type;
+        token = state.push("admonition_title_close", "p", -1);
+        token.markup = markup + " " + type;
+    }
 
     // parse admonition body
     state.md.block.tokenize(state, startLine + 1, nextLine);
