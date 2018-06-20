@@ -30,7 +30,6 @@ function admonition(state, startLine, endLine, silent) {
     let max: number = state.eMarks[startLine];
     let marker: number = state.src.charCodeAt(pos);
     if (marker !== _marker) return false;
-    let haveEndMarker: boolean = false;
 
     // scan marker length
     let mem = pos;
@@ -40,14 +39,20 @@ function admonition(state, startLine, endLine, silent) {
 
     let markup: string = state.src.slice(mem, pos);
     let type = "", title = "";
-    let paramStr: string = state.src.slice(pos, max).trim()
-    let sepPos = paramStr.indexOf(' ');
-    type = paramStr.substring(0, sepPos);
-    title = paramStr.substring(sepPos + 1, paramStr.length);
+    let paramsr: string[] = state.src.slice(pos, max).trim().split(' ');
+    type = paramsr.shift().toLowerCase();
+    title = paramsr.join(' ');
     if (_types.indexOf(type) < 0) type = "note";
+    if (!title) title = type.substr(0, 1).toUpperCase() + type.substr(1, type.length - 1);
 
     // Since start is found, we can report success here in validation mode
     if (silent) return true;
+
+    let oldParent = state.parentType;
+    let oldLineMax = state.lineMax;
+    let oldIndent = state.blkIndent;
+
+    state.blkIndent += 4;
 
     // search end of block
     let nextLine = startLine;
@@ -67,33 +72,8 @@ function admonition(state, startLine, endLine, silent) {
             //  test
             break;
         }
-
-        if (state.src.charCodeAt(pos) !== _marker) { continue; }
-
-        if (state.sCount[nextLine] - state.blkIndent >= 4) {
-            // closing fence should be indented less than 4 spaces
-            continue;
-        }
-
-        pos = state.skipChars(pos, marker);
-
-        // closing code fence must be at least as long as the opening one
-        if (pos - mem < len) { continue; }
-
-        // make sure tail has spaces only
-        pos = state.skipSpaces(pos);
-
-        if (pos < max) { continue; }
-
-        haveEndMarker = true;
-        // found!
-        break;
     }
-    // // If a fence has heading spaces, they should be removed from its inner block
-    // len = state.sCount[startLine];
 
-    let oldParent = state.parentType;
-    let oldLineMax = state.lineMax;
     state.parentType = "admonition";
     // this will prevent lazy continuations from ever going past our end marker
     state.lineMax = nextLine;
@@ -131,6 +111,7 @@ function admonition(state, startLine, endLine, silent) {
 
     state.parentType = oldParent;
     state.lineMax = oldLineMax;
-    state.line = nextLine + (haveEndMarker ? 1 : 0);
+    state.line = nextLine;
+    state.blkIndent = oldIndent;
     return true;
 }
