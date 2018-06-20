@@ -3,6 +3,7 @@ import { MarkdownItTOC } from './markdownItTOC';
 import { MarkdownItContainer } from './markdownItContainer';
 import { MarkdownItAnchorLink } from './markdownItAnchorLink';
 import { MarkdownItExportHelper } from './markdownItExportHelper';
+import { MarkdownItAdmonition } from './markdownItAdmonition';
 
 interface markdowItPlugin {
     plugin: Function,
@@ -13,6 +14,7 @@ export var plugins: markdowItPlugin[] = [
     { plugin: MarkdownItTOC },
     { plugin: MarkdownItAnchorLink }, // MarkdownItAnchorLink requires MarkdownItTOC
     { plugin: MarkdownItContainer },
+    { plugin: MarkdownItAdmonition },
     { plugin: require('markdown-it-footnote') },
     { plugin: require('markdown-it-abbr') },
     { plugin: require('markdown-it-sup') },
