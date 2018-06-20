@@ -78,35 +78,31 @@ function admonition(state, startLine, endLine, silent) {
     // this will prevent lazy continuations from ever going past our end marker
     state.lineMax = nextLine;
 
-    let token = state.push('admonition', 'div', 0);
-    token.info = type;
-    token.content = state.getLines(startLine + 1, nextLine, len, true);
-    token.markup = markup;
-    token.map = [startLine, state.line];
-
-    token = state.push("admonition_open", "div", 1);
+    let token = state.push("admonition_open", "div", 1);
     token.markup = markup;
     token.block = true;
     token.info = type;
-    token.map = [startLine, nextLine];
+    token.map = [startLine, startLine + 1];
 
     // admonition title
     token = state.push("admonition_title_open", "p", 1);
     token.markup = markup + " " + type;
-    token.map = [startLine, nextLine];
+    token.map = [startLine, startLine + 1];
 
     token = state.push("inline", "", 0);
     token.content = title;
-    token.map = [startLine, state.line - 1];
+    token.map = [startLine, startLine + 1];
     token.children = [];
 
     token = state.push("admonition_title_close", "p", -1);
     token.markup = markup + " " + type;
 
+    // parse admonition body
     state.md.block.tokenize(state, startLine + 1, nextLine);
 
     token = state.push("admonition_close", "div", -1);
     token.markup = markup;
+    token.map = [startLine, nextLine];
     token.block = true;
 
     state.parentType = oldParent;
