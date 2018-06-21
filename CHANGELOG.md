@@ -1,6 +1,6 @@
 # Change Log
 
-## v0.9.0
+## v0.9.1
 
 - Improvement: new admonition implement, support nesting and more qualifiers.
 - Improvement: better padding and align of table fomatting
