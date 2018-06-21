@@ -1,6 +1,6 @@
 {
     "markdownExtended.exportCurrent": "导出到文件",
-    "markdownExtended.exportWorkspace": "导出 Markdwon 到文件",
+    "markdownExtended.exportWorkspace": "导出工作区 Markdwon 到文件",
     "markdownExtended.copy": "复制 HTML",
     "markdownExtended.copyWithStyle": "复制 HTML (含样式)",
     "markdownExtended.pasteAsTable": "粘贴为表格",
