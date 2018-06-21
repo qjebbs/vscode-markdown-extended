@@ -14,7 +14,7 @@ const
         "failure", "fail", "missing",  //rgba(255,82,82,.1) "\E14C"
         "danger", "error", "bug", //rgba(255,23,68,.1) "\E3E7""\E14C""\E868"
         "example", "snippet", //rgba(101,31,255,.1) "\E242"
-        "quote", "cite",   //hsla(0,0%,62%,.1) "\E244"
+        "quote", "cite",   //rgba(158, 158, 158, .1) "\E244"
     ];
 
 export function MarkdownItAdmonition(md: MarkdownIt) {
