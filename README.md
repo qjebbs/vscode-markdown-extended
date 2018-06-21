@@ -1,10 +1,12 @@
 # Markdown Extended Readme
 
-Markdown Extended is a extension that extend syntaxes and abilities to VSCode built-in markdown function, including lots of editing helpers and a `what you see is what you get exporter`, which means export files are consistent to what you see in markdown preview, even it contains syntaxes and styles contributed by other plugins.
+Markdown Extended is an extension extends syntaxes and abilities to VSCode built-in markdown function.
+
+Markdown Extended includes lots of editing helpers and a `what you see is what you get` exporter, which means export files are consistent to what you see in markdown preview, even it contains syntaxes and styles contributed by other plugins.
 
 ## Features
 
-- Exporter
+- Exporter ([View Detail](#Exporter))
 
     - Export to Self Contained HTML / PDF / PNG / JPEG
     - Export current document / workspace
@@ -17,9 +19,33 @@ Markdown Extended is a extension that extend syntaxes and abilities to VSCode bu
 
 - Extended Language Features ([View Detail](#extended-syntaxes)):
 
-    - Enhanced anchor link, table of contents, footnote, abbr, deflist, admonition, sup, sub, checkbox, attrs, kbd, underline.
+    - Admonition (built-in), [View Document](#admonition)
+    - Enhanced Anchor Link (built-in), [View Document](#enhanced-anchor-link)
+    - [markdown-it-table-of-contents](https://www.npmjs.com/package/markdown-it-table-of-contents)
+    - [markdown-it-footnote](https://www.npmjs.com/package/markdown-it-footnote)
+    - [markdown-it-abbr](https://www.npmjs.com/package/markdown-it-abbr)
+    - [markdown-it-deflist](https://www.npmjs.com/package/markdown-it-deflist)
+    - [markdown-it-sup](https://www.npmjs.com/package/markdown-it-sup)
+    - [markdown-it-sub](https://www.npmjs.com/package/markdown-it-sub)
+    - [markdown-it-checkbox](https://www.npmjs.com/package/markdown-it-checkbox)
+    - [markdown-it-attrs](https://www.npmjs.com/package/markdown-it-attrs)
+    - [markdown-it-kbd](https://www.npmjs.com/package/markdown-it-kbd)
+    - [markdown-it-underline](https://www.npmjs.com/package/markdown-it-underline)
 
-## Export Configurations
+    > Post an issue on [GitHub][issues] if you want other plugins.
+
+## Exporter
+
+Find in command palette, or right click on an editor / workspace folder, and execute:
+
+- `Markdown: Export to File`
+- `Markdown: Export Workspace Markdwon to File`
+
+The export files are organized in `out` directory in the root of workspace folder by default.
+
+
+
+### Export Configurations
 
 You can configure exporting for multiple documents with user settings.
 
@@ -47,7 +73,7 @@ See all available settings for
 [puppeteer.pdf](https://github.com/GoogleChrome/puppeteer/blob/v1.4.0/docs/api.md#pagepdfoptions), and
 [puppeteer.image](https://github.com/GoogleChrome/puppeteer/blob/v1.4.0/docs/api.md#pagescreenshotoptions)
 
-## Demos
+## Helpers
 
 ### Table Editing
 
@@ -65,7 +91,7 @@ Copy a table from Excel, Web and other applications which support the format of 
 
 ![command](./images/command-demo.png)
 
-## Editing Helpers and Keys
+### Editing Helpers and Keys
 
 > Inspired by 
 [joshbax.mdhelper](https://marketplace.visualstudio.com/items?itemName=joshbax.mdhelper),
@@ -100,20 +126,32 @@ but totally new implements.
 
 ## Extended Syntaxes
 
-- Enhanced Anchor Link
-- [markdown-it-table-of-contents](https://www.npmjs.com/package/markdown-it-table-of-contents)
-- [markdown-it-footnote](https://www.npmjs.com/package/markdown-it-footnote)
-- [markdown-it-abbr](https://www.npmjs.com/package/markdown-it-abbr)
-- [markdown-it-deflist](https://www.npmjs.com/package/markdown-it-deflist)
-- [markdown-it-admonition](https://www.npmjs.com/package/markdown-it-admonition)
-- [markdown-it-sup](https://www.npmjs.com/package/markdown-it-sup)
-- [markdown-it-sub](https://www.npmjs.com/package/markdown-it-sub)
-- [markdown-it-checkbox](https://www.npmjs.com/package/markdown-it-checkbox)
-- [markdown-it-attrs](https://www.npmjs.com/package/markdown-it-attrs)
-- [markdown-it-kbd](https://www.npmjs.com/package/markdown-it-kbd)
-- [markdown-it-underline](https://www.npmjs.com/package/markdown-it-underline)
+### Admonition
 
-> Post an issue on [GitHub][issues] if you want other plugins.
+Nesting supported (by indent) admonition, the following shows a danger admonition nested by a note admonition.
+
+```markdown
+!!! note
+
+    This is the **note** admonition body
+
+    !!! danger Danger Title
+        This is the **danger** admonition body
+```
+![admonition-demo](images/admonition-demo.png)
+
+#### Removing Admonition Title
+
+```markdown
+!!! danger ""
+    This is the danger admonition body
+```
+![admonition-demo](images/admonition-demo2.png)
+
+#### Supported Qualifiers
+
+`note` | `summary, abstract, tldr` | `info, todo` | `tip, hint` | `success, check, done` | `question, help, faq` | `warning, attention, caution` | `failure, fail, missing` | `danger, error, bug` | `example, snippet` | `quote, cite`
+
 
 ### Enhanced Anchor Link
 
@@ -171,24 +209,6 @@ is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
 <dt>Apple</dt>
 <dd>Pomaceous fruit of plants of the genus Malus in the family Rosaceae.</dd>
 </dl>
-
-### markdown-it-admonition
-
-    !!! note
-    This is the admonition body
-    ```css
-    /* code block inside admonition */
-    .admonition>.admonition-title {
-    margin: 0 -1.2rem;
-    padding: .8rem 1.2rem .8rem 3.6rem;
-    border-bottom: .1rem solid rgba(68, 138, 255, .1);
-    background-color: rgba(68, 138, 255, .1);
-    font-weight: 700;
-    }
-    ```
-    !!!
-
-![admonition-demo](images/admonition-demo.png)
 
 ### markdown-it-sup markdown-it-sub
 
