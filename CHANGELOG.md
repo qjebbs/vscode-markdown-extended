@@ -1,5 +1,12 @@
 # Change Log
 
+## v0.9.0
+
+- Improvement: new admonition implement, support nesting and more qualifiers.
+- Improvement: better padding and align of table fomatting
+- Fix: paste as table problem if "-" in the second row
+- Improvement: update exportWorkspace command title
+
 ## v0.8.1
 
 - Fix: Wait for external resources before export to pdf/png/jpg, resolve [#14](https://github.com/qjebbs/vscode-markdown-extended/issues/14)
