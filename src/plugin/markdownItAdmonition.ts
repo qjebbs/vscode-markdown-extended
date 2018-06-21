@@ -3,7 +3,19 @@ import { MarkdownIt, Token, Renderer } from 'markdown-it';
 const
     _marker = 33 /* '!' */,
     _minMarkerLen = 3,
-    _types = ["note", "hint", "attention", "caution", "danger", "error"];
+    _types = [
+        "note",  //rgba(68,138,255,.1) "\E3C9"
+        "summary", "abstract", "tldr",  //rgba(0,176,255,.1) "\E8D2"
+        "info", "todo",   //rgba(0,184,212,.1) "\E88E"
+        "tip", "hint",   //rgba(0,191,165,.1) "\E80E"
+        "success", "check", "done",  //rgba(0,200,83,.1) "\E876"
+        "question", "help", "faq",  //rgba(100,221,23,.1) "\E887"
+        "warning", "attention", "caution", //rgba(255,145,0,.1) "\E002""\E417"
+        "failure", "fail", "missing",  //rgba(255,82,82,.1) "\E14C"
+        "danger", "error", "bug", //rgba(255,23,68,.1) "\E3E7""\E14C""\E868"
+        "example", "snippet", //rgba(101,31,255,.1) "\E242"
+        "quote", "cite",   //hsla(0,0%,62%,.1) "\E244"
+    ];
 
 export function MarkdownItAdmonition(md: MarkdownIt) {
     md.block.ruler.after("fence", "admonition", admonition, {});
