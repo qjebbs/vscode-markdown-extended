@@ -1,5 +1,9 @@
 # Change Log
 
+## v0.9.2
+
+- Improvement: configurable toc level, solve [#18](https://github.com/qjebbs/vscode-markdown-extended/issues/18)
+
 ## v0.9.1
 
 - Improvement: new admonition implement, support nesting and more qualifiers.
