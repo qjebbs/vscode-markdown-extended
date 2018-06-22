@@ -415,6 +415,11 @@
           "type": "boolean",
           "default": false,
           "description": "%markdownExtended.configuration.imageOmitBackground%"
+        },
+        "markdownExtended.tocLevels": {
+          "type": "array",
+          "default": [1,2,3],
+          "description": "%markdownExtended.configuration.tocLevels%"
         }
       }
     },

@@ -1,11 +1,12 @@
 import { MarkdownIt, Token } from 'markdown-it';
 import * as toc from 'markdown-it-table-of-contents';
 import { slugify } from './shared';
+import { config } from '../services/common/config';
 
 export function MarkdownItTOC(md: MarkdownIt) {
     md.renderer.rules.tocAnchor = renderHtml;
     md.core.ruler.push("tocAnchor", tocAnchorWorker);
-    md.use(toc, { slugify: slugify, includeLevel: [1, 2, 3] });
+    md.use(toc, { slugify: slugify, includeLevel: config.tocLevels });
 }
 
 function renderHtml(tokens: Token[], idx: number) {

@@ -8,6 +8,13 @@ class Config extends ConfigReader {
     }
 
     onChange() { }
+    get tocLevels(): Number[] {
+        let conf = this.read<Number[]>('tocLevels');
+        if (!(conf instanceof Array)) conf = [];
+        if (conf.length) conf = conf.filter(c => typeof c == "number");
+        if (!conf.length) return [1, 2, 3];
+        return conf;
+    }
     get exportOutDirName(): string {
         return this.read<string>('exportOutDirName');
     }
