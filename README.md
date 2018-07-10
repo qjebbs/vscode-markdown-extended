@@ -128,6 +128,8 @@ but totally new implements.
 
 ### Admonition
 
+> Inspired by [MkDocs](https://squidfunk.github.io/mkdocs-material/extensions/admonition/)
+
 Nesting supported (by indent) admonition, the following shows a danger admonition nested by a note admonition.
 
 ```markdown
