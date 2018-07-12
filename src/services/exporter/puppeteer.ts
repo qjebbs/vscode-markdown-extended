@@ -31,15 +31,15 @@ class PuppeteerExporter implements MarkdownExporter {
         return items.reduce((p, c, i) => {
             return p
                 .then(
-                    () => this.exportFile(c, page)
-                )
-                .then(
                     () => {
                         if (progress) progress.report({
                             message: `${path.basename(c.fileName)} (${i + 1}/${count})`,
                             increment: ~~(1 / count * 100)
                         });
                     }
+                )
+                .then(
+                    () => this.exportFile(c, page)
                 );
         }, Promise.resolve(null)).then(async () => await browser.close());
 

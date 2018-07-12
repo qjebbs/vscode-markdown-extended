@@ -12,9 +12,6 @@ class HtmlExporter implements MarkdownExporter {
         return items.reduce((p, c, i) => {
             return p
                 .then(
-                    () => this.exportFile(c)
-                )
-                .then(
                     () => {
                         if (progress) progress.report({
                             message: `${path.basename(c.fileName)} (${i + 1}/${count})`,
@@ -22,6 +19,9 @@ class HtmlExporter implements MarkdownExporter {
                                 * 100)
                         });
                     }
+                )
+                .then(
+                    () => this.exportFile(c)
                 );
         }, Promise.resolve(null));
     }
