@@ -5,6 +5,7 @@ import * as vscode from 'vscode';
 import { testMarkdown } from '../services/exporter/shared';
 import { exportOption } from "../services/exporter/interfaces";
 import { MarkdownExport } from "../services/exporter/export";
+import { showExportReport } from "../services/common/tools";
 
 export class CommandExportWorkSpace extends Command {
     async execute(uri) {
@@ -17,7 +18,7 @@ export class CommandExportWorkSpace extends Command {
         return vscode.window.withProgress(
             <vscode.ProgressOptions>{
                 location: vscode.ProgressLocation.Notification,
-                title: `Exporting to ${format}...`
+                title: `Exporting`
             },
             progress => MarkdownExport(
                 uri,
@@ -27,7 +28,7 @@ export class CommandExportWorkSpace extends Command {
                     format: format
                 }
             )
-        );
+        ).then(report => showExportReport(report));
     }
     constructor() {
         super("markdownExtended.exportWorkspace");

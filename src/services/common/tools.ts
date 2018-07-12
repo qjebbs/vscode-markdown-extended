@@ -3,6 +3,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { outputPanel } from '../../extension';
 import { config } from './config';
+import { ExportRport } from '../exporter/interfaces';
 
 export function calculateExportPath(uri: vscode.Uri, format: string): string {
     let outDirName = config.exportOutDirName;
@@ -76,4 +77,14 @@ export function mergeSettings(...args: any[]) {
     return args.reduce((p, c) => {
         return Object.assign(p, c);
     }, {});
+}
+
+export async function showExportReport(report: ExportRport) {
+    let msg=`${report.files.length} file(s) exported.`;
+    let viewReport="View Report";
+    let btn = await vscode.window.showInformationMessage(msg, viewReport);
+    if (btn !== viewReport) return;
+    let rpt=`${report.files.length} files exported in ${report.duration/1000} seconds:\n`;
+    rpt+=report.files.join('\n');
+    showMessagePanel(rpt);
 }

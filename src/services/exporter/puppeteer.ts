@@ -36,7 +36,7 @@ class PuppeteerExporter implements MarkdownExporter {
                 .then(
                     () => {
                         if (progress) progress.report({
-                            message: `Exporting ${path.basename(c.fileName)} (${i + 1}/${count})`,
+                            message: `${path.basename(c.fileName)} (${i + 1}/${count})`,
                             increment: ~~(1 / count * 100)
                         });
                     }

@@ -38,3 +38,8 @@ export interface exportOption {
     progress: Progress,
     format: exportFormat
 }
+
+export interface ExportRport {
+    duration: number,
+    files: string[],
+}
