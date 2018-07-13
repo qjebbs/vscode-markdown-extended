@@ -1,5 +1,11 @@
 # Change Log
 
+## v0.9.3
+
+- Improvement: Add export report.
+- Improvement: Message & titles optimize.
+- Improvement: Code optimize.
+
 ## v0.9.2
 
 - Improvement: configurable toc level, solve [#18](https://github.com/qjebbs/vscode-markdown-extended/issues/18)
