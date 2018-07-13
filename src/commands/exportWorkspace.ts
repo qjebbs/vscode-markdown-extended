@@ -18,7 +18,7 @@ export class CommandExportWorkSpace extends Command {
         return vscode.window.withProgress(
             <vscode.ProgressOptions>{
                 location: vscode.ProgressLocation.Notification,
-                title: `Exporting`
+                title: `Markdown Export`
             },
             progress => MarkdownExport(
                 uri,

@@ -25,6 +25,7 @@ class PuppeteerExporter implements MarkdownExporter {
         let opt = exec ? <puppeteer.LaunchOptions>{
             executablePath: exec
         } : undefined;
+        progress.report({ message: "Initializing..." });
         const browser = await puppeteer.launch(opt);
         const page = await browser.newPage();
 
