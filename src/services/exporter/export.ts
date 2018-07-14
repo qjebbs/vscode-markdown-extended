@@ -27,6 +27,8 @@ export async function MarkdownExport(arg: vscode.Uri | vscode.Uri[], option: exp
 async function getFileList(arg?: vscode.Uri | vscode.Uri[]): Promise<vscode.Uri[]> {
     let _files: vscode.Uri[] = [];
 
+    if (arg && arg instanceof vscode.Uri && arg.scheme == "file") return [arg];
+
     if (!vscode.workspace.workspaceFolders) { return []; }
 
     if (!arg) {
