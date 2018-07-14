@@ -1,5 +1,9 @@
 # Change Log
 
+## v0.9.4
+
+- Fix: export non-workfolder file, solve [#19](https://github.com/qjebbs/vscode-markdown-extended/issues/19)
+
 ## v0.9.3
 
 - Improvement: Add export report.
