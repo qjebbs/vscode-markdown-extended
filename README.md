@@ -39,7 +39,7 @@ Markdown Extended includes lots of editing helpers and a `what you see is what y
 Find in command palette, or right click on an editor / workspace folder, and execute:
 
 - `Markdown: Export to File`
-- `Markdown: Export Markdwon to File`
+- `Markdown: Export Markdown to File`
 
 The export files are organized in `out` directory in the root of workspace folder by default.
 
