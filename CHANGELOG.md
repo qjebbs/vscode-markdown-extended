@@ -1,5 +1,9 @@
 # Change Log
 
+## v0.9.5
+
+- Fix: Correct title spelling of markdown
+
 ## v0.9.4
 
 - Fix: export non-workfolder file, solve [#19](https://github.com/qjebbs/vscode-markdown-extended/issues/19)
