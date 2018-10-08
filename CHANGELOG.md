@@ -1,5 +1,9 @@
 # Change Log
 
+## v0.9.6
+
+- Improvement: Improve format table with CJK characters, solve [#22](https://github.com/qjebbs/vscode-markdown-extended/issues/22)
+
 ## v0.9.5
 
 - Fix: Correct title spelling of markdown
