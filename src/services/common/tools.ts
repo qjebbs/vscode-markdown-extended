@@ -87,3 +87,14 @@ export async function showExportReport(report: ExportRport) {
     let rpt = `${msg}:\n\n` + report.files.join('\n');
     showMessagePanel(rpt);
 }
+
+/**
+ * Calculate the Monospace Length of a string, takes CJK character as length of 2
+ * @param text text to calculate
+ */
+export function MonoSpaceLength(text: string): number {
+    // https://zhuanlan.zhihu.com/p/33335629
+    const CJKVReg = /[\u3006\u3007\u3021-\u3029\u3038-\u303A\u3400-\u4DB5\u4E00-\u9FEA\uF900-\uFA6D\uFA70-\uFAD9\u{17000}-\u{187EC}\u{18800}-\u{18AF2}\u{1B170}-\u{1B2FB}\u{20000}-\u{2A6D6}\u{2A700}-\u{2B734}\u{2B740}-\u{2B81D}\u{2B820}-\u{2CEA1}\u{2CEB0}-\u{2EBE0}\u{2F800}-\u{2FA1D}]+/ug;
+    return text.length * 2 - text.replace(CJKVReg, '').length;
+
+}

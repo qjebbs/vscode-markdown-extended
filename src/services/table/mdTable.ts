@@ -1,5 +1,6 @@
 import { parseMDTAble } from "./mdTableParse";
 import { stringifyMDTable } from "./mdTableStringify";
+import { MonoSpaceLength } from "../common/tools";
 
 export enum TableAlign {
     auto,
@@ -96,7 +97,9 @@ export class MDTable {
         return [...Array(this._data[0].length).keys()].map(
             i => {
                 let ws = this._data.map(
-                    row => i > row.length - 1 ? 0 : row[i].length
+                    row => {
+                        return i > row.length - 1 ? 0 : MonoSpaceLength(row[i]);
+                    }
                 );
                 switch (this._aligns[i]) {
                     case TableAlign.left:

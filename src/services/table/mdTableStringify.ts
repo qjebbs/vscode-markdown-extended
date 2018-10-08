@@ -1,4 +1,5 @@
 import { MDTable, TableAlign } from "./mdTable";
+import { MonoSpaceLength } from "../common/tools";
 export function stringifyMDTable(table: MDTable, compact?: boolean, padding?: number): string {
     padding = padding || 1;
     let rows = table.data.map(row => stringifyRow(row, table.columnWidths, table.aligns, compact, padding));
@@ -43,19 +44,19 @@ function formatCell(cell: string, width: number, align: TableAlign, padding: num
     let rightPadding = padding;
     switch (align) {
         case TableAlign.center:
-            leftPadding += ~~((width - cell.length) / 2);
-            rightPadding += ~~((width - cell.length) / 2);
-            if (leftPadding + rightPadding != width - cell.length + padding * 2) rightPadding += 1;
+            leftPadding += ~~((width - MonoSpaceLength(cell)) / 2);
+            rightPadding += ~~((width - MonoSpaceLength(cell)) / 2);
+            if (leftPadding + rightPadding != width - MonoSpaceLength(cell) + padding * 2) rightPadding += 1;
             break;
         case TableAlign.left:
-            rightPadding += (width - cell.length);
+            rightPadding += (width - MonoSpaceLength(cell));
             break;
         case TableAlign.right:
-            leftPadding += (width - cell.length);
+            leftPadding += (width - MonoSpaceLength(cell));
             break;
         case TableAlign.auto:
         default:
-            rightPadding += (width - cell.length);
+            rightPadding += (width - MonoSpaceLength(cell));
             break;
     }
     return addPadding(cell.trim(), leftPadding, rightPadding);
