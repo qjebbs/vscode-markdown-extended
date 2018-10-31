@@ -5,12 +5,12 @@ export var template=
 <meta charset="UTF-8">
 <title>\${title}</title>
 \${styles}
-\${scripts}
 </head>
 <body>
-    <article class="markdown-body \${mdClass}">
-        \${html}
-    </article>
+<article class="markdown-body \${mdClass}">
+    \${html}
+</article>
+\${scripts}
 </body>
 </html>
 \``;
