@@ -4,7 +4,7 @@ import { markdown } from '../../extension';
 import { mdConfig } from '../common/mdConfig';
 import { MarkdownDocument } from '../common/markdownDocument';
 import { template } from './template';
-import { MDContributes } from '../common/contributes';
+import { MDContributes, createContributeItem } from '../common/contributes';
 import { MarkdownItEnv } from '../common/interfaces';
 import { exportFormat } from './interfaces';
 
@@ -89,19 +89,19 @@ export function testMarkdown(): boolean {
 function getInjectStyle(formate: exportFormat): string {
     switch (formate) {
         case exportFormat.PDF:
-            return `/* injected by phantomExport */
-            body, .vscode-body {
-                max-width: 100% !important;
-                width: 1000px !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }`;
+            return createContributeItem(
+                `body, .vscode-body {
+    max-width: 100% !important;
+    width: 1000px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}`, true, "injected by exporter");
         case exportFormat.JPG:
         case exportFormat.PNG:
-            return `/* injected by phantomExport */
-            body, .vscode-body {
-                width: 1000px !important;
-            }`;
+            return createContributeItem(
+                `body, .vscode-body {
+    width: 1000px !important;
+}`, true, "injected by exporter");
         default:
             return "";
     }
