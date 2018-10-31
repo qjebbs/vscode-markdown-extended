@@ -3,6 +3,7 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
 import { context } from "../../extension";
+import { readContributeFile } from "./contributes";
 
 interface MarkdownStyles {
     embedded: string[];
@@ -33,12 +34,8 @@ class MDConfig extends ConfigReader {
             if (ISURL.test(stl)) {
                 styles.linked.push(`<link rel="stylesheet" href="${stl}">`);
             } else {
-                if (fs.existsSync(stl)) {
-                    style = `/* ${path.basename(stl)} */\n${fs.readFileSync(stl)}`;
-                } else {
-                    style = `/* cannot found ${stl} */`;
-                }
-                styles.embedded.push(style);
+                let result = readContributeFile(stl, true);
+                if (result) styles.embedded.push(result);
             }
         });
         return styles;

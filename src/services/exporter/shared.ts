@@ -4,7 +4,7 @@ import { markdown } from '../../extension';
 import { mdConfig } from '../common/mdConfig';
 import { MarkdownDocument } from '../common/markdownDocument';
 import { template } from './template';
-import { contributeStyles } from '../common/styles';
+import { MDContributes } from '../common/contributes';
 import { MarkdownItEnv } from '../common/interfaces';
 import { exportFormat } from './interfaces';
 
@@ -22,6 +22,7 @@ export function renderHTML(document, withStyle: boolean, arg: any) {
 
     let title = path.basename(doc.document.uri.fsPath);
     let styles = withStyle ? getStyle(doc.document.uri, injectStyle) : "";
+    let scripts = withStyle ? `${MDContributes.thirdPartyScripts()}` : "";
     let html = getHTML(doc);
     //should put both classes, because we cannot determine if a user style URL is a theme or not
     let mdClass = "vscode-body vscode-light";
@@ -56,17 +57,17 @@ function getStyle(uri: vscode.Uri, injectStyle?: string): string {
     let styles: string[] = [];
 
     let conf = mdConfig.styles(uri);
-    let contributed = contributeStyles.official();
-    contributed += '\n' + contributeStyles.thirdParty();
-    let features = contributeStyles.features();
-    let user = conf.embedded.join('\n').trim();
+    let contributed = MDContributes.officialStyles();
+    contributed += '\n' + MDContributes.thirdPartyStyles();
+    let features = MDContributes.featureStyles();
+    let user = conf.embedded.concat(conf.linked).join('\n').trim();
 
     if (injectStyle) styles.push(injectStyle);
-    if (user) styles.push(`/* === user styles start === */\n${user}\n/* === user styles end === */`);
-    if (contributed) styles.push(`/* === theming start === */\n${contributed}\n/* === theming end === */`);
-    if (features) styles.push(`/* === features start === */\n${features}\n/* === features end === */`);
+    if (contributed) styles.push(`<!-- theming start -->\n${contributed}\n<!-- theming end -->`);
+    if (features) styles.push(`<!-- features start -->\n${features}\n<!-- features end -->`);
+    if (user) styles.push(`<!-- user styles start -->\n${user}\n<!-- user styles end -->`);
 
-    return `${conf.linked.join('\n')}\n<style>\n${styles.join('\n').trim()}\n</style>`;
+    return styles.join('\n').trim();
 }
 
 export function testMarkdown(): boolean {
