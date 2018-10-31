@@ -1,6 +1,6 @@
 # Change Log
 
-## v1.0.0
+## v1.0.1 (v1.0.0)
 
 - New Feature: export with contribute scripts embedded, solve [#23](https://github.com/qjebbs/vscode-markdown-extended/issues/23).
 
