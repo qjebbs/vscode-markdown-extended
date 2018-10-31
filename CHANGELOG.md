@@ -1,5 +1,11 @@
 # Change Log
 
+## v1.0.0
+
+- New Feature: export with contribute scripts embedded, solve [#23](https://github.com/qjebbs/vscode-markdown-extended/issues/23).
+
+Export files with content which requires extra scripts (e.g. mermaid), now works as expected.
+
 ## v0.9.6
 
 - Improvement: Improve format table with CJK characters, solve [#22](https://github.com/qjebbs/vscode-markdown-extended/issues/22)
