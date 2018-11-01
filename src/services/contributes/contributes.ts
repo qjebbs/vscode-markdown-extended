@@ -12,7 +12,7 @@ export namespace Contributes {
                 .join("\n").trim();
         }
         export function thirdParty() {
-            return Contributors.getStyles(c => c.type === Contributors.Type.thirdParty)
+            return Contributors.getStyles(c => c.type !== Contributors.Type.official)
                 .join("\n").trim();
         }
     }
@@ -26,7 +26,7 @@ export namespace Contributes {
                 .join("\n").trim();
         }
         export function thirdParty() {
-            return Contributors.getScripts(c => c.type === Contributors.Type.thirdParty)
+            return Contributors.getScripts(c => c.type !== Contributors.Type.official)
                 .join("\n").trim();
         }
     }
