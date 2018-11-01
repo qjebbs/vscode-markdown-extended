@@ -47,7 +47,8 @@ class PuppeteerExporter implements MarkdownExporter {
     }
     private async exportFile(item: ExportItem, page: puppeteer.Page) {
         let document = new MarkdownDocument(await vscode.workspace.openTextDocument(item.uri));
-        let html = renderHTML(document, true, item.format);
+        let inject = getInjectStyle(item.format);
+        let html = renderHTML(document, true, inject);
         let ptConf: any = {};
         mkdirsSync(path.dirname(item.fileName));
 
@@ -108,3 +109,22 @@ class PuppeteerExporter implements MarkdownExporter {
     }
 }
 export const puppeteerExporter = new PuppeteerExporter();
+
+function getInjectStyle(formate: exportFormat): string {
+    switch (formate) {
+        case exportFormat.PDF:
+            return `body, .vscode-body {
+                max-width: 100% !important;
+                width: 1000px !important;
+                margin: 0!important;
+                padding: 0!important;
+            }`;
+        case exportFormat.JPG:
+        case exportFormat.PNG:
+            return `body, .vscode-body {
+                width: 1000px !important;
+            }`
+        default:
+            return "";
+    }
+}

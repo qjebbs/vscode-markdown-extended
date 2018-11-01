@@ -28,7 +28,7 @@ class HtmlExporter implements MarkdownExporter {
     private async exportFile(item: ExportItem) {
 
         let document = await vscode.workspace.openTextDocument(item.uri);
-        let html = renderHTML(document, true, item.format);
+        let html = renderHTML(document, true);
         mkdirsSync(path.dirname(item.fileName));
         return new Promise((resolve, reject) => {
             try {

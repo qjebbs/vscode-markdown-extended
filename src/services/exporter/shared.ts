@@ -6,14 +6,10 @@ import { MarkdownDocument } from '../common/markdownDocument';
 import { template } from './template';
 import { MDContributes, createContributeItem } from '../common/contributes';
 import { MarkdownItEnv } from '../common/interfaces';
-import { exportFormat } from './interfaces';
 
-export function renderHTML(document: MarkdownDocument, withStyle: boolean, format?: exportFormat): string
-export function renderHTML(document: vscode.TextDocument, withStyle: boolean, format?: exportFormat): string
 export function renderHTML(document: MarkdownDocument, withStyle: boolean, injectStyle?: string): string
 export function renderHTML(document: vscode.TextDocument, withStyle: boolean, injectStyle?: string): string
-export function renderHTML(document, withStyle: boolean, arg: any) {
-    let injectStyle = arg ? arg.indexOf('}') > -1 ? arg : getInjectStyle(arg) : "";
+export function renderHTML(document, withStyle: boolean, injectStyle: string) {
     let doc: MarkdownDocument = undefined;
     if (document instanceof MarkdownDocument)
         doc = document;
@@ -62,7 +58,7 @@ function getStyle(uri: vscode.Uri, injectStyle?: string): string {
     let features = MDContributes.featureStyles();
     let user = conf.embedded.concat(conf.linked).join('\n').trim();
 
-    if (injectStyle) styles.push(injectStyle);
+    if (injectStyle) styles.push(createContributeItem(injectStyle, true, "injected by exporter"));
     if (contributed) styles.push(`<!-- theming start -->\n${contributed}\n<!-- theming end -->`);
     if (features) styles.push(`<!-- features start -->\n${features}\n<!-- features end -->`);
     if (user) styles.push(`<!-- user styles start -->\n${user}\n<!-- user styles end -->`);
@@ -84,25 +80,4 @@ export function testMarkdown(): boolean {
         return false;
     }
     return true;
-}
-
-function getInjectStyle(formate: exportFormat): string {
-    switch (formate) {
-        case exportFormat.PDF:
-            return createContributeItem(
-                `body, .vscode-body {
-    max-width: 100% !important;
-    width: 1000px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}`, true, "injected by exporter");
-        case exportFormat.JPG:
-        case exportFormat.PNG:
-            return createContributeItem(
-                `body, .vscode-body {
-    width: 1000px !important;
-}`, true, "injected by exporter");
-        default:
-            return "";
-    }
 }
