@@ -3,7 +3,7 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
 import { context } from "../../extension";
-import { readContributeFile } from "./contributes";
+import { readContributeFile } from "../contributes/tools";
 
 interface MarkdownStyles {
     embedded: string[];

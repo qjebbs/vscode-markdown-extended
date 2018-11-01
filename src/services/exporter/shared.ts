@@ -4,7 +4,7 @@ import { markdown } from '../../extension';
 import { mdConfig } from '../common/mdConfig';
 import { MarkdownDocument } from '../common/markdownDocument';
 import { template } from './template';
-import { MDContributes, createContributeItem } from '../common/contributes';
+import { Contributes } from '../contributes/contributes';
 import { MarkdownItEnv } from '../common/interfaces';
 
 export function renderHTML(document: MarkdownDocument, withStyle: boolean, injectStyle?: string): string
@@ -17,8 +17,8 @@ export function renderHTML(document, withStyle: boolean, injectStyle: string) {
         doc = new MarkdownDocument(document);
 
     let title = path.basename(doc.document.uri.fsPath);
-    let styles = withStyle ? getStyle(doc.document.uri, injectStyle) : "";
-    let scripts = withStyle ? `${MDContributes.thirdPartyScripts()}` : "";
+    let styles = withStyle ? getStyles(doc.document.uri, injectStyle) : "";
+    let scripts = withStyle ? getSciprts() : "";
     let html = getHTML(doc);
     //should put both classes, because we cannot determine if a user style URL is a theme or not
     let mdClass = "vscode-body vscode-light";
@@ -49,21 +49,57 @@ function getVsUri(uri: vscode.Uri): string {
     return "vscode-resource:" + encodeURI(p.replace(/[\\/]+/g, '/'));
 }
 
-function getStyle(uri: vscode.Uri, injectStyle?: string): string {
+function getStyles(uri: vscode.Uri, injectStyle?: string): string {
     let styles: string[] = [];
 
+    let official = Contributes.Styles.official();
+    let thirdParty = Contributes.Styles.thirdParty();
     let conf = mdConfig.styles(uri);
-    let contributed = MDContributes.officialStyles();
-    contributed += '\n' + MDContributes.thirdPartyStyles();
-    let features = MDContributes.featureStyles();
     let user = conf.embedded.concat(conf.linked).join('\n').trim();
 
-    if (injectStyle) styles.push(createContributeItem(injectStyle, true, "injected by exporter"));
-    if (contributed) styles.push(`<!-- theming start -->\n${contributed}\n<!-- theming end -->`);
-    if (features) styles.push(`<!-- features start -->\n${features}\n<!-- features end -->`);
-    if (user) styles.push(`<!-- user styles start -->\n${user}\n<!-- user styles end -->`);
-
+    if (injectStyle) {
+        styles.push("");
+        styles.push(Contributes.createStyle(injectStyle, "injected by exporter"));
+    }
+    if (official) {
+        styles.push("");
+        styles.push("<!-- official styles start -->");
+        styles.push(official);
+        styles.push("<!-- official styles end -->");
+    }
+    if (thirdParty) {
+        styles.push("");
+        styles.push("<!-- third party styles start -->");
+        styles.push(thirdParty);
+        styles.push("<!-- third party styles end -->");
+    }
+    if (user) {
+        styles.push("");
+        styles.push("<!-- user styles start -->");
+        styles.push(user);
+        styles.push("<!-- user styles end -->");
+    }
     return styles.join('\n').trim();
+}
+function getSciprts(): string {
+    let scripts: string[] = [];
+
+    // let official = Contributes.Scripts.official();
+    let thirdParty = Contributes.Scripts.thirdParty();
+
+    // if (official) {
+    //     scripts.push("");
+    //     scripts.push("<!-- official scripts start -->");
+    //     scripts.push(official);
+    //     scripts.push("<!-- official scripts end -->");
+    // }
+    if (thirdParty) {
+        scripts.push("");
+        scripts.push("<!-- third party scripts start -->");
+        scripts.push(thirdParty);
+        scripts.push("<!-- third party scripts end -->");
+    }
+    return scripts.join('\n').trim();
 }
 
 export function testMarkdown(): boolean {
