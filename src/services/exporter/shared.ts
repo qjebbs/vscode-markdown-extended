@@ -1,7 +1,6 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 import { markdown } from '../../extension';
-import { mdConfig } from '../common/mdConfig';
 import { MarkdownDocument } from '../common/markdownDocument';
 import { template } from './template';
 import { Contributes } from '../contributes/contributes';
@@ -54,8 +53,7 @@ function getStyles(uri: vscode.Uri, injectStyle?: string): string {
 
     let official = Contributes.Styles.official();
     let thirdParty = Contributes.Styles.thirdParty();
-    let conf = mdConfig.styles(uri);
-    let user = conf.embedded.concat(conf.linked).join('\n').trim();
+    let user = Contributes.Styles.user(uri);
 
     if (injectStyle) {
         styles.push("");
