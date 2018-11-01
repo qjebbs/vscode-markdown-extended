@@ -8,7 +8,6 @@ export namespace Contributors {
     export interface Contributor {
         extension: vscode.Extension<any>,
         type: Type,
-        catagory: Catagory,
         styles: string[],
         scripts: string[],
     }
@@ -17,15 +16,10 @@ export namespace Contributors {
         official,
         thirdParty,
     }
-    export enum Catagory {
-        none,
-        theme,
-        feature,
-    }
 
     const all = vscode.extensions.all
         .map(e => getContributor(e))
-        .filter(c => c.catagory !== Contributors.Catagory.none);
+        .filter(c => c && (c.styles.length + c.scripts.length));
 
     export function getStyles(filter?: ((contributor: Contributor) => boolean)): string[] {
         return getFiles(all, filter, true).map(file => readContributeFile(file, true));
@@ -35,45 +29,32 @@ export namespace Contributors {
     }
 
     function getContributor(ext: vscode.Extension<any>): Contributor {
-        let info = <Contributor>{
+        if (!ext || !ext.packageJSON || !ext.packageJSON.contributes)
+            return undefined;
+        return <Contributor>{
             extension: ext,
-            type: getType(ext),
-            catagory: Catagory.none,
-            styles: [],
-            scripts: [],
+            type: getContributorType(ext),
+            styles: getContributeFiles(ext, "markdown.previewStyles"),
+            scripts: getContributeFiles(ext, "markdown.previewScripts"),
         };
-        if (!ext || !ext.packageJSON || !ext.packageJSON.contributes) return info;
-
-        const isThemeReg = /.vscode-(body|light|dark|high-contrast)/i;
-        let files: string[] = ext.packageJSON.contributes["markdown.previewStyles"];
-        if (files && files.length) {
-            let isTheme = false;
-            files.forEach(file => {
-                file = path.join(ext.extensionPath, file);
-                if (!fs.existsSync(file)) return;
-                isTheme = isTheme || isThemeReg.test(fs.readFileSync(file).toString());
-                info.styles.push(file);
-            });
-            info.catagory = isTheme ? Catagory.theme : Catagory.feature;
-        } else {
-            info.catagory = Catagory.none;
-        }
-
-        files = ext.packageJSON.contributes["markdown.previewScripts"];
-        if (files && files.length) {
-            files.forEach(file => {
-                file = path.join(ext.extensionPath, file);
-                if (!fs.existsSync(file)) return;
-                info.scripts.push(file);
-            });
-            if (info.scripts.length && info.catagory === Catagory.none)
-                info.catagory = Catagory.feature;
-        }
-        return info;
     }
 
-    function getType(ext: vscode.Extension<any>): Type {
-        if (!ext || !ext.packageJSON || !ext.packageJSON.contributes) return Type.unknown;
+    function getContributeFiles(ext: vscode.Extension<any>, name: string): string[] {
+        let results: string[] = [];
+        let files = ext.packageJSON.contributes[name];
+        if (files && files.length) {
+            files.forEach(file => {
+                if (!path.isAbsolute(file))
+                    file = path.join(ext.extensionPath, file);
+                if (!fs.existsSync(file)) return;
+                results.push(file);
+            });
+        }
+        return results;
+    }
+
+    function getContributorType(ext: vscode.Extension<any>): Type {
+        if (!ext || !ext.packageJSON || !ext.packageJSON.publisher) return Type.unknown;
         if (ext.packageJSON.publisher) {
             if (ext.packageJSON.publisher == "vscode") {
                 return Type.official;
