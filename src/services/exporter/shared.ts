@@ -79,7 +79,8 @@ function getStyles(uri: vscode.Uri, injectStyle?: string): string {
         styles.push(user);
         styles.push("<!-- user styles end -->");
     }
-    return styles.join('\n').trim();
+    styles.push("");
+    return styles.join('\n');
 }
 function getSciprts(): string {
     let scripts: string[] = [];
@@ -99,7 +100,8 @@ function getSciprts(): string {
         scripts.push(thirdParty);
         scripts.push("<!-- third party scripts end -->");
     }
-    return scripts.join('\n').trim();
+    scripts.push("");
+    return scripts.join('\n');
 }
 
 export function testMarkdown(): boolean {
