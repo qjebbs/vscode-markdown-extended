@@ -98,9 +98,9 @@ const togglers: CommandConfig[] = [
         commandId: "markdownExtended.toggleBlockQuote",
         worker: toggle,
         args: [
-            /((^|\n)>\s+(.+)\s*(?=$|\n))+/ig, true,
-            /(^|\n)\s*(.+?)\s*(?=$|\n)/ig, "$1> $2",
-            /(^|\n)>\s+(.+)\s*(?=$|\n)/ig, "$1$2",
+            /((^|\n)>[^\S\n]*(.*?)[^\S\n]*(?=$|\n))+/ig, true,
+            /(^|\n)[^\S\n]*(.*?)[^\S\n]*(?=$|\n)/ig, "$1> $2",
+            /(^|\n)>[^\S\n]+(.*?)[^\S\n]*(?=$|\n)/ig, "$1$2",
         ]
     },
 ]
