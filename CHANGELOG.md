@@ -1,5 +1,10 @@
 # Change Log
 
+## v1.0.2
+
+- Improvement: Many optimizations to export feature
+- Improvement: Keep blank lines when doing toggleBlockQuote, fix [#24](https://github.com/qjebbs/vscode-markdown-extended/issues/24).
+
 ## v1.0.1 (v1.0.0)
 
 - New Feature: export with contribute scripts embedded, solve [#23](https://github.com/qjebbs/vscode-markdown-extended/issues/23).
