@@ -8,6 +8,7 @@ export function toggleFormat(
     off: RegExp, offReplace: string,
     multiLine: boolean
 ) {
+    if (!editor || !editor.document) return;
     let isOn = false;
     let document = editor.document;
     let selection = editor.selection;
