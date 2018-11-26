@@ -6,9 +6,10 @@ import { template } from './template';
 import { Contributes } from '../contributes/contributes';
 import { MarkdownItEnv } from '../common/interfaces';
 
-export function renderHTML(document: MarkdownDocument, withStyle: boolean, injectStyle?: string): string
-export function renderHTML(document: vscode.TextDocument, withStyle: boolean, injectStyle?: string): string
-export function renderHTML(document, withStyle: boolean, injectStyle: string) {
+export function renderPage(
+    document: MarkdownDocument | vscode.TextDocument,
+    injectStyle?: string
+): string {
     let doc: MarkdownDocument = undefined;
     if (document instanceof MarkdownDocument)
         doc = document;
@@ -16,15 +17,15 @@ export function renderHTML(document, withStyle: boolean, injectStyle: string) {
         doc = new MarkdownDocument(document);
 
     let title = path.basename(doc.document.uri.fsPath);
-    let styles = withStyle ? getStyles(doc.document.uri, injectStyle) : "";
-    let scripts = withStyle ? getSciprts() : "";
-    let html = getHTML(doc);
+    let styles = getStyles(doc.document.uri, injectStyle);
+    let scripts = getSciprts();
+    let html = renderHTML(doc);
     //should put both classes, because we cannot determine if a user style URL is a theme or not
     let mdClass = "vscode-body vscode-light";
     return eval(template);
 }
 
-function getHTML(doc: MarkdownDocument): string {
+export function renderHTML(doc: MarkdownDocument): string {
     let env: MarkdownItEnv = {
         htmlExporter: {
             workspaceFolder: getworkspaceFolder(doc.document.uri),

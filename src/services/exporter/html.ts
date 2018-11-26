@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import { mkdirsSync } from '../common/tools';
 import * as path from 'path';
-import { renderHTML } from './shared';
+import { renderPage } from './shared';
 import { MarkdownExporter, exportFormat, Progress, ExportItem } from './interfaces';
 import { setTimeout } from 'timers';
 
@@ -28,7 +28,7 @@ class HtmlExporter implements MarkdownExporter {
     private async exportFile(item: ExportItem) {
 
         let document = await vscode.workspace.openTextDocument(item.uri);
-        let html = renderHTML(document, true);
+        let html = renderPage(document);
         mkdirsSync(path.dirname(item.fileName));
         return new Promise((resolve, reject) => {
             try {

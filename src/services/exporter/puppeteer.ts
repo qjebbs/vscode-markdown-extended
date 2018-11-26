@@ -4,7 +4,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { MarkdownDocument } from '../common/markdownDocument';
 import { mkdirsSync, mergeSettings } from '../common/tools';
-import { renderHTML } from './shared';
+import { renderPage } from './shared';
 import { MarkdownExporter, exportFormat, Progress, ExportItem } from './interfaces';
 import { config } from '../common/config';
 import { context } from '../../extension';
@@ -48,7 +48,7 @@ class PuppeteerExporter implements MarkdownExporter {
     private async exportFile(item: ExportItem, page: puppeteer.Page) {
         let document = new MarkdownDocument(await vscode.workspace.openTextDocument(item.uri));
         let inject = getInjectStyle(item.format);
-        let html = renderHTML(document, true, inject);
+        let html = renderPage(document, inject);
         let ptConf: any = {};
         mkdirsSync(path.dirname(item.fileName));
 
