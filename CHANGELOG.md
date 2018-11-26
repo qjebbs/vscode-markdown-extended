@@ -1,5 +1,9 @@
 # Change Log
 
+## v1.0.3
+
+- Improvement: Copy stripped HTML, solve [#27](https://github.com/qjebbs/vscode-markdown-extended/issues/27).
+
 ## v1.0.2
 
 - Improvement: Many optimizations to export feature
