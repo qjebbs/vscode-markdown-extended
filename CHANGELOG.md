@@ -1,5 +1,9 @@
 # Change Log
 
+## v1.0.5
+
+- Fix: Cannot export workspace, solve [#34](https://github.com/qjebbs/vscode-markdown-extended/issues/34).
+
 ## v1.0.4
 
 - Fix: Wrong column width when format table with Fullwidth Comma & CJK Comma. Thanks to [FourLeafTec](https://github.com/qjebbs/vscode-markdown-extended/pull/31)
