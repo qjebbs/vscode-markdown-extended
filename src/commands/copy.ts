@@ -18,7 +18,7 @@ export class CommandCopy extends Command {
 export class CommandCopyWithStyles extends Command {
     execute() {
         if (!testMarkdown()) return;
-        clip.write(renderMarkdown(true))
+        return clip.write(renderMarkdown(true))
             .then(() => vscode.window.showInformationMessage("Copy success."));
     }
     constructor() {

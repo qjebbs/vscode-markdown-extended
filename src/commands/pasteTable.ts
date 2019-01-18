@@ -10,7 +10,7 @@ export class CommandPasteTable extends Command {
         let tableText = convertToMarkdownTable(text);
         if (!tableText) return;
         let editor = vscode.window.activeTextEditor;
-        editTextDocument(
+        return editTextDocument(
             editor.document, [{
                 range: editor.selection,
                 replace: tableText

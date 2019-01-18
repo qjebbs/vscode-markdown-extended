@@ -14,7 +14,7 @@ export class CommandFormateTable extends Command {
             if (t.range.intersection(selection))
                 edits.push({ range: t.range, replace: t.table.stringify() });
         });
-        editTextDocument(
+        return editTextDocument(
             editor.document,
             edits
         );

@@ -3,7 +3,7 @@ import { exportUri } from "./exportUri";
 
 export class CommandExportWorkSpace extends Command {
     async execute(uri) {
-        exportUri(uri);
+       return exportUri(uri);
     }
     constructor() {
         super("markdownExtended.exportWorkspace");

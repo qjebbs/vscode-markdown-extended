@@ -10,7 +10,7 @@ export class CommandExportCurrent extends Command {
             vscode.window.showInformationMessage("No document found.");
             return;
         }
-        exportUri(editor.document.uri);
+        return exportUri(editor.document.uri);
     }
     constructor() {
         super("markdownExtended.export");
