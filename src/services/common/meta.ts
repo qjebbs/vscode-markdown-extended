@@ -16,4 +16,7 @@ export class MetaData {
         if (!this._meta.puppeteer) return {};
         return this._meta.puppeteer.image || {};
     }
+    get raw() {
+        return this._meta || {};
+    }
 }

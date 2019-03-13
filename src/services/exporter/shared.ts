@@ -16,7 +16,7 @@ export function renderPage(
     else if (document.getText)
         doc = new MarkdownDocument(document);
 
-    let title = path.basename(doc.document.uri.fsPath);
+    let title = doc.meta.raw.title || path.basename(doc.document.uri.fsPath);
     let styles = getStyles(doc.document.uri, injectStyle);
     let scripts = getSciprts();
     let html = renderHTML(doc);
