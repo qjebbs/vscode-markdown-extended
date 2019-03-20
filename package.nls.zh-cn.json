@@ -15,6 +15,7 @@
     "markdownExtended.toggleStrikethrough": "切换删除线",
     "markdownExtended.toggleUList": "切换无序列表",
     "markdownExtended.toggleUnderLine": "切换下划线",
+    "markdownExtended.toggleMark": "切换标注",
     "markdownExtended.toggleSuperscript": "切换上标",
     "markdownExtended.addColumnRight": "在右侧添加列",
     "markdownExtended.addColumnLeft": "在左侧添加列",

@@ -32,6 +32,15 @@ const togglers: CommandConfig[] = [
         ]
     },
     {
+        commandId: "markdownExtended.toggleMark",
+        worker: toggle,
+        args: [
+            /==(\S.*?\S)==/ig, false,
+            /(.+)/ig, "==$1==",
+            /==(\S.*?\S)==/ig, "$1"
+        ]
+    },
+    {
         commandId: "markdownExtended.toggleSuperscript",
         worker: toggle,
         args: [

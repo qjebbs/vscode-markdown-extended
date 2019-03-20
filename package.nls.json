@@ -15,6 +15,7 @@
     "markdownExtended.toggleStrikethrough": "Toggle Strikethrough",
     "markdownExtended.toggleUList": "Toggle Unordered List",
     "markdownExtended.toggleUnderLine": "Toggle Underline",
+    "markdownExtended.toggleMark": "Toggle Mark",
     "markdownExtended.toggleSuperscript": "Toggle Upperscript",
     "markdownExtended.addColumnRight": "Add Columns to Right",
     "markdownExtended.addColumnLeft": "Add Columns to Left",

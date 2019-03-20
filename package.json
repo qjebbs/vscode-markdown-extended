@@ -37,6 +37,7 @@
     "onCommand:markdownExtended.toggleStrikethrough",
     "onCommand:markdownExtended.toggleUList",
     "onCommand:markdownExtended.toggleUnderLine",
+    "onCommand:markdownExtended.toggleMark",
     "onCommand:markdownExtended.toggleSuperscript",
     "onCommand:markdownExtended.toggleBlockQuote",
     "onCommand:markdownExtended.addColumnRight",
@@ -129,6 +130,11 @@
       {
         "command": "markdownExtended.toggleUnderLine",
         "title": "%markdownExtended.toggleUnderLine%",
+        "category": "Markdown"
+      },
+      {
+        "command": "markdownExtended.toggleMark",
+        "title": "%markdownExtended.toggleMark%",
         "category": "Markdown"
       },
       {
@@ -267,6 +273,11 @@
         "when": "editorTextFocus && editorLangId == 'markdown'",
         "command": "markdownExtended.toggleUnderLine",
         "key": "ctrl+u"
+      },
+      {
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "command": "markdownExtended.toggleMark",
+        "key": "ctrl+m"
       },
       {
         "when": "editorTextFocus && editorLangId == 'markdown'",
