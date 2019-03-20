@@ -30,7 +30,7 @@ function removeVsUri(token: Token, vsUri: string) {
             src = token.attrs[i][1];
         }
     }
-    token.attrs[index][1] = src.replace(vsUri, "");
+    token.attrs[index][1] = decodeURIComponent(src.replace(vsUri, ""));
 }
 function embedImage(token: Token, basePath: string) {
     let index = 0;
