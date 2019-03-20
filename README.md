@@ -31,8 +31,21 @@ Markdown Extended includes lots of editing helpers and a `what you see is what y
     - [markdown-it-attrs](https://www.npmjs.com/package/markdown-it-attrs)
     - [markdown-it-kbd](https://www.npmjs.com/package/markdown-it-kbd)
     - [markdown-it-underline](https://www.npmjs.com/package/markdown-it-underline)
+    - [markdown-it-mark](https://www.npmjs.com/package/markdown-it-mark)
 
-    > Post an issue on [GitHub][issues] if you want other plugins.
+> Post an issue on [GitHub][issues] if you want other plugins.
+
+## Q: Why You Don't Integrate Some Plugin?
+
+The extension works with other markdown plugin extensions (those who contribute to built-in Markdown engine) well, **Both Preview and Export**.
+Like:
+- [Markdown Preview Github Styling
+](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles)
+- [Markdown Emoji](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-emoji)
+- [Markdown+Math](https://marketplace.visualstudio.com/items?itemName=goessner.mdmath) 
+- [Markdown Preview Mermaid Support](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid)
+
+The extension does not tend to do all the work, so just use them, those plugins could be deeper developed, with better experience.
 
 ## Exporter
 
@@ -98,10 +111,11 @@ Copy a table from Excel, Web and other applications which support the format of 
 but totally new implements.
 
 | Command                       | Keyboard Shortcut          |
-|-------------------------------|----------------------------|
+| ----------------------------- | -------------------------- |
 | Format: Toggle Bold           | Ctrl+B                     |
 | Format: Toggle Italics        | Ctrl+I                     |
 | Format: Toggle Underline      | Ctrl+U                     |
+| Format: Toggle Mark           | Ctrl+M                     |
 | Format: Toggle Strikethrough  | Alt+S                      |
 | Format: Toggle Code Inline    | Alt+`                      |
 | Format: Toggle Code Block     | Alt+Shift+`                |

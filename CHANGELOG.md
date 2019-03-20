@@ -1,5 +1,10 @@
 # Change Log
 
+## v1.0.6
+
+- Add plugin markdown-it-mark
+- Add command `Toggle Mark`
+
 ## v1.0.5
 
 - Fix: Cannot export workspace, solve [#34](https://github.com/qjebbs/vscode-markdown-extended/issues/34).
