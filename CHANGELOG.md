@@ -1,5 +1,9 @@
 # Change Log
 
+## v1.0.7
+
+- Fix: Cannot embed images if folder or path has special character, solve [#40](https://github.com/qjebbs/vscode-markdown-extended/issues/40).
+
 ## v1.0.6
 
 - Add plugin markdown-it-mark
