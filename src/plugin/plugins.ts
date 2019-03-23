@@ -4,6 +4,7 @@ import { MarkdownItContainer } from './markdownItContainer';
 import { MarkdownItAnchorLink } from './markdownItAnchorLink';
 import { MarkdownItExportHelper } from './markdownItExportHelper';
 import { MarkdownItAdmonition } from './markdownItAdmonition';
+import { MarkdownItMultiMdTable } from './markdownItMultiMdTable';
 
 interface markdowItPlugin {
     plugin: Function,
@@ -26,4 +27,5 @@ export var plugins: markdowItPlugin[] = [
     { plugin: require('markdown-it-mark') },
     { plugin: require('markdown-it-deflist') },
     { plugin: MarkdownItExportHelper }
+    { plugin: MarkdownItMultiMdTable }
 ]
