@@ -27,5 +27,5 @@ export var plugins: markdowItPlugin[] = [
     { plugin: require('markdown-it-mark') },
     { plugin: require('markdown-it-deflist') },
     { plugin: MarkdownItExportHelper }
-    { plugin: MarkdownItMultiMdTable }
+    { plugin: require('markdown-it-multimd-table'), params: [{ enableMultilineRows: true }] },
 ]
