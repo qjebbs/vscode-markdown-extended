@@ -32,6 +32,7 @@ Markdown Extended includes lots of editing helpers and a `what you see is what y
     - [markdown-it-kbd](https://www.npmjs.com/package/markdown-it-kbd)
     - [markdown-it-underline](https://www.npmjs.com/package/markdown-it-underline)
     - [markdown-it-mark](https://www.npmjs.com/package/markdown-it-mark)
+    - [markdown-it-multimd-table](https://github.com/RedBug312/markdown-it-multimd-table)
 
 > Post an issue on [GitHub][issues] if you want other plugins.
 
