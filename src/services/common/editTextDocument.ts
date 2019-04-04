@@ -18,7 +18,7 @@ interface offset {
 
 export async function editTextDocument(document: vscode.TextDocument, edits: Edit[]) {
     let editor = await vscode.window.showTextDocument(document);
-    editor.edit(e => {
+    return editor.edit(e => {
         edits.map(edit => {
             if (!edit || !edit.range || !edit.replace) return;
             e.replace(edit.range, edit.replace);
