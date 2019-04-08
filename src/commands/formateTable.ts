@@ -1,7 +1,5 @@
 import { Command } from './command';
 import * as vscode from 'vscode';
-import * as clip from 'clipboardy';
-import { convertToMarkdownTable } from '../services/table/convertTable';
 import { editTextDocument, Edit } from '../services/common/editTextDocument';
 import { tablesOf } from '../services/table/documentTables';
 export class CommandFormateTable extends Command {
