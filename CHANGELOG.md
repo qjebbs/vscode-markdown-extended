@@ -1,5 +1,11 @@
 # Change Log
 
+## v1.0.8
+
+- Add plugin markdown-it-emoji, solve [#39](https://github.com/qjebbs/vscode-markdown-extended/issues/39).
+- Add plugin markdown-it-multimd-table, solve [#42](https://github.com/qjebbs/vscode-markdown-extended/issues/42).
+- Add capability to format format multimd table
+
 ## v1.0.7
 
 - Fix: Cannot embed images if folder or path has special character, solve [#40](https://github.com/qjebbs/vscode-markdown-extended/issues/40).

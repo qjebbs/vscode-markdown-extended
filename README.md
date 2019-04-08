@@ -31,7 +31,8 @@ Markdown Extended includes lots of editing helpers and a `what you see is what y
     - [markdown-it-attrs](https://www.npmjs.com/package/markdown-it-attrs)
     - [markdown-it-kbd](https://www.npmjs.com/package/markdown-it-kbd)
     - [markdown-it-underline](https://www.npmjs.com/package/markdown-it-underline)
-    - [markdown-it-mark](https://www.npmjs.com/package/markdown-it-mark)
+    - [markdown-it-multimd-table](https://www.npmjs.com/package/markdown-it-multimd-table)
+    - [markdown-it-emoji](https://www.npmjs.com/package/markdown-it-emoji)
 
 > Post an issue on [GitHub][issues] if you want other plugins.
 
@@ -41,7 +42,6 @@ The extension works with other markdown plugin extensions (those who contribute 
 Like:
 - [Markdown Preview Github Styling
 ](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles)
-- [Markdown Emoji](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-emoji)
 - [Markdown+Math](https://marketplace.visualstudio.com/items?itemName=goessner.mdmath) 
 - [Markdown Preview Mermaid Support](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid)
 
