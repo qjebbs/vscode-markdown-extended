@@ -10,22 +10,29 @@ export enum TableAlign {
 }
 export class MDTable {
     private _data: string[][];
+    private _headerRowCount: number;
     private _aligns: TableAlign[];
     private _columnWidths: number[];
     private _columnCount: number;
     private _rowCount: number;
+    private _rowMergeFlags: boolean[] = [];
 
-    constructor(data: string[][]) {
+    constructor(data: string[][], headerRowCount: number) {
         this.data = data;
+        this._headerRowCount = headerRowCount;
     }
     public get data(): string[][] {
         return this._data;
+    }
+    public get headerRowCount(): number {
+        return this._headerRowCount;
     }
     public set data(data: string[][]) {
         this._data = data;
         this._rowCount = this._data.length;
         this.alignColumns();
-        this._aligns = data[0].map(() => TableAlign.auto);
+        this._aligns = new Array(data.length).fill(TableAlign.auto);
+        this._rowMergeFlags = new Array(data.length).fill(false);
         this._columnWidths = this.calcColumnWidths();
     }
     public get columnCount(): number {
@@ -33,6 +40,12 @@ export class MDTable {
     }
     public get rowCount(): number {
         return this._rowCount;
+    }
+    public get rowMergeFlags(): boolean[] {
+        return this._rowMergeFlags;
+    }
+    public set rowMergeFlags(flags: boolean[]) {
+        this._rowMergeFlags = flags;
     }
     public get aligns(): TableAlign[] {
         return this._aligns;
@@ -98,7 +111,8 @@ export class MDTable {
             i => {
                 let ws = this._data.map(
                     row => {
-                        return i > row.length - 1 ? 0 : MonoSpaceLength(row[i]);
+                        return i > row.length - 1 ? 0 :
+                            row[i] === null ? 0 : MonoSpaceLength(row[i]);
                     }
                 );
                 switch (this._aligns[i]) {
@@ -131,5 +145,3 @@ export class MDTable {
         return arr;
     }
 }
-
-
