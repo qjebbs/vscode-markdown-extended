@@ -26,6 +26,6 @@ export var plugins: markdowItPlugin[] = [
     { plugin: require('markdown-it-mark') },
     { plugin: require('markdown-it-deflist') },
     { plugin: require('markdown-it-emoji') },
-    { plugin: require('markdown-it-multimd-table'), params: [{ enableMultilineRows: true }] },
+    { plugin: require('markdown-it-multimd-table'), params: [{ enableMultilineRows: true, enableRowspan: true }] },
     { plugin: MarkdownItExportHelper }
 ]
