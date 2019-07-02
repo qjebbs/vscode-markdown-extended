@@ -1,5 +1,11 @@
 # Change Log
 
+## v1.0.10
+
+- Fix: Format with Japanese Hiragana characters [#51](https://github.com/qjebbs/vscode-markdown-extended/issues/51). Thanks to [TadaoYamaoka](https://github.com/TadaoYamaoka).
+- Update dependencies.
+- Code optimization. 
+
 ## v1.0.9
 
 - Fix: Embeds files referred by url() in css, fix [#48](https://github.com/qjebbs/vscode-markdown-extended/issues/48).
