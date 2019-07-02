@@ -21,28 +21,34 @@ class PuppeteerExporter implements MarkdownExporter {
                 return;
             }
         }
-        let exec = config.puppeteerExecutable;
-        let opt = exec ? <puppeteer.LaunchOptions>{
-            executablePath: exec
-        } : undefined;
         progress.report({ message: "Initializing..." });
-        const browser = await puppeteer.launch(opt);
+        const browser = await puppeteer.launch(<puppeteer.LaunchOptions>{
+            executablePath: config.puppeteerExecutable,
+            // headless: false,
+        });
         const page = await browser.newPage();
 
-        return items.reduce((p, c, i) => {
-            return p
-                .then(
-                    () => {
-                        if (progress) progress.report({
-                            message: `${path.basename(c.fileName)} (${i + 1}/${count})`,
-                            increment: ~~(1 / count * 100)
-                        });
-                    }
-                )
-                .then(
-                    () => this.exportFile(c, page)
-                );
-        }, Promise.resolve(null)).then(async () => await browser.close());
+        return items.reduce(
+            (p, c, i) => {
+                return p
+                    .then(
+                        () => {
+                            if (progress) progress.report({
+                                message: `${path.basename(c.fileName)} (${i + 1}/${count})`,
+                                increment: ~~(1 / count * 100)
+                            });
+                        }
+                    )
+                    .then(
+                        () => this.exportFile(c, page)
+                    );
+            },
+            Promise.resolve(null)
+        ).then(async () => await browser.close())
+            .catch(async err => {
+                await browser.close();
+                return Promise.reject(err);
+            });
 
     }
     private async exportFile(item: ExportItem, page: puppeteer.Page) {
@@ -52,7 +58,7 @@ class PuppeteerExporter implements MarkdownExporter {
         let ptConf: any = {};
         mkdirsSync(path.dirname(item.fileName));
 
-        await page.goto(`data:text/html,${html}`, { waitUntil: 'networkidle0' });
+        await page.setContent(html, { waitUntil: 'networkidle0' });
         switch (item.format) {
             case exportFormat.PDF:
                 ptConf = mergeSettings(
