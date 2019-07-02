@@ -1,5 +1,9 @@
 # Change Log
 
+## v1.0.9
+
+- Fix: Embeds files referred by url() in css, fix [#48](https://github.com/qjebbs/vscode-markdown-extended/issues/48).
+
 ## v1.0.8
 
 - Add plugin markdown-it-emoji, solve [#39](https://github.com/qjebbs/vscode-markdown-extended/issues/39).
