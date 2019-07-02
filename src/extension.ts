@@ -37,7 +37,7 @@ export function activate(ctx: vscode.ExtensionContext) {
     return {
         extendMarkdownIt(md: markdowIt.MarkdownIt) {
             plugins.map(p => {
-                md.use(p.plugin, ...(p.params || []));
+                md.use(p.plugin, ...p.args);
             });
             markdown = md;
             return md;

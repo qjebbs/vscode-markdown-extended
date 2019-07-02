@@ -7,25 +7,33 @@ import { MarkdownItAdmonition } from './markdownItAdmonition';
 
 interface markdowItPlugin {
     plugin: Function,
-    params?: any[],
+    args: object[],
 }
 
 export var plugins: markdowItPlugin[] = [
-    { plugin: MarkdownItTOC },
-    { plugin: MarkdownItAnchorLink }, // MarkdownItAnchorLink requires MarkdownItTOC
-    { plugin: MarkdownItContainer },
-    { plugin: MarkdownItAdmonition },
-    { plugin: require('markdown-it-footnote') },
-    { plugin: require('markdown-it-abbr') },
-    { plugin: require('markdown-it-sup') },
-    { plugin: require('markdown-it-sub') },
-    { plugin: require('markdown-it-checkbox') },
-    { plugin: require('markdown-it-attrs') },
-    { plugin: require('markdown-it-kbd') },
-    { plugin: require('markdown-it-underline') },
-    { plugin: require('markdown-it-mark') },
-    { plugin: require('markdown-it-deflist') },
-    { plugin: require('markdown-it-emoji') },
-    { plugin: require('markdown-it-multimd-table'), params: [{ enableMultilineRows: true, enableRowspan: true }] },
-    { plugin: MarkdownItExportHelper }
+    $(MarkdownItTOC),
+    $(MarkdownItAnchorLink), // MarkdownItAnchorLink requires MarkdownItTOC
+    $(MarkdownItContainer),
+    $(MarkdownItAdmonition),
+    $('markdown-it-footnote'),
+    $('markdown-it-abbr'),
+    $('markdown-it-sup'),
+    $('markdown-it-sub'),
+    $('markdown-it-checkbox'),
+    $('markdown-it-attrs'),
+    $('markdown-it-kbd'),
+    $('markdown-it-underline'),
+    $('markdown-it-mark'),
+    $('markdown-it-deflist'),
+    $('markdown-it-emoji'),
+    $('markdown-it-multimd-table', { enableMultilineRows: true, enableRowspan: true }),
+    $('markdown-it-html5-embed', { html5embed: { useImageSyntax: true, useLinkSyntax: true } }),
+    $(MarkdownItExportHelper)
 ]
+
+function $(plugin: string | Function, ...args: any[]): markdowItPlugin {
+    return {
+        plugin: plugin instanceof Function ? plugin : require(plugin),
+        args: args,
+    }
+}
