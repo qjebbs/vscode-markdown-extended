@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { cssFileToDataUri, fileToDataUri } from '../common/tools';
+import { cssFileToDataUri, fileToDataUri } from '../common/dataUri';
 
 /**
  * create contribute item of given file
