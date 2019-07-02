@@ -1,17 +1,22 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import { cssFileToDataUri, fileToDataUri } from '../common/tools';
 
 /**
- * create contribute item by given file
+ * create contribute item of given file
  * @param file file to read
  * @param isStyle specifies the file is style or not
  */
 export function readContributeFile(file: string, isStyle: boolean): string {
-    if (!fs.existsSync(file)) return "";
-    let buf = fs.readFileSync(file);
-    if (!buf || !buf.length) return "";
-    return createContributeItem(buf, isStyle, path.basename(file))
+    if (!fs.existsSync(file))
+        return "";
+    let cmt = `<!-- ${path.basename(file)} -->\n`;
+    if (isStyle)
+        return cmt + `<link rel="stylesheet" type="text/css" href="${cssFileToDataUri(file)}"/>`;
+    return cmt + `<script type="text/javascript" src="${fileToDataUri(file)}"/></script>`;
+
 }
+
 /**
  * create contribute item by given content
  * @param content css styles or javascript content to create
@@ -22,7 +27,7 @@ export function createContributeItem(content: string | Buffer, isStyle: boolean,
     if (!content) return "";
     let b64 = content instanceof Buffer ?
         content.toString("base64") :
-        new Buffer(content).toString("base64");
+        Buffer.from(content).toString("base64");
     let cmt = comment ? `<!-- ${comment} -->\n` : "";
     if (isStyle) {
         return cmt + `<link rel="stylesheet" type="text/css" href="data:text/css;base64,${b64}"/>`
