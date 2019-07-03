@@ -1,6 +1,6 @@
 import { parseMDTAble } from "./mdTableParse";
 import { stringifyMDTable } from "./mdTableStringify";
-import { MonoSpaceLength } from "../common/tools";
+import { MonoSpaceLength } from "./monospace";
 
 export enum TableAlign {
     auto,
