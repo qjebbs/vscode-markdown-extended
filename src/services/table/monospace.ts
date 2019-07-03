@@ -15,17 +15,28 @@ const ranges = [
     "\u2500-\u25B6",
     // Punctuation
     "\u3000-\u303F", "\u309B\u309C",
+    // Japanese Punctuation
+    "\u3099-\u309A",     //Inherited # Mn   [2] COMBINING KATAKANA-HIRAGANA VOICED SOUND MARK..COMBINING KATAKANA-HIRAGANA SEMI-VOICED SOUND MARK
+    "\u309B-\u309C",    //Common # Sk   [2] KATAKANA-HIRAGANA VOICED SOUND MARK..KATAKANA-HIRAGANA SEMI-VOICED SOUND MARK
+    "\u30A0",            //Common # Pd       KATAKANA-HIRAGANA DOUBLE HYPHEN
+    "\u30FB",            //Common # Po       KATAKANA MIDDLE DOT
+    "\u30FC",            //Common # Lm       KATAKANA-HIRAGANA PROLONGED SOUND MARK
     // Extra
     "\u25CB",
 ]
-const CJKVReg = new RegExp('[' + ranges.join('') + ']', "ug");
+const CJKV_REG = new RegExp('[' + ranges.join('') + ']', "ug");
+const HIGH_POINTS_REG = /[\u{10000}-\u{FFFFF}]/ug;
 
 /**
  * Calculate the Monospace Length of a string, takes CJK character as length of 2
  * @param text text to calculate
  */
 export function MonoSpaceLength(text: string): number {
-    return text.length * 2 - text.replace(CJKVReg, '').length;
+    let highPointCount = (text.length - text.replace(HIGH_POINTS_REG, '').length) / 2;
+    let halfWidthCount = text.replace(CJKV_REG, '').length;
+    let fullWidthCount = text.length - highPointCount - halfWidthCount;
+
+    return fullWidthCount * 2 + halfWidthCount;
 }
 
 // console.log(
