@@ -16,11 +16,7 @@ const ranges = [
     // Punctuation
     "\u3000-\u303F", "\u309B\u309C",
     // Japanese Punctuation
-    "\u3099-\u309A",     //Inherited # Mn   [2] COMBINING KATAKANA-HIRAGANA VOICED SOUND MARK..COMBINING KATAKANA-HIRAGANA SEMI-VOICED SOUND MARK
-    "\u309B-\u309C",    //Common # Sk   [2] KATAKANA-HIRAGANA VOICED SOUND MARK..KATAKANA-HIRAGANA SEMI-VOICED SOUND MARK
-    "\u30A0",            //Common # Pd       KATAKANA-HIRAGANA DOUBLE HYPHEN
-    "\u30FB",            //Common # Po       KATAKANA MIDDLE DOT
-    "\u30FC",            //Common # Lm       KATAKANA-HIRAGANA PROLONGED SOUND MARK
+    "\u3099-\u309C", "\u30A0", "\u30FB\u30FC",
     // Extra
     "\u25CB",
 ]
@@ -33,8 +29,9 @@ const HIGH_POINTS_REG = /[\u{10000}-\u{FFFFF}]/ug;
  */
 export function MonoSpaceLength(text: string): number {
     let highPointCount = (text.length - text.replace(HIGH_POINTS_REG, '').length) / 2;
+    let characterCount = text.length - highPointCount;
     let halfWidthCount = text.replace(CJKV_REG, '').length;
-    let fullWidthCount = text.length - highPointCount - halfWidthCount;
+    let fullWidthCount = characterCount - halfWidthCount;
 
     return fullWidthCount * 2 + halfWidthCount;
 }
@@ -46,7 +43,7 @@ export function MonoSpaceLength(text: string): number {
 //     )
 // );
 // function unicodeRangeHelper(...inputs) {
-//     let range=inputs.join();
+//     let range=inputs.join('');
 //     let points = [];
 //     for (let i = 0; i < range.length; i++) {
 //         let current = range[i];
