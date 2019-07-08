@@ -33,6 +33,7 @@ Markdown Extended includes lots of editing helpers and a `what you see is what y
     - [markdown-it-underline](https://www.npmjs.com/package/markdown-it-underline)
     - [markdown-it-multimd-table](https://www.npmjs.com/package/markdown-it-multimd-table)
     - [markdown-it-emoji](https://www.npmjs.com/package/markdown-it-emoji)
+    - [markdown-it-html5-embed](https://www.npmjs.com/package/markdown-it-html5-embed)
 
 > Post an issue on [GitHub][issues] if you want other plugins.
 
