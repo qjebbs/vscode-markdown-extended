@@ -6,16 +6,15 @@ import * as fs from 'fs';
  * @param cssFileName path of the css file
  */
 export function cssFileToDataUri(cssFileName: string): string {
-    let URL_REG = /url\(([^()]+)\)/ig;
+    let URL_REG = /url\(([^()'"]+?)\)|url\(['"](.+?)['"]\)/ig;
     if (!fs.existsSync(cssFileName))
         return "";
     let css = fs.readFileSync(cssFileName).toString();
     css = css.replace(URL_REG, (substr, ...args: any[]) => {
-        let filePath = args[0] as string;
-        if (
-            filePath.substr(1, 5).toLowerCase() == "data:" ||
-            filePath.substr(0, 5).toLowerCase() == "data:"
-        ) return substr;
+        let filePath: string = args[0] || args[1];
+        if (filePath.substr(0, 5).toLocaleLowerCase() == "data:") {
+            return substr;
+        }
         if (!path.isAbsolute(filePath))
             filePath = path.resolve(path.dirname(cssFileName), filePath)
         try {
