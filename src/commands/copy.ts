@@ -1,13 +1,12 @@
 import { Command } from './command';
 import * as vscode from 'vscode';
 import * as clip from 'clipboardy';
-import { renderPage, testMarkdown, renderHTML } from '../services/exporter/shared';
+import { renderPage, renderHTML, ensureMarkdownEngine } from '../services/exporter/shared';
 import { MarkdownDocument } from '../services/common/markdownDocument';
 
 export class CommandCopy extends Command {
-    execute() {
-        if (!testMarkdown()) return;
-        clip.write(renderMarkdown(false))
+    async execute() {
+        clip.write(await renderMarkdown(false))
             .then(() => vscode.window.showInformationMessage("Copy success."));
     }
     constructor() {
@@ -16,9 +15,8 @@ export class CommandCopy extends Command {
 }
 
 export class CommandCopyWithStyles extends Command {
-    execute() {
-        if (!testMarkdown()) return;
-        return clip.write(renderMarkdown(true))
+    async execute() {
+        return clip.write(await renderMarkdown(true))
             .then(() => vscode.window.showInformationMessage("Copy success."));
     }
     constructor() {
@@ -26,7 +24,8 @@ export class CommandCopyWithStyles extends Command {
     }
 }
 
-function renderMarkdown(style: boolean): string {
+async function renderMarkdown(style: boolean): Promise<string> {
+    await ensureMarkdownEngine();
     let document = vscode.window.activeTextEditor.document;
     let selection = vscode.window.activeTextEditor.selection;
     let rendered = "";

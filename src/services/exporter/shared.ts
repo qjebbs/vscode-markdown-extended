@@ -103,18 +103,8 @@ function getSciprts(): string {
     return scripts.join('\n');
 }
 
-export function testMarkdown(): boolean {
+export async function ensureMarkdownEngine() {
     if (!markdown) {
-        vscode.window.showInformationMessage(
-            "You must open markdown preview before you can copy or export.",
-            "Open Preview"
-        ).then(
-            result => {
-                if (result == "Open Preview")
-                    vscode.commands.executeCommand("markdown.showPreviewToSide")
-            }
-        );
-        return false;
+        await vscode.commands.executeCommand('markdown.api.render', 'init markdown engine');
     }
-    return true;
 }

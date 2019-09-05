@@ -1,13 +1,13 @@
 import * as vscode from 'vscode';
 import { pickExporter, pickFormat } from "../services/exporter/exporters";
-import { testMarkdown } from '../services/exporter/shared';
+import { ensureMarkdownEngine } from '../services/exporter/shared';
 import { exportOption } from "../services/exporter/interfaces";
 import { MarkdownExport } from "../services/exporter/export";
 import { showExportReport } from "../services/common/tools";
 
 export async function exportUri(uri: vscode.Uri) {
 
-    if (!testMarkdown()) return;
+    await ensureMarkdownEngine();
     let format = await pickFormat();
     if (!format) return;
     let exporter = await pickExporter(format);
