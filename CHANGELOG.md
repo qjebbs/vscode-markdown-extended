@@ -1,5 +1,11 @@
 # Change Log
 
+## v1.0.12
+
+- Improvement: No 'open preview first' prompt
+- Fix: Update package markdown-it-attrs, [#58](https://github.com/qjebbs/vscode-markdown-extended/issues/58)
+- Code optimization. 
+
 ## v1.0.11
 
 - Add support for `markdown-it-html5-embed`, [#49](https://github.com/qjebbs/vscode-markdown-extended/issues/49)
