@@ -95,6 +95,8 @@ See all available settings for
 
 ![moveCols](./images/moveCols.gif)
 
+> Move columns key bindings has been changed to `ctrl+shift+left/right`, due to [#57](https://github.com/qjebbs/vscode-markdown-extended/issues/57)
+
 ### Paste as Markdown Table
 
 Copy a table from Excel, Web and other applications which support the format of Comma-Separated Values (CSV), then run the command `Paste as Markdown Table`, you will get the markdown table.
