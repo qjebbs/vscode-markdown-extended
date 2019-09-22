@@ -21,7 +21,7 @@ export function renderPage(
     let scripts = getSciprts();
     let html = renderHTML(doc);
     //should put both classes, because we cannot determine if a user style URL is a theme or not
-    let mdClass = "vscode-body vscode-light";
+    let mdClass = "markdown-body vscode-body vscode-light";
     return eval(template);
 }
 

@@ -6,10 +6,10 @@ export var template=
 <title>\${title}</title>
 \${styles}
 </head>
-<body>
-<article class="markdown-body \${mdClass}">
+<body class="\${mdClass}">
+<div class="content">
     \${html}
-</article>
+</div>
 \${scripts}
 </body>
 </html>
