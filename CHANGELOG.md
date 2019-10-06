@@ -1,5 +1,9 @@
 # Change Log
 
+## v1.0.13
+
+- Improvement: Chane `Move Columns` key bindings to `ctrl+shift+left/right`, [#57](https://github.com/qjebbs/vscode-markdown-extended/issues/57), [#59](https://github.com/qjebbs/vscode-markdown-extended/issues/57)
+
 ## v1.0.12
 
 - Improvement: No 'open preview first' prompt
