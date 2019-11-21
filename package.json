@@ -322,12 +322,12 @@
       {
         "when": "editorTextFocus && editorLangId == 'markdown'",
         "command": "markdownExtended.MoveColumnLeft",
-        "key": "ctrl+shift+left"
+        "key": "ctrl+shift+t ctrl+shift+left"
       },
       {
         "when": "editorTextFocus && editorLangId == 'markdown'",
         "command": "markdownExtended.MoveColumnRight",
-        "key": "ctrl+shift+right"
+        "key": "ctrl+shift+t ctrl+shift+right"
       }
     ],
     "configuration": {
