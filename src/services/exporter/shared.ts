@@ -28,6 +28,7 @@ export function renderPage(
 export function renderHTML(doc: MarkdownDocument): string {
     let env: MarkdownItEnv = {
         htmlExporter: {
+            uri: doc.document.uri,
             workspaceFolder: getworkspaceFolder(doc.document.uri),
             vsUri: getVsUri(doc.document.uri),
             embedImage: true,
@@ -36,9 +37,9 @@ export function renderHTML(doc: MarkdownDocument): string {
     let content = markdown.render(doc.content, env);
     return content.trim();
 }
-function getworkspaceFolder(uri): string {
+function getworkspaceFolder(uri): vscode.Uri {
     let root = vscode.workspace.getWorkspaceFolder(uri);
-    return (root && root.uri) ? root.uri.fsPath : "";
+    return (root && root.uri) ? root.uri : undefined;
 }
 function getVsUri(uri: vscode.Uri): string {
     let root = vscode.workspace.getWorkspaceFolder(uri);

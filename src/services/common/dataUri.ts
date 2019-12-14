@@ -73,12 +73,16 @@ export function getDataUriSchema(fileName: string): string {
         case ".jpg":
             mimeType = "image/jpeg"
             break;
+        case ".png":
+            mimeType = "image/png"
+            break;
         case ".svg":
             mimeType = "image/svg+xml"
             break;
         case ".gif":
             mimeType = "image/gif"
             break;
+        case ".icon":
         case ".ico":
             mimeType = "image/x-icon"
             break;
