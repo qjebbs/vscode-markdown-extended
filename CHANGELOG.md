@@ -1,5 +1,9 @@
 # Change Log
 
+## v1.0.15
+
+Fix: Cannot embed img not in workspace folder, [#71](https://github.com/qjebbs/vscode-markdown-extended/issues/71)
+
 ## v1.0.14
 
 - Improvement: Chane `Move Columns` key bindings to `ctrl+shift+t ctrl+shift+left/right`, [#68](https://github.com/qjebbs/vscode-markdown-extended/issues/68)
