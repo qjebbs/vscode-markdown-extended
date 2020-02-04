@@ -1,5 +1,8 @@
 # Markdown Extended Readme
 
+[![version](https://img.shields.io/vscode-marketplace/v/jebbs.markdown-extended.svg?style=flat-square&label=vscode%20marketplace)](https://marketplace.visualstudio.com/items?itemName=jebbs.markdown-extended)
+[![installs](https://img.shields.io/vscode-marketplace/d/jebbs.markdown-extended.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=jebbs.markdown-extended)
+
 Markdown Extended is an extension extends syntaxes and abilities to VSCode built-in markdown function.
 
 Markdown Extended includes lots of editing helpers and a `what you see is what you get` exporter, which means export files are consistent to what you see in markdown preview, even it contains syntaxes and styles contributed by other plugins.
