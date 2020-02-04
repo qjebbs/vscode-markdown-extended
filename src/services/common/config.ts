@@ -8,6 +8,11 @@ class Config extends ConfigReader {
     }
 
     onChange() { }
+    get disabledPlugins(): string[] {
+        let conf = this.read<string>('disabledPlugins').trim();
+        if (!conf) return [];
+        return conf.toLowerCase().split(',').map(p => p.trim());
+    }
     get tocLevels(): Number[] {
         let conf = this.read<Number[]>('tocLevels');
         if (!(conf instanceof Array)) conf = [];

@@ -3,7 +3,7 @@
   "displayName": "Markdown Extended",
   "description": "Extended syntaxes to built-in markdown & What you see is what you get exporter.",
   "icon": "images/logo.png",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "publisher": "jebbs",
   "engines": {
     "vscode": "^1.38.0"
@@ -334,6 +334,11 @@
       "type": "object",
       "title": "Markdown Extended Configuration",
       "properties": {
+        "markdownExtended.disabledPlugins": {
+          "type": "string",
+          "default": "",
+          "description": "%markdownExtended.configuration.disabledPlugins%"
+        },
         "markdownExtended.puppeteerExecutable": {
           "type": "string",
           "default": "",

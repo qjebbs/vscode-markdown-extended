@@ -41,5 +41,6 @@
     "markdownExtended.configuration.pdfFooterTemplate": "HTML template for the print footer. Should be valid HTML markup with following classes used to inject printing values into them:\ndate: formatted print date\ntitle: document title\nurl: document location\npageNumber: current page number\ntotalPages: total pages in the document.",
     "markdownExtended.configuration.imageQuality": "The quality of the image, between 0-100. Not applicable to png images.",
     "markdownExtended.configuration.imageOmitBackground": "Hides default white background and allows capturing screenshots with transparency.",
-    "markdownExtended.configuration.tocLevels": "Headings levels to use when generating TOC (2 for h2, etc)\n* Restart VSCode required to take effect."
+    "markdownExtended.configuration.tocLevels": "Headings levels to use when generating TOC (2 for h2, etc)\n* Restart VSCode required to take effect.",
+    "markdownExtended.configuration.disabledPlugins": "Disable some plugins intergrated by this extension. E.g.: 'underline, toc'. \n* Restart VSCode required."
 }
