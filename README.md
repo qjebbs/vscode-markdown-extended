@@ -37,8 +37,21 @@ Markdown Extended includes lots of editing helpers and a `what you see is what y
     - [markdown-it-multimd-table](https://www.npmjs.com/package/markdown-it-multimd-table)
     - [markdown-it-emoji](https://www.npmjs.com/package/markdown-it-emoji)
     - [markdown-it-html5-embed](https://www.npmjs.com/package/markdown-it-html5-embed)
+    - [markdown-it-toc](https://www.npmjs.com/package/markdown-it-toc)
+    - [markdown-it-container](https://www.npmjs.com/package/markdown-it-container)
+    - [markdown-it-mark](https://www.npmjs.com/package/markdown-it-mark)
 
 > Post an issue on [GitHub][issues] if you want other plugins.
+
+### Disable Plugins
+
+To disable integrated plugins, put their names separated with `,`:
+
+```json
+"markdownExtended.disabledPlugins": "underline, toc"
+```
+
+Available names: toc, container, admonition, footnote, abbr, sup, sub, checkbox, attrs, kbd, underline, mark, deflist, emoji, multimd-table, html5-embed
 
 ## Q: Why You Don't Integrate Some Plugin?
 

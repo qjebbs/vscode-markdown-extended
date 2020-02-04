@@ -41,6 +41,6 @@
     "markdownExtended.configuration.pdfFooterTemplate": "页脚模板。内容为有效的 HTML 代码，在元素中使用如下的类名可以注入相应的信息:\ndate：打印日期\ntitle：文档标题\nurl：文档位置\npageNumber：当前页码\ntotalPages：总页数。",
     "markdownExtended.configuration.imageQuality": "图片质量，0-100 之间的数字。不适用于 PNG 图片。",
     "markdownExtended.configuration.imageOmitBackground": "隐藏默认的白色背景，生成透明背景的图片。",
-    "markdownExtended.configuration.tocLevels": "生成目录(TOC)时采用的标题层级 (例如，2 表示 h2)。\n* 重启 VSCode 才能生效。",
+    "markdownExtended.configuration.tocLevels": "生成目录(TOC)时采用的标题层级 (例如，2 表示 h2)。\n* 需重启 VSCode 生效。",
     "markdownExtended.configuration.disabledPlugins": "停用此扩展集成的某些插件。如: 'underline, toc'。 \n* 需重启 VSCode 生效。"
 }
