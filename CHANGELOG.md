@@ -1,5 +1,9 @@
 # Change Log
 
+## v1.0.17
+
+- Fix: Export files not in workspace
+
 ## v1.0.16
 
 - Improvement: Add ability to disable integrated plugin. [#72](https://github.com/qjebbs/vscode-markdown-extended/issues/72)
