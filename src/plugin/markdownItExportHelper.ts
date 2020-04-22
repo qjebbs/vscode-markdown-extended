@@ -46,10 +46,8 @@ function embedImage(token: Token, env: HtmlExporterEnv) {
     token.attrs[index][1] = image2Base64(src, env);
 }
 function image2Base64(src: string, env: HtmlExporterEnv): string {
-    let paths = [
-        path.dirname(env.uri.fsPath),
-        env.workspaceFolder.fsPath,
-    ].filter(v => !!v);
+    let paths = [path.dirname(env.uri.fsPath)];
+    if (env.workspaceFolder) paths.push(env.workspaceFolder.fsPath);
     let file = searchFile(src, paths);
     if (!file) return src;
     return fileToDataUri(file)
