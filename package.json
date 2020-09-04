@@ -483,7 +483,7 @@
     "markdown-it-sup": "^1.0.0",
     "markdown-it-table-of-contents": "^0.4.4",
     "markdown-it-underline": "^1.0.1",
-    "papaparse": "^4.3.7",
+    "papaparse": "^5.2.0",
     "puppeteer": "^1.18.1"
   }
 }
