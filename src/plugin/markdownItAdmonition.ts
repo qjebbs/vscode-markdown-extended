@@ -1,4 +1,4 @@
-import { MarkdownIt, Token, Renderer } from 'markdown-it';
+import { MarkdownIt, Token, Renderer } from "../@types/markdown-it";
 
 const
     _marker = 33 /* '!' */,
@@ -35,7 +35,7 @@ function render(tokens: Token[], idx: number, _options: any, env: any, self: Ren
     return self.renderToken(tokens, idx, _options);
 }
 
-function admonition(state, startLine, endLine, silent) {
+function admonition(state: any, startLine: number, endLine: number, silent: boolean) {
     // if it's indented more than 3 spaces, it should be a code block
     if (state.tShift[startLine] - state.blkIndent >= 4) return false;
     let pos: number = state.bMarks[startLine] + state.tShift[startLine];

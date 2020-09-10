@@ -1,4 +1,4 @@
-import { MarkdownIt, Token } from 'markdown-it';
+import { MarkdownIt, Token } from '../@types/markdown-it';
 import { MarkdownItEnv, HtmlExporterEnv } from '../services/common/interfaces';
 import * as path from 'path';
 import * as fs from 'fs';

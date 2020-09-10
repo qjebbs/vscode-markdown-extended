@@ -1,4 +1,4 @@
-import { MarkdownIt, Token } from 'markdown-it';
+import { MarkdownIt } from '../@types/markdown-it';
 import * as container from 'markdown-it-container';
 
 export function MarkdownItContainer(md: MarkdownIt) {

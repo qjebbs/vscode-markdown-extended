@@ -3,7 +3,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { CommandExportCurrent } from './commands/exportCurrent';
-import * as markdowIt from 'markdown-it';
+import * as markdowIt from './@types/markdown-it';
 import { plugins } from './plugin/plugins';
 import { CommandCopy, CommandCopyWithStyles } from './commands/copy';
 import { config } from './services/common/config';

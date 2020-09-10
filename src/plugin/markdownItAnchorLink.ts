@@ -1,4 +1,4 @@
-import { MarkdownIt, Token } from 'markdown-it';
+import { MarkdownIt } from '../@types/markdown-it';
 import { slugify } from './shared';
 
 const anchorLinkReg = /\[.+?\]\(\s*#(\S+?)\s*\)/ig;

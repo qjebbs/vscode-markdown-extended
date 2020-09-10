@@ -1,4 +1,3 @@
-import * as markdowIt from 'markdown-it';
 import { MarkdownItTOC } from './markdownItTOC';
 import { MarkdownItContainer } from './markdownItContainer';
 import { MarkdownItAnchorLink } from './markdownItAnchorLink';

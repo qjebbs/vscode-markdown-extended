@@ -1,0 +1,59 @@
+{
+  "_args": [
+    [
+      "@types/markdown-it@0.0.4",
+      "/Users/jebbs/Coding/vscode/markdown-extended"
+    ]
+  ],
+  "_development": true,
+  "_from": "@types/markdown-it@0.0.4",
+  "_id": "@types/markdown-it@0.0.4",
+  "_inBundle": false,
+  "_integrity": "sha512-FWR7QB7EqBRq1s9BMk0ccOSOuRLfVEWYpHQYpFPaXtCoqN6dJx2ttdsdQbUxLLnAlKpYeVjveGGhQ3583TTa7g==",
+  "_location": "/@types/markdown-it",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "@types/markdown-it@0.0.4",
+    "name": "@types/markdown-it",
+    "escapedName": "@types%2fmarkdown-it",
+    "scope": "@types",
+    "rawSpec": "0.0.4",
+    "saveSpec": null,
+    "fetchSpec": "0.0.4"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@types/markdown-it/-/markdown-it-0.0.4.tgz",
+  "_spec": "0.0.4",
+  "_where": "/Users/jebbs/Coding/vscode/markdown-extended",
+  "bugs": {
+    "url": "https://github.com/DefinitelyTyped/DefinitelyTyped/issues"
+  },
+  "contributors": [
+    {
+      "name": "York Yao",
+      "url": "https://github.com/plantain-00/"
+    },
+    {
+      "name": "Robert Coie",
+      "url": "https://github.com/rapropos"
+    }
+  ],
+  "dependencies": {},
+  "description": "TypeScript definitions for markdown-it",
+  "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped#readme",
+  "license": "MIT",
+  "main": "",
+  "name": "@types/markdown-it",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DefinitelyTyped/DefinitelyTyped.git"
+  },
+  "scripts": {},
+  "typeScriptVersion": "2.0",
+  "typesPublisherContentHash": "2f7529c50b6199709fdc6feb0cf57a62152dccef7db4367ab91bc5af8bfd4c8b",
+  "version": "0.0.4"
+}

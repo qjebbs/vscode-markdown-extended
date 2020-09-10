@@ -1,4 +1,4 @@
-import { MarkdownIt, Token } from 'markdown-it';
+import { MarkdownIt, Token } from '../@types/markdown-it';
 import * as toc from 'markdown-it-table-of-contents';
 import { slugify } from './shared';
 import { config } from '../services/common/config';
