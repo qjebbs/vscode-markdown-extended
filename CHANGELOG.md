@@ -1,5 +1,9 @@
 # Change Log
 
+## v1.0.18
+
+- Improvement: Top margin inside admonition
+
 ## v1.0.17
 
 - Fix: Export files not in workspace

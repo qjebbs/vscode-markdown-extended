@@ -3,7 +3,7 @@
   "displayName": "Markdown Extended",
   "description": "Extended syntaxes to built-in markdown & What you see is what you get exporter.",
   "icon": "images/logo.png",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "publisher": "jebbs",
   "engines": {
     "vscode": "^1.38.0"
@@ -482,7 +482,7 @@
     "markdown-it-sup": "^1.0.0",
     "markdown-it-table-of-contents": "^0.4.4",
     "markdown-it-underline": "^1.0.1",
-    "papaparse": "^4.3.7",
+    "papaparse": "^5.3.0",
     "puppeteer": "^1.18.1"
   }
 }
