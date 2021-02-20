@@ -32,7 +32,8 @@ export function renderHTML(doc: MarkdownDocument): string {
             workspaceFolder: getworkspaceFolder(doc.document.uri),
             vsUri: getVsUri(doc.document.uri),
             embedImage: true,
-        }
+        },
+        containingImages: [],
     }
     let content = markdown.render(doc.content, env);
     return content.trim();
