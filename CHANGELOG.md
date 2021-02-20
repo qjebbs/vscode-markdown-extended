@@ -1,5 +1,9 @@
 # Change Log
 
+## v1.0.19
+
+- Add workaround for markdown export crashing. [#98](https://github.com/qjebbs/vscode-markdown-extended/issues/98)
+
 ## v1.0.18
 
 - Improvement: Top margin inside admonition
