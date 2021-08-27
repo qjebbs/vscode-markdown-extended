@@ -221,6 +221,11 @@
     "keybindings": [
       {
         "when": "editorTextFocus && editorLangId == 'markdown'",
+        "command": "workbench.action.reopenClosedEditor",
+        "key": "ctrl+shift+t ctrl+shift+t"
+      },
+      {
+        "when": "editorTextFocus && editorLangId == 'markdown'",
         "command": "markdownExtended.pasteAsTable",
         "key": "ctrl+shift+t ctrl+shift+p"
       },
@@ -308,6 +313,11 @@
         "when": "editorTextFocus && editorLangId == 'markdown'",
         "command": "markdownExtended.addRowAbove",
         "key": "ctrl+shift+t ctrl+shift+a"
+      },
+      {
+        "command": "workbench.view.debug",
+        "when": "viewContainer.workbench.view.debug.enabled",
+        "key": "ctrl+shift+d ctrl+shift+d"
       },
       {
         "when": "editorTextFocus && editorLangId == 'markdown'",
