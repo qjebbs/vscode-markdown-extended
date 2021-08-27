@@ -261,7 +261,7 @@
       },
       {
         "command": "expandLineSelection",
-        "when": "textInputFocus",
+        "when": "textInputFocus && editorLangId == 'markdown'",
         "key": "ctrl+l ctrl+l"
       },
       {
@@ -321,7 +321,7 @@
       },
       {
         "command": "workbench.view.debug",
-        "when": "viewContainer.workbench.view.debug.enabled",
+        "when": "viewContainer.workbench.view.debug.enabled && editorLangId == 'markdown'",
         "key": "ctrl+shift+d ctrl+shift+d"
       },
       {
