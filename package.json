@@ -260,19 +260,24 @@
         "key": "ctrl+i"
       },
       {
+        "command": "expandLineSelection",
+        "when": "textInputFocus",
+        "key": "ctrl+l ctrl+l"
+      },
+      {
         "when": "editorTextFocus && editorLangId == 'markdown'",
         "command": "markdownExtended.toggleOList",
         "key": "ctrl+l ctrl+o"
       },
       {
         "when": "editorTextFocus && editorLangId == 'markdown'",
-        "command": "markdownExtended.toggleStrikethrough",
-        "key": "alt+s"
+        "command": "markdownExtended.toggleUList",
+        "key": "ctrl+l ctrl+u"
       },
       {
         "when": "editorTextFocus && editorLangId == 'markdown'",
-        "command": "markdownExtended.toggleUList",
-        "key": "ctrl+l ctrl+u"
+        "command": "markdownExtended.toggleStrikethrough",
+        "key": "alt+s"
       },
       {
         "when": "editorTextFocus && editorLangId == 'markdown'",
