@@ -121,8 +121,8 @@ but totally new implements.
 | Format: Toggle Code Inline    | Alt+`                         |
 | Format: Toggle Code Block     | Alt+Shift+`                   |
 | Format: Toggle Block Quote    | Ctrl+Shift+Q                  |
-| Format: Toggle Superscript    | Ctrl+Shift+U                  |
-| Format: Toggle Subscript      | Ctrl+Shift+L                  |
+| Format: Toggle Subscript      | Ctrl+ =                       |
+| Format: Toggle Superscript    | Ctrl+Shift+ =                 |
 | Format: Toggle Unordered List | Ctrl+L, Ctrl+U                |
 | Format: Toggle Ordered List   | Ctrl+L, Ctrl+O                |
 | Table: Paste as Table         | Ctrl+Shift+T, Ctrl+Shift+P    |
