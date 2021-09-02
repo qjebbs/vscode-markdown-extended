@@ -25,8 +25,10 @@
         "description": "Insert checkbox"
     },
     "Task list": {
-        "prefix": "task list",
-        "body": "- [ ] ${1:${TM_SELECTED_TEXT}}$0",
+        "prefix": "task",
+        "body": [
+            "- [${1| ,x|}] ${2:text}${0}"
+        ],
         "description": "Insert task list"
     },
     "Insert table": {
@@ -39,7 +41,7 @@
             "${0}",
             ""
         ],
-        "description": "Insert a simple table"
+        "description": "Insert table with 2 rows and 3 columns. First row is heading."
     },
     "keyboarddefine": {
         "prefix": "kbd",
@@ -51,11 +53,12 @@
     "Admonition": {
         "prefix": [
             "admonition",
-            "note"
+            "note",
+            "tip"
         ],
         "body": [
-            "!!! ${2:Note}",
-            "    ${1:${TM_SELECTED_TEXT}}$0"
+            "!!! ${1|  ,note,abstract,info,tip,success,question,warning,failure,danger,bug,example,quote|}",
+            "    ${2:${TM_SELECTED_TEXT}}$0"
         ],
         "description": "Insert Admonition"
     },
@@ -95,14 +98,14 @@
     "Attribute": {
         "prefix": "attr",
         "body": [
-            "**${2:${TM_SELECTED_TEXT}}**{style=\"color:${1:red}\"}$0"
+            "**${2:${TM_SELECTED_TEXT}}**{style=\"color:${1:| ,red,green,yellow|}\"}$0"
         ],
         "description": "Insert Attribute"
     },
     "Color": {
         "prefix": "color",
         "body": [
-            "<font color=\"${1:Red}\">${2:${TM_SELECTED_TEXT}}</font>$0"
+            "<font color=\"${1:| ,red,green,yellow|}\">${2:${TM_SELECTED_TEXT}}</font>$0"
         ],
         "description": "Insert Color text"
     }
