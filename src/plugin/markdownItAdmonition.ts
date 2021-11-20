@@ -28,9 +28,9 @@ export function MarkdownItAdmonition(md: MarkdownIt) {
 function render(tokens: Token[], idx: number, _options: any, env: any, self: Renderer) {
     var token = tokens[idx];
     if (token.type === "admonition_open") {
-        tokens[idx].attrPush(["class", "admonition " + token.info]);
+        tokens[idx].attrJoin("class", "admonition " + token.info);
     } else if (token.type === "admonition_title_open") {
-        tokens[idx].attrPush(["class", "admonition-title"]);
+        tokens[idx].attrJoin("class", "admonition-title");
     }
     return self.renderToken(tokens, idx, _options);
 }
