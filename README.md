@@ -139,6 +139,25 @@ but totally new implements.
 > Looking for `Move Rows Up / Down`?  
 > You can use vscode built-in `Move Line Up / Down`, shortcuts are `alt+↑` and `alt+↓`
 
+### Snippets
+
+| Index |              Prefix |               Context                | View                                |
+| ----- | ------------------: | :----------------------------------: | :---------------------------------- |
+| 0     |         `underline` |            `_under_ line`            | _under_ line                        |
+| 1     |              `mark` |              `==mark==`              | ==mark==                            |
+| 2     |         `subscript` |            `~sub~script`             | ~sub~script                         |
+| 3     |       `superscript` |           `^super^script`            | ^super^script                       |
+| 4     |          `checkbox` |            `[] checkbox`             | [ ] checkbox                        |
+| 4     |          `tasklist` |             `- [] task`              | [ ] tasklist                        |
+| 5     |             `table` | [Markdown](#paste-as-markdown-table) | [Table](#paste-as-markdown-table)   |
+| 6     |               `kbd` |        `<kbd>Keyboard</kbd>`         | <kbd>Keyboard</kbd>                 |
+| 7     | `admonition` `note` |         `!!! warn`<br>`text`         | [addmonition](#admonition)          |
+| 8     |          `footnote` |     `[^abc]`  <br> `[^abc]: ABC`     | [footnote](#markdown-it-footnote)   |
+| 9     |         `container` |  [markdown](#markdown-it-container)  | [container](#markdown-it-container) |
+| 10    |              `abbr` |       `*[ABBR]: Abbreviation `       | [abbr](#markdown-it-abbr)           |
+| 11    |              `attr` |    `**attr**{style="color:red"}`     | **attr**{style="color:red"}         |
+| 12    |             `color` |  `color <font color=red>red</font>`  | color <font color=red>red</font>    |
+
 ### Table Editing
 
 ![tableEdit](./images/tableEdit.gif)
@@ -173,6 +192,7 @@ Nesting supported (by indent) admonition, the following shows a danger admonitio
     !!! danger Danger Title
         This is the **danger** admonition body
 ```
+
 ![admonition-demo](images/admonition-demo1.png)
 
 #### Removing Admonition Title
@@ -181,12 +201,12 @@ Nesting supported (by indent) admonition, the following shows a danger admonitio
 !!! danger ""
     This is the danger admonition body
 ```
+
 ![admonition-demo](images/admonition-demo2.png)
 
 #### Supported Qualifiers
 
 `note` | `summary, abstract, tldr` | `info, todo` | `tip, hint` | `success, check, done` | `question, help, faq` | `warning, attention, caution` | `failure, fail, missing` | `danger, error, bug` | `example, snippet` | `quote, cite`
-
 
 ### Enhanced Anchor Link
 

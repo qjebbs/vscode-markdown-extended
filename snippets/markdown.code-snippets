@@ -1,0 +1,112 @@
+{
+    "Under Line text": {
+        "prefix": "underline",
+        "body": "_${1:${TM_SELECTED_TEXT}}_$0",
+        "description": "Underline text"
+    },
+    "Mark text": {
+        "prefix": "mark",
+        "body": "==${1:${TM_SELECTED_TEXT}}==$0",
+        "description": "Insert mark text"
+    },
+    "Subscript text": {
+        "prefix": "subscript",
+        "body": "~${1:${TM_SELECTED_TEXT}}~$0",
+        "description": "Insert subscript text"
+    },
+    "Superscript text": {
+        "prefix": "superscript",
+        "body": "^${1:${TM_SELECTED_TEXT}}^$0",
+        "description": "Insert superscript text"
+    },
+    "Checkbox": {
+        "prefix": "checkbox",
+        "body": "[ ] ${1:${TM_SELECTED_TEXT}}$0",
+        "description": "Insert checkbox"
+    },
+    "Task list": {
+        "prefix": "task",
+        "body": [
+            "- [${1| ,x|}] ${2:text}${0}"
+        ],
+        "description": "Insert task list"
+    },
+    "Insert table": {
+        "prefix": "table",
+        "body": [
+            "",
+            "| ${1:Column1}  | ${2:Column2}   | ${3:Column3}   |",
+            "|-------------- | -------------- | -------------- |",
+            "| ${4:Item1}    | ${5:Item1}     | ${6:Item1}     |",
+            "${0}",
+            ""
+        ],
+        "description": "Insert table with 2 rows and 3 columns. First row is heading."
+    },
+    "keyboarddefine": {
+        "prefix": "kbd",
+        "body": [
+            "<kbd>${1:${TM_SELECTED_TEXT}}</kbd>$0"
+        ],
+        "description": "Insert keyboard"
+    },
+    "Admonition": {
+        "prefix": [
+            "admonition",
+            "note",
+            "tip"
+        ],
+        "body": [
+            "!!! ${1|  ,note,abstract,info,tip,success,question,warning,failure,danger,bug,example,quote|}",
+            "    ${2:${TM_SELECTED_TEXT}}$0"
+        ],
+        "description": "Insert Admonition"
+    },
+    "FootNote": {
+        "prefix": "footnote",
+        "body": [
+            "[^${1:tag}]$0",
+            "",
+            "[^${1:tag}]: ${2:${TM_SELECTED_TEXT}}"
+        ],
+        "description": "Insert FootNote"
+    },
+    "Container": {
+        "prefix": "container",
+        "body": [
+            "::::: container",
+            ":::: row",
+            "::: col-xs-6 alert alert-success",
+            "${1:success text}",
+            ":::",
+            "::: col-xs-6 alert alert-warning",
+            "${2:warning text}",
+            ":::",
+            "::::",
+            ":::::",
+            "$0"
+        ],
+        "description": "Insert Container"
+    },
+    "Abbreviation": {
+        "prefix": "abbr",
+        "body": [
+            "*[${1:${TM_SELECTED_TEXT}}]: ${2:Long descript}$0"
+        ],
+        "description": "Insert Abbreviation"
+    },
+    "Attribute": {
+        "prefix": "attr",
+        "body": [
+            "**${2:${TM_SELECTED_TEXT}}**{style=\"color:${1:| ,red,green,yellow|}\"}$0"
+        ],
+        "description": "Insert Attribute"
+    },
+    "Color": {
+        "prefix": "color",
+        "body": [
+            "<font color=\"${1:| ,red,green,yellow|}\">${2:${TM_SELECTED_TEXT}}</font>$0"
+        ],
+        "description": "Insert Color text"
+    }
+}
