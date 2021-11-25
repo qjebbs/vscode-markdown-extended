@@ -463,11 +463,11 @@
   "devDependencies": {
     "@types/mocha": "^2.2.42",
     "@types/node": "^7.0.43",
+    "@types/puppeteer": "^1.20.8",
     "@types/vscode": "^1.39.0",
     "typescript": "^3.1.4"
   },
   "dependencies": {
-    "@types/puppeteer": "^1.9.0",
     "clipboardy": "^1.2.3",
     "highlight.js": "^9.12.0",
     "js-yaml": "^3.13.1",
@@ -487,6 +487,6 @@
     "markdown-it-table-of-contents": "^0.4.4",
     "markdown-it-underline": "^1.0.1",
     "papaparse": "^5.3.0",
-    "puppeteer": "^1.18.1"
+    "puppeteer": "^1.20.0"
   }
 }
