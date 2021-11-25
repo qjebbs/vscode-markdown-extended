@@ -112,7 +112,7 @@ See all available settings for
 but totally new implements.
 
 Default Keyboard Shortcut bindings are removed due to conflict issues on platforms, please consider:
->
+
 - Switch to use command palette
 - Switch to use [Snippets](#Snippets)
 - Setup key bindings on your own
