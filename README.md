@@ -214,6 +214,8 @@ Nesting supported (by indent) admonition, the following shows a danger admonitio
 
 `note` | `summary, abstract, tldr` | `info, todo` | `tip, hint` | `success, check, done` | `question, help, faq` | `warning, attention, caution` | `failure, fail, missing` | `danger, error, bug` | `example, snippet` | `quote, cite`
 
+See also: [Python-Markdown Documentation for Admonitions](https://python-markdown.github.io/extensions/admonition/)
+
 ### markdown-it-table-of-contents
 
     [[TOC]]

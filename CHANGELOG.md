@@ -1,5 +1,10 @@
 # Change Log
 
+## v1.1.1
+
+- Apply python markdown spec for admonitions, [#123](https://github.com/qjebbs/vscode-markdown-extended/pull/123)
+- Fix [#125](https://github.com/qjebbs/vscode-markdown-extended/pull/125)
+
 ## v1.1.0
 
 - Add snippets ([#116](https://github.com/qjebbs/vscode-markdown-extended/pull/116)), thanks to [heartacker ](https://github.com/heartacker)
