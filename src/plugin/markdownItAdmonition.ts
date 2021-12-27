@@ -50,12 +50,41 @@ function admonition(state: any, startLine: number, endLine: number, silent: bool
     if (len < _minMarkerLen) return false;
 
     let markup: string = state.src.slice(mem, pos);
-    let type = "", title = "";
-    let paramsr: string[] = state.src.slice(pos, max).trim().split(' ');
-    type = paramsr.shift().toLowerCase();
-    title = paramsr.join(' ');
-    if (_types.indexOf(type) < 0) type = "note";
-    if (!title) title = type.substr(0, 1).toUpperCase() + type.substr(1, type.length - 1);
+    // https://python-markdown.github.io/extensions/admonition/
+    let params: string = state.src.slice(pos, max).trim();
+    let quoteIdx = params.indexOf('"');
+    let type = "";
+    let classes: string[] = [];
+    let title = "";
+    if (quoteIdx >= 0) {
+        classes = params.substring(0, quoteIdx).trim()
+            .split(" ")
+            .map(s => s.trim())
+            .filter(s => !!s);
+        type = classes[0];
+        title = params.substring(quoteIdx);
+        if (_types.indexOf(type) < 0) {
+            classes.unshift("note");
+            type = "note";
+        }
+    } else {
+        type = params.split(" ").shift().toLowerCase();
+        if (_types.indexOf(type) < 0) {
+            type = "note";
+            title = params;
+        } else {
+            title = params.substring(type.length);
+        }
+        classes.push(type)
+    }
+    if (title.startsWith('"')) {
+        if (title.length > 1 && title.endsWith('"')) {
+            title = title.substring(1, title.length - 1);
+        } else {
+            title = title.substring(1);
+        }
+    }
+
 
     // Since start is found, we can report success here in validation mode
     if (silent) return true;
@@ -93,10 +122,10 @@ function admonition(state: any, startLine: number, endLine: number, silent: bool
     let token = state.push("admonition_open", "div", 1);
     token.markup = markup;
     token.block = true;
-    token.info = type;
+    token.info = classes.join(' ');
     token.map = [startLine, startLine + 1];
 
-    if (title != '""') {
+    if (title != '') {
         // admonition title
         token = state.push("admonition_title_open", "p", 1);
         token.markup = markup + " " + type;
