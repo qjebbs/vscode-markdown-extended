@@ -19,8 +19,9 @@ let myPlugins = {
 }
 
 export var plugins: markdowItPlugin[] = [
-    $('markdown-it-toc'),
-    $('markdown-it-anchor'), // MarkdownItAnchorLink requires MarkdownItTOC
+    // $('markdown-it-toc'),
+    // $('markdown-it-anchor'), // MarkdownItAnchorLink requires MarkdownItTOC
+    $('markdown-it-table-of-contents', { includeLevel: config.tocLevels }),
     $('markdown-it-container'),
     $('markdown-it-admonition'),
     $('markdown-it-footnote'),

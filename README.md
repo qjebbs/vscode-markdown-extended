@@ -214,26 +214,6 @@ Nesting supported (by indent) admonition, the following shows a danger admonitio
 
 `note` | `summary, abstract, tldr` | `info, todo` | `tip, hint` | `success, check, done` | `question, help, faq` | `warning, attention, caution` | `failure, fail, missing` | `danger, error, bug` | `example, snippet` | `quote, cite`
 
-### Enhanced Anchor Link
-
-Now, you're able to write anchor links consistent to heading texts.
-
-```markdown
-Go to 
-[简体中文](#简体中文), 
-[Español Título](#Español-Título).
-
-## 简体中文
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Aenean euismod bibendum laoreet.
-
-## Español Título
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Aenean euismod bibendum laoreet.
-```
-
 ### markdown-it-table-of-contents
 
     [[TOC]]
