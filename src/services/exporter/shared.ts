@@ -33,7 +33,6 @@ export function renderHTML(doc: MarkdownDocument): string {
             vsUri: getVsUri(doc.document.uri),
             embedImage: true,
         },
-        containingImages: [],
     }
     let content = markdown.render(doc.content, env);
     return content.trim();
