@@ -35,7 +35,7 @@ export var plugins: markdowItPlugin[] = [
     $('markdown-it-mark'),
     $('markdown-it-deflist'),
     $('markdown-it-emoji'),
-    $('markdown-it-multimd-table', { enableMultilineRows: true, enableRowspan: true }),
+    $('markdown-it-multimd-table', { multiline: true, rowspan: true, headerless: true }),
     $('markdown-it-html5-embed', { html5embed: { useImageSyntax: true, useLinkSyntax: true } }),
     $('markdown-it-helper')
 ].filter(p => !!p);

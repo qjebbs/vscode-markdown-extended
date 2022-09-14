@@ -353,28 +353,28 @@
     "@types/node": "^7.0.43",
     "@types/puppeteer": "^1.20.8",
     "@types/vscode": "^1.39.0",
-    "typescript": "^3.1.4"
+    "typescript": "^4.8.2"
   },
   "dependencies": {
-    "clipboardy": "^1.2.3",
-    "highlight.js": "^11.3.1",
-    "js-yaml": "^3.13.1",
+    "clipboardy": "^2.3.0",
+    "highlight.js": "^11.6.0",
+    "js-yaml": "^4.1.0",
     "markdown-it-abbr": "^1.0.4",
-    "markdown-it-attrs": "^3.0.1",
+    "markdown-it-attrs": "^4.1.4",
     "markdown-it-checkbox": "^1.1.0",
-    "markdown-it-container": "^2.0.0",
-    "markdown-it-deflist": "^2.0.3",
-    "markdown-it-emoji": "^1.4.0",
-    "markdown-it-footnote": "^3.0.1",
-    "markdown-it-html5-embed": "^1.0.0",
-    "markdown-it-kbd": "^2.0.0",
+    "markdown-it-container": "^3.0.0",
+    "markdown-it-deflist": "^2.1.0",
+    "markdown-it-emoji": "^2.0.2",
+    "markdown-it-footnote": "^3.0.3",
+    "markdown-it-html5-embed": "^0.3.3",
+    "markdown-it-kbd": "^2.2.2",
     "markdown-it-mark": "^2.0.0",
-    "markdown-it-multimd-table": "^3.2.0",
+    "markdown-it-multimd-table": "^4.2.0",
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
-    "markdown-it-table-of-contents": "^0.4.4",
+    "markdown-it-table-of-contents": "^0.6.0",
     "markdown-it-underline": "^1.0.1",
     "papaparse": "^5.3.0",
-    "puppeteer": "^1.20.0"
+    "puppeteer": "^17.1.3"
   }
 }
