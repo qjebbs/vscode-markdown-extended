@@ -12,14 +12,16 @@ export class MDTable {
     private _data: string[][];
     private _headerRowCount: number;
     private _aligns: TableAlign[];
+    private _indentation: string;
     private _columnWidths: number[];
     private _columnCount: number;
     private _rowCount: number;
     private _rowMergeFlags: boolean[] = [];
 
-    constructor(data: string[][], headerRowCount: number) {
+    constructor(data: string[][], headerRowCount: number, indentation: string = "") {
         this.data = data;
         this._headerRowCount = headerRowCount;
+        this._indentation = indentation;
     }
     public get data(): string[][] {
         return this._data;
@@ -54,6 +56,9 @@ export class MDTable {
         if (this._data[0].length !== aligns.length)
             throw new Error("Align settings count and column count mismatch!");
         this._aligns = aligns;
+    }
+    public get indentation(): string {
+        return this._indentation;
     }
     public get columnWidths(): number[] {
         return this._columnWidths;

@@ -1,5 +1,7 @@
 import { MDTable, TableAlign } from "./mdTable";
 
+const leadingSpaceReg = /^\s*/;
+
 export function parseMDTAble(source: string): MDTable {
     let lines = source.replace(/\r?\n/g, "\n").split("\n");
     if (lines.length < 2) return undefined; //should have at least two line
@@ -16,7 +18,8 @@ export function parseMDTAble(source: string): MDTable {
     }
     if (!headerRowCount) return undefined;
 
-    let table = new MDTable(data, headerRowCount);
+    let indentation = lines[0].match(leadingSpaceReg)[0];
+    let table = new MDTable(data, headerRowCount, indentation);
     let aligns = parseAlins(sepRowCells);
     if (table.columnCount > aligns.length)
         aligns.push(...new Array(table.columnCount - aligns.length).fill(TableAlign.auto));
@@ -32,17 +35,36 @@ export function splitColumns(line: string): string[] {
     let start = 0;
     line = line.trim();
     for (let i = 0; i < line.length; i++) {
-        let chr = line.substr(i, 1);
+        let chr = line.charAt(i);
         if (chr == '\\') {
             i++;
             continue;
+        } else if (chr == '`') {
+            // Skip over | and \ inside code spans
+            // Code spans begin and end with a matching number of backticks
+            let openingQuoteCount = 1;
+            i++;
+            while (i < line.length && line.charAt(i) == '`') {
+                openingQuoteCount++;
+                i++
+            }
+
+            let quoteCount = 0;
+            while (i < line.length) {
+                if (line.charAt(i) == '`')
+                    quoteCount++;
+                else
+                    quoteCount = 0;
+                if (quoteCount == openingQuoteCount) break;
+                i++;
+            }
         } else if (chr == '|') {
             cells.push(line.substring(start, i));
             start = i + 1;
         }
     }
     // merged rows use '\' as end row seprator
-    if (line.substr(line.length - 1, 1) == '\\') {
+    if (line.charAt(line.length - 1) == '\\') {
         cells.push(line.substring(start, line.length - 1));
         start = line.length;
     }
