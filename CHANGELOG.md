@@ -1,5 +1,9 @@
 # Change Log
 
+## v1.1.3
+
+Fix: Get chromium revision for puppeteer downloading
+
 ## v1.1.2
 
 - Improvement: Tables formatting preserves table indentation and handle code spans, **@rbolsius**, [#139](https://github.com/qjebbs/vscode-markdown-extended/pull/139)
