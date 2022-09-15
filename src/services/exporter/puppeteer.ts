@@ -1,4 +1,5 @@
 import * as puppeteer from 'puppeteer';
+import {PUPPETEER_REVISIONS} from 'puppeteer/lib/cjs/puppeteer/revisions.js';
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -17,8 +18,7 @@ class PuppeteerExporter implements MarkdownExporter {
             if (result == "Yes") {
                 await this.fetchBinary(progress);
             } else {
-                vscode.window.showInformationMessage("Download cancelled. Try configure 'puppeteerExecutable' to use customize executable.");
-                return;
+                return Promise.reject("Download cancelled. Try configure 'markdownExtended.puppeteerExecutable' to use customize executable.");
             }
         }
         progress.report({ message: "Initializing..." });
@@ -98,8 +98,7 @@ class PuppeteerExporter implements MarkdownExporter {
     private async fetchBinary(progress: Progress) {
         let pt = require('puppeteer');
         let fetcher = pt.createBrowserFetcher();
-        const revision = require(path.join(context.extensionPath, 'node_modules', 'puppeteer', 'package.json')).puppeteer.chromium_revision;
-        const revisionInfo = fetcher.revisionInfo(revision);
+        const revisionInfo = fetcher.revisionInfo(PUPPETEER_REVISIONS.chromium);
         let lastPg = 0;
         progress.report({
             message: "Downloading Chromium...",
