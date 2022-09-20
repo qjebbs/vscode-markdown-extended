@@ -344,7 +344,7 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
+    "vscode:prepublish": "find node_modules/puppeteer -name '.local*' | xargs rm -rf && npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./"
   },
