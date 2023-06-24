@@ -356,7 +356,7 @@
     "typescript": "^4.8.2"
   },
   "dependencies": {
-    "clipboardy": "^2.3.0",
+    "clipboardy": "^3.0.0",
     "highlight.js": "^11.6.0",
     "js-yaml": "^4.1.0",
     "markdown-it-abbr": "^1.0.4",
