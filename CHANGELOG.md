@@ -1,5 +1,9 @@
 # Change Log
 
+## v1.1.4
+
+Add `markdown-it-bracketed-spans` and update dependencies, **@zeedif**, [#160](https://github.com/qjebbs/vscode-markdown-extended/pull/160)
+
 ## v1.1.3
 
 Fix: Get chromium revision for puppeteer downloading

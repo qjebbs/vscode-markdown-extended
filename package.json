@@ -3,7 +3,7 @@
   "displayName": "Markdown Extended",
   "description": "Extended syntaxes to built-in markdown & What you see is what you get exporter.",
   "icon": "images/logo.png",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "publisher": "jebbs",
   "engines": {
     "vscode": "^1.54.0"
@@ -351,8 +351,7 @@
   "devDependencies": {
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
-    "@types/puppeteer": "^7.0.4",
-    "@types/vscode": "^1.87.0",
+    "@types/vscode": "^1.54.0",
     "typescript": "^5.4.3"
   },
   "dependencies": {
