@@ -1,5 +1,5 @@
 import * as puppeteer from 'puppeteer';
-import {PUPPETEER_REVISIONS} from 'puppeteer/lib/cjs/puppeteer/revisions.js';
+import {PUPPETEER_REVISIONS} from 'puppeteer-core/lib/cjs/puppeteer/revisions.js';
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';

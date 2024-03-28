@@ -71,6 +71,13 @@
         ],
         "description": "Insert FootNote"
     },
+    "BracketedSpan": {
+        "prefix": "span",
+        "body": [
+            "[${1:${TM_SELECTED_TEXT}}]$0"
+        ],
+        "description": "Insert Bracketed Span"
+    },
     "Container": {
         "prefix": "container",
         "body": [
