@@ -7,21 +7,26 @@ import { ExportRport } from '../exporter/interfaces';
 
 export function calculateExportPath(uri: vscode.Uri, format: string): string {
     let outDirName = config.exportOutDirName;
-    let dir = "";
     let folder = vscode.workspace.getWorkspaceFolder(uri);
     let wkdir = folder ? folder.uri.fsPath : "";
-    //if current document is in workspace, organize exports in 'out' directory.
-    //if not, export beside the document.
-    if (wkdir && isSubPath(uri.fsPath, wkdir)) dir = path.join(wkdir, outDirName);
-
-    let exportDir = path.dirname(uri.fsPath);
-    if (!path.isAbsolute(exportDir)) return "";
-    if (dir && wkdir) {
-        let temp = path.relative(wkdir, exportDir);
-        exportDir = path.join(dir, temp);
+    let exportDir: string;
+    let uriPath = uri.fsPath;
+    if (!path.isAbsolute(uriPath)) {
+        throw new Error("please save file before export: " + uriPath);
     }
-
-    return path.join(exportDir, path.basename(uri.fsPath, ".md") + `.${format.toLowerCase()}`);
+    if (wkdir && isSubPath(uriPath, wkdir)) {
+        //if current document is in workspace, organize exports in 'out' directory.
+        let relDir = path.dirname(uriPath);
+        if (path.isAbsolute(relDir)) {
+            // saved
+            relDir = path.relative(wkdir, relDir)
+        }
+        exportDir = path.join(path.join(wkdir, outDirName), relDir);
+    } else {
+        //if not, export beside the document.
+        exportDir = path.dirname(uriPath);
+    }
+    return path.join(exportDir, path.basename(uriPath, ".md") + `.${format.toLowerCase()}`);
 }
 
 export function isSubPath(from: string, to: string): boolean {

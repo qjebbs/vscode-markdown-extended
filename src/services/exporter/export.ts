@@ -27,7 +27,7 @@ export async function MarkdownExport(arg: vscode.Uri | vscode.Uri[], option: exp
 async function getFileList(arg?: vscode.Uri | vscode.Uri[]): Promise<vscode.Uri[]> {
     let _files: vscode.Uri[] = [];
 
-    if (arg && arg instanceof vscode.Uri && fs.statSync(arg.fsPath).isFile()) return [arg];
+    if (arg && arg instanceof vscode.Uri && !isDirectoryUri(arg)) return [arg];
 
     if (!vscode.workspace.workspaceFolders) { return []; }
 
@@ -40,7 +40,7 @@ async function getFileList(arg?: vscode.Uri | vscode.Uri[]): Promise<vscode.Uri[
             _files.push(...await getFileList(u));
         }
     } else if (arg instanceof vscode.Uri) {
-        if (fs.statSync(arg.fsPath).isDirectory()) {
+        if (isDirectoryUri(arg)) {
             let folder = vscode.workspace.getWorkspaceFolder(arg);
             let relPath = path.relative(folder.uri.fsPath, arg.fsPath);
             if (relPath) relPath += '/';
@@ -51,4 +51,8 @@ async function getFileList(arg?: vscode.Uri | vscode.Uri[]): Promise<vscode.Uri[
         }
     }
     return _files;
+}
+
+function isDirectoryUri(uri: vscode.Uri): boolean {
+    return fs.existsSync(uri.fsPath) && fs.statSync(uri.fsPath).isDirectory();
 }
