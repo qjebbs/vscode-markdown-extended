@@ -109,3 +109,14 @@ export async function ensureMarkdownEngine() {
         await vscode.commands.executeCommand('markdown.api.render', 'init markdown engine');
     }
 }
+
+/**
+ * Replace {{ token }} at content string, with context property with name token
+ * @param content text for replace
+ * @param context object for replace values
+ * @returns result text
+ */
+export function replaceTokens(content: string, context: object): string
+{
+    return content.replace(/\{\{\s*([^{} ]+)\s*\}\}/gi, (match, key) => context[key] || key);
+}
