@@ -43,6 +43,7 @@ function embedImage(token: Token, env: HtmlExporterEnv) {
             break;
         }
     }
+    if (!src) return;
     token.attrs[index][1] = image2Base64(src, env);
 }
 function image2Base64(src: string, env: HtmlExporterEnv): string {
