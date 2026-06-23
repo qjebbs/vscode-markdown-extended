@@ -5,10 +5,9 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { MarkdownDocument } from '../common/markdownDocument';
 import { mkdirsSync, mergeSettings } from '../common/tools';
-import { renderPage } from './shared';
+import { renderPage, replaceTokens } from './shared';
 import { MarkdownExporter, exportFormat, Progress, ExportItem } from './interfaces';
 import { config } from '../common/config';
-import { context } from '../../extension';
 
 class PuppeteerExporter implements MarkdownExporter {
     async Export(items: ExportItem[], progress: Progress) {
@@ -67,6 +66,16 @@ class PuppeteerExporter implements MarkdownExporter {
                     document.meta.puppeteerPDF
                 );
                 ptConf = Object.assign(ptConf, { path: item.fileName });
+                
+                //allow to use {{ metaRawVariable }} in header and footer
+                let meta = document?.meta?.raw
+                if (meta && ptConf.headerTemplate){
+                    ptConf.headerTemplate = replaceTokens(ptConf.headerTemplate, meta)
+                }
+                if (meta && ptConf.footerTemplate){
+                    ptConf.footerTemplate = replaceTokens(ptConf.footerTemplate, meta)
+                }
+
                 await page.pdf(ptConf);
                 break;
             case exportFormat.JPG:
