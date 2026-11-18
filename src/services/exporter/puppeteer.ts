@@ -66,6 +66,18 @@ class PuppeteerExporter implements MarkdownExporter {
                     config.puppeteerUserSetting.pdf,
                     document.meta.puppeteerPDF
                 );
+                if (ptConf.headerTemplate) {
+                    const generatedAt = new Intl.DateTimeFormat(undefined, {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit',
+                        timeZoneName: 'short'
+                    }).format(new Date());
+                    ptConf.headerTemplate = ptConf.headerTemplate.replace(/{{generatedAt}}/g, generatedAt);
+                }
                 ptConf = Object.assign(ptConf, { path: item.fileName });
                 await page.pdf(ptConf);
                 break;

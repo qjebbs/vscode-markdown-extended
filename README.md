@@ -103,6 +103,12 @@ See all available settings for
 [puppeteer.pdf](https://github.com/GoogleChrome/puppeteer/blob/v1.4.0/docs/api.md#pagepdfoptions), and
 [puppeteer.image](https://github.com/GoogleChrome/puppeteer/blob/v1.4.0/docs/api.md#pagescreenshotoptions)
 
+Use `{{generatedAt}}` in `markdownExtended.pdfHeaderTemplate` to display the export date, time, and timezone using the system locale:
+
+```json
+"markdownExtended.pdfHeaderTemplate": "<div>Generated: {{generatedAt}}</div>"
+```
+
 ## Helpers
 
 ### Editing Helpers and Keys
